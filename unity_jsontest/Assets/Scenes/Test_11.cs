@@ -100,7 +100,7 @@ public class Test_11
 			//チェック。
 			{
 				if(Item.Compare(t_item_from,t_item_to) == false){
-					UnityEngine.Debug.LogWarning("mismatch");
+					UnityEngine.Debug.LogWarning("mis match");
 				}
 			}
 		}
