@@ -86,7 +86,7 @@ public class Test_18
 
 	/** Item_Base
 	*/
-	public abstract class Item_Base : Item_Base_Base
+	public class Item_Base : Item_Base_Base
 	{
 		readonly public int pub_2;
 		readonly protected int pro_2;

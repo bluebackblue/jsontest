@@ -17,7 +17,6 @@ public class Test : MonoBehaviour
 	*/
 	public System.Collections.IEnumerator TestCoroutine()
 	{
-		/*
 		//最大値。
 		Test_01.Main();
 
@@ -68,7 +67,6 @@ public class Test : MonoBehaviour
 
 		//null処理２。
 		Test_17.Main();
-		*/
 
 		//継承。
 		Test_18.Main();
