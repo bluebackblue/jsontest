@@ -1,0 +1,14 @@
+/.vs
+/Library
+/Logs
+/obj
+/Temp
+/Exe
+/WebGL
+/build.log
+/*.log
+/*.apk
+/*.csproj
+/*.sln
+Assets/ThirdParty/Close
+
