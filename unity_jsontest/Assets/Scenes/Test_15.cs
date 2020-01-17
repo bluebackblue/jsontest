@@ -4,7 +4,7 @@
 #define FEE_JSON
 
 
-/** 配列ネスト。
+/** Arrayネスト。
 */
 public class Test_15
 {
@@ -12,7 +12,7 @@ public class Test_15
 	*/
 	public static void Main()
 	{
-		UnityEngine.Debug.Log("----- Test_14 -----");
+		UnityEngine.Debug.Log("----- Test_15 -----");
 
 		{
 			int[][][][][][][][][][][][] t_item_from = null;
@@ -52,7 +52,7 @@ public class Test_15
 			#endif
 
 			//ログ。
-			UnityEngine.Debug.Log("Test_14 : " + t_jsonstring);
+			UnityEngine.Debug.Log("Test_15 : " + t_jsonstring);
 
 			//チェック。
 			{

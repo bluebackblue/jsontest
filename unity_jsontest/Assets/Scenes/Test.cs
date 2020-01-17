@@ -29,22 +29,22 @@ public class Test : MonoBehaviour
 		//文字２。
 		Test_04.Main();
 
-		//ＥＮＵＭ。
+		//Enum。
 		Test_05.Main();
 
 		//構造体。
 		Test_06.Main();
 
-		//連想配列。
+		//Dictionary。
 		Test_07.Main();
 
-		//リスト。
+		//List。
 		Test_08.Main();
 
-		//配列。
+		//Array。
 		Test_09.Main();
 
-		//無視。
+		//Ignore。
 		Test_10.Main();
 
 		//クラスネスト。
@@ -53,19 +53,19 @@ public class Test : MonoBehaviour
 		//構造体ネスト。
 		Test_12.Main();
 		
-		//リストネスト。
+		//Listネスト。
 		Test_13.Main();
 
-		//連想配列ネスト。
+		//Dictionaryネスト。
 		Test_14.Main();
 
-		//配列ネスト。
+		//Arrayネスト。
 		Test_15.Main();
 
-		//ＮＵＬＬ１。
+		//null処理１。
 		Test_16.Main();
 
-		//ＮＵＬＬ２。
+		//null処理２。
 		Test_17.Main();
 
 		yield break;

@@ -4,7 +4,7 @@
 #define FEE_JSON
 
 
-/** 無視。
+/** Ignore。
 */
 public class Test_10
 {
@@ -32,7 +32,6 @@ public class Test_10
 	{
 		UnityEngine.Debug.Log("----- Test_10 -----");
 
-		//配列。
 		{
 			Item t_item_from = new Item();
 			{

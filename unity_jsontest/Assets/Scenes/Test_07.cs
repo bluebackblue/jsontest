@@ -4,7 +4,7 @@
 #define FEE_JSON
 
 
-/** 連想配列。
+/** Dictionary
 */
 public class Test_07
 {
@@ -14,7 +14,6 @@ public class Test_07
 	{
 		UnityEngine.Debug.Log("----- Test_07 -----");
 
-		//連想配列。
 		{
 			System.Collections.Generic.Dictionary<string,int> t_item_from = new System.Collections.Generic.Dictionary<string,int>();
 			{

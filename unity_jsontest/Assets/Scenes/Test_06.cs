@@ -21,7 +21,6 @@ public class Test_06
 	{
 		UnityEngine.Debug.Log("----- Test_06 -----");
 
-		//構造体。
 		{
 			Item t_item_from = new Item();
 			{

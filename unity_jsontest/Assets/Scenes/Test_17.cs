@@ -4,7 +4,7 @@
 #define FEE_JSON
 
 
-/** ＮＵＬＬ２。
+/** null処理２。
 */
 public class Test_17
 {

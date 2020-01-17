@@ -4,7 +4,7 @@
 #define FEE_JSON
 
 
-/** ＥＮＵＭ。
+/** Enum。
 */
 public class Test_05
 {

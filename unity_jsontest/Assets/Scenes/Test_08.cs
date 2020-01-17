@@ -4,7 +4,7 @@
 #define FEE_JSON
 
 
-/** リスト。
+/** List。
 */
 public class Test_08
 {
@@ -14,7 +14,6 @@ public class Test_08
 	{
 		UnityEngine.Debug.Log("----- Test_08 -----");
 
-		//配列。
 		{
 			System.Collections.Generic.List<int> t_item_from = new System.Collections.Generic.List<int>();
 			{

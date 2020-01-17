@@ -9,7 +9,7 @@
 using ITEM_TYPE = System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<int>>>>>>>>>>>>;
 
 
-/** リストネスト。
+/** Listネスト。
 */
 public class Test_13
 {

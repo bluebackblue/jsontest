@@ -4,7 +4,7 @@
 #define FEE_JSON
 
 
-/** 配列。
+/** Array。
 */
 public class Test_09
 {
@@ -14,7 +14,6 @@ public class Test_09
 	{
 		UnityEngine.Debug.Log("----- Test_09 -----");
 
-		//配列。
 		{
 			int[] t_item_from = new int[3]{
 				1,
