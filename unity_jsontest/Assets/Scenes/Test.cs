@@ -17,7 +17,6 @@ public class Test : MonoBehaviour
 	*/
 	public System.Collections.IEnumerator TestCoroutine()
 	{
-		/*
 		//最大値。
 		Test_01.Main();
 
@@ -36,7 +35,7 @@ public class Test : MonoBehaviour
 		//構造体。
 		Test_06.Main();
 
-		//Dictionary。
+		//Dictionary(key = string)。
 		Test_07.Main();
 
 		//List。
@@ -44,12 +43,10 @@ public class Test : MonoBehaviour
 
 		//Array。
 		Test_09.Main();
-		*/
 
 		//Ignore。
-		//Test_10.Main();
+		Test_10.Main();
 
-		/*
 		//クラスネスト。
 		Test_11.Main();
 
@@ -73,10 +70,12 @@ public class Test : MonoBehaviour
 
 		//継承。
 		Test_18.Main();
-		*/
 
-		//拡張。
+		//IDictionary(key = string)
 		Test_19.Main();
+
+		//要素をオブジェクト化できないGeneric。
+		Test_20.Main();
 
 		yield break;
 	}
@@ -110,7 +109,7 @@ public class Test : MonoBehaviour
 
 	/** NullCheckDictionary
 	*/
-	public static bool NullCheckDictionary<A,B>(System.Collections.Generic.Dictionary<A,B> a_list_a,System.Collections.Generic.Dictionary<A,B> a_list_b)
+	public static bool NullCheckDictionary<A,B>(System.Collections.Generic.IDictionary<A,B> a_list_a,System.Collections.Generic.IDictionary<A,B> a_list_b)
 	{
 		if((a_list_a == null)&&(a_list_b == null)){
 			return true;
@@ -138,7 +137,7 @@ public class Test : MonoBehaviour
 
 	/** NullCheckList
 	*/
-	public static bool NullCheckList<A>(System.Collections.Generic.List<A> a_list_a,System.Collections.Generic.List<A> a_list_b)
+	public static bool NullCheckList<A>(System.Collections.Generic.IList<A> a_list_a,System.Collections.Generic.IList<A> a_list_b)
 	{
 		if((a_list_a == null)&&(a_list_b == null)){
 			return true;

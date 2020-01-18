@@ -15,7 +15,7 @@ public class Test_10
 		/** ＪＳＯＮ文字列化しない。
 		*/
 		[Fee.JsonItem.Ignore]
-		public int ignore_1;
+		public int ignore;
 	}
 
 	/** 更新。
@@ -27,8 +27,8 @@ public class Test_10
 		{
 			Item t_item_from = new Item();
 			{
-				//ignore_1
-				t_item_from.ignore_1 = 999;
+				//ignore
+				t_item_from.ignore = 999;
 			};
 
 			//オブジェクト ==> ＪＳＯＮＩＴＥＭ。

@@ -4,7 +4,7 @@
 #define FEE_JSON
 
 
-/** リスト。
+/** IDictionary(key = string)
 */
 public class Test_19
 {
@@ -12,19 +12,8 @@ public class Test_19
 	*/
 	public class Item
 	{
-		//public System.Collections.Generic.Dictionary<int,int> dic_int;
-
-		//public System.Collections.Generic.LinkedList<int> linkedlist;
-	
-		//public System.Collections.Generic.HashSet<int> hashset;
-
-		//public System.Collections.Generic.Queue<int> queue;
-
 		public System.Collections.Generic.SortedDictionary<string,int> sorted_dictionary;
-
-		public Item()
-		{
-		}
+		public System.Collections.Generic.SortedList<string,int> sorted_list;
 	};
 
 	/** 更新。
@@ -36,52 +25,15 @@ public class Test_19
 		{
 			Item t_item_from = new Item();
 			{
-				/*
-				t_item_from.dic_string = new System.Collections.Generic.Dictionary<string,int>();
-				t_item_from.dic_string.Add("item1",1);
-				t_item_from.dic_string.Add("item2",2);
-				t_item_from.dic_string.Add("item3",3);
-				*/
-
-				/*
-				t_item_from.list = new System.Collections.Generic.List<int>();
-				t_item_from.list.Add(1);
-				t_item_from.list.Add(2);
-				t_item_from.list.Add(3);
-				*/
-
-				/*
-				t_item_from.dic_int = new System.Collections.Generic.Dictionary<int,int>();
-				t_item_from.dic_int.Add(1,1);
-				t_item_from.dic_int.Add(2,2);
-				t_item_from.dic_int.Add(3,3);
-				*/
-
-				/*
-				t_item_from.linkedlist = new System.Collections.Generic.LinkedList<int>();
-				t_item_from.linkedlist.AddLast(1);
-				t_item_from.linkedlist.AddLast(2);
-				t_item_from.linkedlist.AddLast(3);
-				*/
-
-				/*
-				t_item_from.hashset = new System.Collections.Generic.HashSet<int>();
-				t_item_from.hashset.Add(1);
-				t_item_from.hashset.Add(2);
-				t_item_from.hashset.Add(3);
-				*/
-
-				/*
-				t_item_from.queue = new System.Collections.Generic.Queue<int>();
-				t_item_from.queue.Enqueue(1);
-				t_item_from.queue.Enqueue(2);
-				t_item_from.queue.Enqueue(3);
-				*/
-
 				t_item_from.sorted_dictionary = new System.Collections.Generic.SortedDictionary<string,int>();
 				t_item_from.sorted_dictionary.Add("value_1",1);
 				t_item_from.sorted_dictionary.Add("value_2",2);
 				t_item_from.sorted_dictionary.Add("value_3",3);
+
+				t_item_from.sorted_list = new System.Collections.Generic.SortedList<string,int>();
+				t_item_from.sorted_list.Add("value_1",1);
+				t_item_from.sorted_list.Add("value_2",2);
+				t_item_from.sorted_list.Add("value_3",3);
 			}
 
 			//オブジェクト ==> ＪＳＯＮＩＴＥＭ。
@@ -108,11 +60,25 @@ public class Test_19
 
 			//チェック。
 			{
-				/*
-				if(t_item_from.Compare(t_item_to) == false){
-					UnityEngine.Debug.LogWarning("mis match");
+				if(Test.NullCheckDictionary(t_item_from.sorted_dictionary,t_item_to.sorted_dictionary) == true){
+					foreach(string t_key in t_item_from.sorted_dictionary.Keys){
+						if(t_item_from.sorted_dictionary[t_key] != t_item_to.sorted_dictionary[t_key]){
+							UnityEngine.Debug.LogWarning(t_key + " : " + t_item_from.sorted_dictionary[t_key] + " : " + t_item_to.sorted_dictionary[t_key]);
+						}
+					}
+				}else{
+					UnityEngine.Debug.LogWarning("null");
 				}
-				*/
+
+				if(Test.NullCheckDictionary(t_item_from.sorted_list,t_item_to.sorted_list) == true){
+					foreach(string t_key in t_item_from.sorted_list.Keys){
+						if(t_item_from.sorted_list[t_key] != t_item_to.sorted_list[t_key]){
+							UnityEngine.Debug.LogWarning(t_key + " : " + t_item_from.sorted_list[t_key] + " : " + t_item_to.sorted_list[t_key]);
+						}
+					}
+				}else{
+					UnityEngine.Debug.LogWarning("null");
+				}
 			}
 		}
 

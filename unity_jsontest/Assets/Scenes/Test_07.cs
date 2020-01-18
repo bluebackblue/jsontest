@@ -4,7 +4,7 @@
 #define FEE_JSON
 
 
-/** Dictionary
+/** Dictionary(key = string)。
 */
 public class Test_07
 {
