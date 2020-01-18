@@ -12,18 +12,30 @@ public class Test_18
 	*/
 	public class Item_Base_Base_Base
 	{
+		/** 4
+		*/
 		readonly public int pub_4;
 		readonly protected int pro_4;
 		readonly private int pri_4;
 
+		/** constructor
+		*/
 		public Item_Base_Base_Base()
 		{
-			this.pub_4 = 14;
-			this.pro_4 = 24;
-			this.pri_4 = 34;
 		}
 
-		public bool Compare(object obj)
+		/** constructor
+		*/
+		public Item_Base_Base_Base(int a_base)
+		{
+			this.pub_4 = 14 + a_base;
+			this.pro_4 = 24 + a_base;
+			this.pri_4 = 34 + a_base;
+		}
+
+		/** Compare
+		*/
+		public bool Compare(Item_Base_Base_Base obj)
 		{
 			Item_Base_Base t_item = obj as Item_Base_Base;
 
@@ -49,20 +61,32 @@ public class Test_18
 	*/
 	public class Item_Base_Base : Item_Base_Base_Base
 	{
+		/** 3
+		*/
 		readonly public int pub_3;
 		readonly protected int pro_3;
 		readonly private int pri_3;
 
+		/** constructor
+		*/
 		public Item_Base_Base()
-			:
-			base()
 		{
-			this.pub_3 = 13;
-			this.pro_3 = 23;
-			this.pri_3 = 33;
 		}
 
-		public new bool Compare(object obj)
+		/** constructor
+		*/
+		public Item_Base_Base(int a_base)
+			:
+			base(a_base)
+		{
+			this.pub_3 = 13 + a_base;
+			this.pro_3 = 23 + a_base;
+			this.pri_3 = 33 + a_base;
+		}
+
+		/** Compare
+		*/
+		public bool Compare(Item_Base_Base obj)
 		{
 			Item_Base_Base t_item = obj as Item_Base_Base;
 
@@ -88,20 +112,32 @@ public class Test_18
 	*/
 	public class Item_Base : Item_Base_Base
 	{
+		/** 2
+		*/
 		readonly public int pub_2;
 		readonly protected int pro_2;
 		readonly private int pri_2;
 
+		/** constructor
+		*/
 		public Item_Base()
-			:
-			base()
 		{
-			this.pub_2 = 12;
-			this.pro_2 = 22;
-			this.pri_2 = 32;
 		}
 
-		public new bool Compare(object obj)
+		/** constructor
+		*/
+		public Item_Base(int a_base)
+			:
+			base(a_base)
+		{
+			this.pub_2 = 12 + a_base;
+			this.pro_2 = 22 + a_base;
+			this.pri_2 = 32 + a_base;
+		}
+
+		/** Compare
+		*/
+		public bool Compare(Item_Base obj)
 		{
 			Item_Base t_item = obj as Item_Base;
 
@@ -123,25 +159,36 @@ public class Test_18
 		}
 	}
 
-
 	/** Item
 	*/
 	public class Item : Item_Base
 	{
+		/** 1
+		*/
 		readonly public int pub_1;
 		readonly protected int pro_1;
 		readonly private int pri_1;
 
+		/** constructor
+		*/
 		public Item()
-			:
-			base()
 		{
-			this.pub_1 = 11;
-			this.pro_1 = 21;
-			this.pri_1 = 31;
 		}
 
-		public new bool Compare(object obj)
+		/** constructor
+		*/
+		public Item(int a_base)
+			:
+			base(a_base)
+		{
+			this.pub_1 = 11 + a_base;
+			this.pro_1 = 21 + a_base;
+			this.pri_1 = 31 + a_base;
+		}
+
+		/** Compare
+		*/
+		public bool Compare(Item obj)
 		{
 			Item t_item = obj as Item;
 
@@ -170,7 +217,7 @@ public class Test_18
 		UnityEngine.Debug.Log("----- Test_18 -----");
 
 		{
-			Item t_item_from = new Item();
+			Item t_item_from = new Item(1000);
 			{
 			}
 

@@ -16,14 +16,6 @@ public class Test_10
 		*/
 		[Fee.JsonItem.Ignore]
 		public int ignore_1;
-
-		/** 対応できない。
-		*/
-		public System.Collections.Generic.Dictionary<int,int> ignore_2;
-
-		/** 対応していない。
-		*/
-		public System.Collections.Generic.LinkedList<int> ignore_3;
 	}
 
 	/** 更新。
@@ -37,16 +29,6 @@ public class Test_10
 			{
 				//ignore_1
 				t_item_from.ignore_1 = 999;
-
-				//ignore_2
-				t_item_from.ignore_2 = new System.Collections.Generic.Dictionary<int,int>();
-				{
-					t_item_from.ignore_2.Add(1,1);
-				}
-
-				//ignore_3
-				t_item_from.ignore_3 = new System.Collections.Generic.LinkedList<int>();
-				t_item_from.ignore_3.AddLast(1);
 			};
 
 			//オブジェクト ==> ＪＳＯＮＩＴＥＭ。
