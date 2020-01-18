@@ -17,6 +17,7 @@ public class Test : MonoBehaviour
 	*/
 	public System.Collections.IEnumerator TestCoroutine()
 	{
+		/*
 		//最大値。
 		Test_01.Main();
 
@@ -73,6 +74,7 @@ public class Test : MonoBehaviour
 
 		//IDictionary(key = string)
 		Test_19.Main();
+		*/
 
 		//要素をオブジェクト化できないGeneric。
 		Test_20.Main();
