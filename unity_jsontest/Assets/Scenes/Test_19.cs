@@ -16,7 +16,11 @@ public class Test_19
 
 		//public System.Collections.Generic.LinkedList<int> linkedlist;
 	
-		public System.Collections.Generic.HashSet<int> hashset;
+		//public System.Collections.Generic.HashSet<int> hashset;
+
+		//public System.Collections.Generic.Queue<int> queue;
+
+		public System.Collections.Generic.SortedDictionary<string,int> sorted_dictionary;
 
 		public Item()
 		{
@@ -60,10 +64,24 @@ public class Test_19
 				t_item_from.linkedlist.AddLast(3);
 				*/
 
+				/*
 				t_item_from.hashset = new System.Collections.Generic.HashSet<int>();
 				t_item_from.hashset.Add(1);
 				t_item_from.hashset.Add(2);
 				t_item_from.hashset.Add(3);
+				*/
+
+				/*
+				t_item_from.queue = new System.Collections.Generic.Queue<int>();
+				t_item_from.queue.Enqueue(1);
+				t_item_from.queue.Enqueue(2);
+				t_item_from.queue.Enqueue(3);
+				*/
+
+				t_item_from.sorted_dictionary = new System.Collections.Generic.SortedDictionary<string,int>();
+				t_item_from.sorted_dictionary.Add("value_1",1);
+				t_item_from.sorted_dictionary.Add("value_2",2);
+				t_item_from.sorted_dictionary.Add("value_3",3);
 			}
 
 			//オブジェクト ==> ＪＳＯＮＩＴＥＭ。
