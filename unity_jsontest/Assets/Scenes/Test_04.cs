@@ -43,7 +43,7 @@ public class Test_04
 				if("あ" == t_item_to.value){
 					UnityEngine.Debug.Log(t_log);
 				}else{
-					UnityEngine.Debug.LogWarning(t_log);
+					UnityEngine.Debug.LogWarning("mismatch : " + t_log);
 				}
 			}
 		}
@@ -68,7 +68,7 @@ public class Test_04
 				if("\x3042" == t_item_to.value){
 					UnityEngine.Debug.Log(t_log);
 				}else{
-					UnityEngine.Debug.LogWarning(t_log);
+					UnityEngine.Debug.LogWarning("mismatch : " + t_log);
 				}
 			}
 		}

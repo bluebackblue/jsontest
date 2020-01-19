@@ -70,19 +70,19 @@ public class Test_12
 			//チェック。
 			{
 				if(t_item_from.value != t_item_to.value){
-					UnityEngine.Debug.LogWarning("item0.value : "		+ t_item_from.value.ToString()				+ " : " + t_item_to.value.ToString());
+					UnityEngine.Debug.LogWarning("mismatch : item0.value : "		+ t_item_from.value.ToString()																	+ " : " + t_item_to.value.ToString());
 				}
 
 				if(t_item_from.item.item.item.item.item.item.item.item.item.item.value != t_item_to.item.item.item.item.item.item.item.item.item.item.value){
-					UnityEngine.Debug.LogWarning("item10.value : "		+ t_item_from.item.item.item.item.item.item.item.item.item.item.value.ToString()				+ " : " + t_item_to.item.item.item.item.item.item.item.item.item.item.value.ToString());
+					UnityEngine.Debug.LogWarning("mismatch : item10.value : "		+ t_item_from.item.item.item.item.item.item.item.item.item.item.value.ToString()				+ " : " + t_item_to.item.item.item.item.item.item.item.item.item.item.value.ToString());
 				}
 
 				if(t_item_from.item.item.item.item.item.item.item.item.item.item.item.value != t_item_to.item.item.item.item.item.item.item.item.item.item.item.value){
-					UnityEngine.Debug.LogWarning("item11.value : "		+ t_item_from.item.item.item.item.item.item.item.item.item.item.item.value.ToString()				+ " : " + t_item_to.item.item.item.item.item.item.item.item.item.item.item.value.ToString());
+					UnityEngine.Debug.LogWarning("mismatch : item11.value : "		+ t_item_from.item.item.item.item.item.item.item.item.item.item.item.value.ToString()			+ " : " + t_item_to.item.item.item.item.item.item.item.item.item.item.item.value.ToString());
 				}
 
 				if(t_item_from.item.item.item.item.item.item.item.item.item.item.item.item != t_item_to.item.item.item.item.item.item.item.item.item.item.item.item){
-					UnityEngine.Debug.LogWarning("item11 : "		+ t_item_from.item.item.item.item.item.item.item.item.item.item.item.item.ToString()				+ " : " + t_item_to.item.item.item.item.item.item.item.item.item.item.item.item.ToString());
+					UnityEngine.Debug.LogWarning("mismatch : item11 : "				+ t_item_from.item.item.item.item.item.item.item.item.item.item.item.item.ToString()			+ " : " + t_item_to.item.item.item.item.item.item.item.item.item.item.item.item.ToString());
 				}
 			}
 		}

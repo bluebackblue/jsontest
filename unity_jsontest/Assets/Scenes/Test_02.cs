@@ -88,43 +88,43 @@ public class Test_02
 			//チェック。
 			{
 				if(t_item_from.value_bool != t_item_to.value_bool){
-					UnityEngine.Debug.LogWarning("value_bool : "		+ t_item_from.value_bool.ToString()		+ " : " + t_item_to.value_bool.ToString());
+					UnityEngine.Debug.LogWarning("mismatch : value_bool : "		+ t_item_from.value_bool.ToString()		+ " : " + t_item_to.value_bool.ToString());
 				}
 				if(t_item_from.value_sbyte != t_item_to.value_sbyte){
-					UnityEngine.Debug.LogWarning("value_sbyte : "		+ t_item_from.value_sbyte.ToString()		+ " : " + t_item_to.value_sbyte.ToString());
+					UnityEngine.Debug.LogWarning("mismatch : value_sbyte : "		+ t_item_from.value_sbyte.ToString()		+ " : " + t_item_to.value_sbyte.ToString());
 				}
 				if(t_item_from.value_byte != t_item_to.value_byte){
-					UnityEngine.Debug.LogWarning("value_byte : "		+ t_item_from.value_byte.ToString()			+ " : " + t_item_to.value_byte.ToString());
+					UnityEngine.Debug.LogWarning("mismatch : value_byte : "		+ t_item_from.value_byte.ToString()			+ " : " + t_item_to.value_byte.ToString());
 				}
 				if(t_item_from.value_short != t_item_to.value_short){
-					UnityEngine.Debug.LogWarning("value_short : "		+ t_item_from.value_short.ToString()		+ " : " + t_item_to.value_short.ToString());
+					UnityEngine.Debug.LogWarning("mismatch : value_short : "		+ t_item_from.value_short.ToString()		+ " : " + t_item_to.value_short.ToString());
 				}
 				if(t_item_from.value_ushort != t_item_to.value_ushort){
-					UnityEngine.Debug.LogWarning("value_ushort : "		+ t_item_from.value_ushort.ToString()		+ " : " + t_item_to.value_ushort.ToString());
+					UnityEngine.Debug.LogWarning("mismatch : value_ushort : "		+ t_item_from.value_ushort.ToString()		+ " : " + t_item_to.value_ushort.ToString());
 				}
 				if(t_item_from.value_int != t_item_to.value_int){
-					UnityEngine.Debug.LogWarning("value_int : "			+ t_item_from.value_int.ToString()			+ " : " + t_item_to.value_int.ToString());
+					UnityEngine.Debug.LogWarning("mismatch : value_int : "			+ t_item_from.value_int.ToString()			+ " : " + t_item_to.value_int.ToString());
 				}
 				if(t_item_from.value_uint != t_item_to.value_uint){
-					UnityEngine.Debug.LogWarning("value_uint : "		+ t_item_from.value_uint.ToString()			+ " : " + t_item_to.value_uint.ToString());
+					UnityEngine.Debug.LogWarning("mismatch : value_uint : "		+ t_item_from.value_uint.ToString()			+ " : " + t_item_to.value_uint.ToString());
 				}
 				if(t_item_from.value_long != t_item_to.value_long){
-					UnityEngine.Debug.LogWarning("value_long : "		+ t_item_from.value_long.ToString()			+ " : " + t_item_to.value_long.ToString());
+					UnityEngine.Debug.LogWarning("mismatch : value_long : "		+ t_item_from.value_long.ToString()			+ " : " + t_item_to.value_long.ToString());
 				}
 				if(t_item_from.value_ulong != t_item_to.value_ulong){
-					UnityEngine.Debug.LogWarning("value_ulong : "		+ t_item_from.value_ulong.ToString()		+ " : " + t_item_to.value_ulong.ToString());
+					UnityEngine.Debug.LogWarning("mismatch : value_ulong : "		+ t_item_from.value_ulong.ToString()		+ " : " + t_item_to.value_ulong.ToString());
 				}
 				if(t_item_from.value_char != t_item_to.value_char){
-					UnityEngine.Debug.LogWarning("value_char : "		+ t_item_from.value_char.ToString()			+ " : " + t_item_to.value_char.ToString());
+					UnityEngine.Debug.LogWarning("mismatch : value_char : "		+ t_item_from.value_char.ToString()			+ " : " + t_item_to.value_char.ToString());
 				}
 				if(t_item_from.value_float != t_item_to.value_float){
-					UnityEngine.Debug.LogWarning("value_float : "		+ t_item_from.value_float.ToString()		+ " : " + t_item_to.value_float.ToString());
+					UnityEngine.Debug.LogWarning("mismatch : value_float : "		+ t_item_from.value_float.ToString()		+ " : " + t_item_to.value_float.ToString());
 				}
 				if(t_item_from.value_double != t_item_to.value_double){
-					UnityEngine.Debug.LogWarning("value_double : "		+ t_item_from.value_double.ToString()		+ " : " + t_item_to.value_double.ToString());
+					UnityEngine.Debug.LogWarning("mismatch : value_double : "		+ t_item_from.value_double.ToString()		+ " : " + t_item_to.value_double.ToString());
 				}
 				if(t_item_from.value_decimal != t_item_to.value_decimal){
-					UnityEngine.Debug.LogWarning("value_decimal : "		+ t_item_from.value_decimal.ToString()		+ " : " + t_item_to.value_decimal.ToString());
+					UnityEngine.Debug.LogWarning("mismatch : value_decimal : "		+ t_item_from.value_decimal.ToString()		+ " : " + t_item_to.value_decimal.ToString());
 				}
 			}
 		}

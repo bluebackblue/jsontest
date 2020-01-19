@@ -62,19 +62,19 @@ public class Test_13
 			//チェック。
 			{
 				if(t_item_from.Count != t_item_to.Count){
-					UnityEngine.Debug.LogWarning("item0.value : "		+ t_item_from.Count.ToString()				+ " : " + t_item_to.Count.ToString());
+					UnityEngine.Debug.LogWarning("mismatch : item0.value : "		+ t_item_from.Count.ToString()												+ " : " + t_item_to.Count.ToString());
 				}
 
 				if(t_item_from[0][0][0][0][0][0][0][0][0][0].Count != t_item_to[0][0][0][0][0][0][0][0][0][0].Count){
-					UnityEngine.Debug.LogWarning("item10.value : "		+ t_item_from[0][0][0][0][0][0][0][0][0][0].Count.ToString()				+ " : " + t_item_to[0][0][0][0][0][0][0][0][0][0].Count.ToString());
+					UnityEngine.Debug.LogWarning("mismatch : item10.value : "		+ t_item_from[0][0][0][0][0][0][0][0][0][0].Count.ToString()				+ " : " + t_item_to[0][0][0][0][0][0][0][0][0][0].Count.ToString());
 				}
 
 				if(t_item_from[0][0][0][0][0][0][0][0][0][0][0].Count != t_item_to[0][0][0][0][0][0][0][0][0][0][0].Count){
-					UnityEngine.Debug.LogWarning("item11.value : "		+ t_item_from[0][0][0][0][0][0][0][0][0][0][0].Count.ToString()				+ " : " + t_item_to[0][0][0][0][0][0][0][0][0][0][0].Count.ToString());
+					UnityEngine.Debug.LogWarning("mismatch : item11.value : "		+ t_item_from[0][0][0][0][0][0][0][0][0][0][0].Count.ToString()				+ " : " + t_item_to[0][0][0][0][0][0][0][0][0][0][0].Count.ToString());
 				}
 
 				if(t_item_from[0][0][0][0][0][0][0][0][0][0][0][0] != t_item_to[0][0][0][0][0][0][0][0][0][0][0][0]){
-					UnityEngine.Debug.LogWarning("item11 : "		+ t_item_from[0][0][0][0][0][0][0][0][0][0][0][0].ToString()				+ " : " + t_item_to[0][0][0][0][0][0][0][0][0][0][0][0].ToString());
+					UnityEngine.Debug.LogWarning("mismatch : item11 : "				+ t_item_from[0][0][0][0][0][0][0][0][0][0][0][0].ToString()				+ " : " + t_item_to[0][0][0][0][0][0][0][0][0][0][0][0].ToString());
 				}
 			}
 		}

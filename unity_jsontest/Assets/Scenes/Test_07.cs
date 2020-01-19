@@ -46,14 +46,14 @@ public class Test_07
 
 			//チェック。
 			{
-				if(Test.NullCheckDictionary(t_item_from,t_item_to) == true){
+				if(Test.NullSizeCheck_Dictionary(t_item_from,t_item_to) == true){
 					foreach(string t_key in t_item_from.Keys){
 						if(t_item_from[t_key] != t_item_to[t_key]){
-							UnityEngine.Debug.LogWarning(t_key + " : " + t_item_from[t_key] + " : " + t_item_to[t_key]);
+							UnityEngine.Debug.LogWarning("mismatch : " + t_key + " : " + t_item_from[t_key] + " : " + t_item_to[t_key]);
 						}
 					}
 				}else{
-					UnityEngine.Debug.LogWarning("null");
+					UnityEngine.Debug.LogWarning("mismatch");
 				}
 			}
 		}

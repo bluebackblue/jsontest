@@ -4,27 +4,43 @@
 #define FEE_JSON
 
 
-/** 構造体。
+/** 要素をオブジェクト化できないGeneric。
 */
-public class Test_06
+public class Test_99
 {
+	/** Item_Key
+	*/
+	public class Item_Key
+	{
+		public int key;
+		public Item_Key(){
+		}
+		public Item_Key(int a_key)
+		{
+			this.key = a_key;
+		}
+	}
+
 	/** Item
 	*/
-	public struct Item
+	public class Item
 	{
-		public int value;
+		public System.Collections.Generic.Dictionary<Item_Key,int> dictionary;
 	};
 
 	/** 更新。
 	*/
 	public static void Main()
 	{
-		UnityEngine.Debug.Log("----- Test_06 -----");
+		UnityEngine.Debug.Log("----- Test_99 -----");
 
 		{
 			Item t_item_from = new Item();
 			{
-				t_item_from.value = 1;
+				t_item_from.dictionary = new System.Collections.Generic.Dictionary<Item_Key,int>();
+				t_item_from.dictionary.Add(new Item_Key(1),1);
+				t_item_from.dictionary.Add(new Item_Key(2),2);
+				t_item_from.dictionary.Add(new Item_Key(3),3);
 			}
 
 			//オブジェクト ==> ＪＳＯＮＩＴＥＭ。
@@ -45,18 +61,17 @@ public class Test_06
 			#else
 			Item t_item_to = UnityEngine.JsonUtility.FromJson<Item>(t_jsonstring);
 			#endif
-		
+
 			//ログ。
-			UnityEngine.Debug.Log("Test_06 : " + t_jsonstring);
+			UnityEngine.Debug.Log("Test_99 : " + t_jsonstring);
 
 			//チェック。
 			{
-				if(t_item_from.value != t_item_to.value){
-					UnityEngine.Debug.LogWarning("mismatch : value : " + t_item_from.value.ToString() + " : " + t_item_to.value.ToString());
+				if(t_item_from.dictionary.Count != t_item_to.dictionary.Count){
+					UnityEngine.Debug.LogWarning("dictionary : " + t_item_from.dictionary.Count.ToString() + " : " + t_item_to.dictionary.Count.ToString());
 				}
 			}
 		}
-
 	}
 }
 

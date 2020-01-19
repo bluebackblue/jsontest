@@ -138,7 +138,7 @@ public class Test_03
 					if(t_item_from.value_string == t_item_to.value_string){
 						UnityEngine.Debug.Log(t_log);
 					}else{
-						UnityEngine.Debug.LogWarning(t_log);
+						UnityEngine.Debug.LogWarning("mismatch : " + t_log);
 					}
 				}
 
@@ -148,7 +148,7 @@ public class Test_03
 					if(t_item_from.value_bell == t_item_to.value_bell){
 						UnityEngine.Debug.Log(t_log);
 					}else{
-						UnityEngine.Debug.LogWarning(t_log);
+						UnityEngine.Debug.LogWarning("mismatch : " + t_log);
 					}
 				}
 
@@ -158,7 +158,7 @@ public class Test_03
 					if(t_item_from.value_null == t_item_to.value_null){
 						UnityEngine.Debug.Log(t_log);
 					}else{
-						UnityEngine.Debug.LogWarning(t_log);
+						UnityEngine.Debug.LogWarning("mismatch : " + t_log);
 					}
 				}
 
@@ -168,7 +168,7 @@ public class Test_03
 					if(t_item_from.value_backspace == t_item_to.value_backspace){
 						UnityEngine.Debug.Log(t_log);
 					}else{
-						UnityEngine.Debug.LogWarning(t_log);
+						UnityEngine.Debug.LogWarning("mismatch : " + t_log);
 					}
 				}
 
@@ -178,7 +178,7 @@ public class Test_03
 					if(t_item_from.value_linefeed == t_item_to.value_linefeed){
 						UnityEngine.Debug.Log(t_log);
 					}else{
-						UnityEngine.Debug.LogWarning(t_log);
+						UnityEngine.Debug.LogWarning("mismatch : " + t_log);
 					}
 				}
 
@@ -188,7 +188,7 @@ public class Test_03
 					if(t_item_from.value_tab == t_item_to.value_tab){
 						UnityEngine.Debug.Log(t_log);
 					}else{
-						UnityEngine.Debug.LogWarning(t_log);
+						UnityEngine.Debug.LogWarning("mismatch : " + t_log);
 					}
 				}
 
@@ -198,7 +198,7 @@ public class Test_03
 					if(t_item_from.value_double_quotation == t_item_to.value_double_quotation){
 						UnityEngine.Debug.Log(t_log);
 					}else{
-						UnityEngine.Debug.LogWarning(t_log);
+						UnityEngine.Debug.LogWarning("mismatch : " + t_log);
 					}
 				}
 
@@ -208,7 +208,7 @@ public class Test_03
 					if(t_item_from.value_single_quotation == t_item_to.value_single_quotation){
 						UnityEngine.Debug.Log(t_log);
 					}else{
-						UnityEngine.Debug.LogWarning(t_log);
+						UnityEngine.Debug.LogWarning("mismatch : " + t_log);
 					}
 				}
 
@@ -218,7 +218,7 @@ public class Test_03
 					if(t_item_from.value_back_slash == t_item_to.value_back_slash){
 						UnityEngine.Debug.Log(t_log);
 					}else{
-						UnityEngine.Debug.LogWarning(t_log);
+						UnityEngine.Debug.LogWarning("mismatch : " + t_log);
 					}
 				}
 
@@ -228,7 +228,7 @@ public class Test_03
 					if(t_item_from.value_carriage_return == t_item_to.value_carriage_return){
 						UnityEngine.Debug.Log(t_log);
 					}else{
-						UnityEngine.Debug.LogWarning(t_log);
+						UnityEngine.Debug.LogWarning("mismatch : " + t_log);
 					}
 				}
 
@@ -238,7 +238,7 @@ public class Test_03
 					if(t_item_from.value_slash == t_item_to.value_slash){
 						UnityEngine.Debug.Log(t_log);
 					}else{
-						UnityEngine.Debug.LogWarning(t_log);
+						UnityEngine.Debug.LogWarning("mismatch : " + t_log);
 					}
 				}
 
@@ -248,7 +248,7 @@ public class Test_03
 					if(t_item_from.value_new_page == t_item_to.value_new_page){
 						UnityEngine.Debug.Log(t_log);
 					}else{
-						UnityEngine.Debug.LogWarning(t_log);
+						UnityEngine.Debug.LogWarning("mismatch : " + t_log);
 					}
 				}
 			}

@@ -83,15 +83,15 @@ public class Test_05
 			//チェック。
 			{
 				if(t_item_from.value_type != t_item_to.value_type){
-					UnityEngine.Debug.LogWarning("value_type : "		+ t_item_from.value_type.ToString()				+ " : " + t_item_to.value_type.ToString());
+					UnityEngine.Debug.LogWarning("mismatch : value_type : "			+ t_item_from.value_type.ToString()				+ " : " + t_item_to.value_type.ToString());
 				}
 
 				if(t_item_from.value_type_int != t_item_to.value_type_int){
-					UnityEngine.Debug.LogWarning("value_type_int : "	+ t_item_from.value_type_int.ToString()			+ " : " + t_item_to.value_type_int.ToString());
+					UnityEngine.Debug.LogWarning("mismatch : value_type_int : "		+ t_item_from.value_type_int.ToString()			+ " : " + t_item_to.value_type_int.ToString());
 				}
 
 				if(t_item_from.value_type_string != t_item_to.value_type_string){
-					UnityEngine.Debug.LogWarning("value_type_string : "	+ t_item_from.value_type_string.ToString()		+ " : " + t_item_to.value_type_string.ToString());
+					UnityEngine.Debug.LogWarning("mismatch : value_type_string : "	+ t_item_from.value_type_string.ToString()		+ " : " + t_item_to.value_type_string.ToString());
 				}
 			}
 		}

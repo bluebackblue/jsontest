@@ -10,6 +10,9 @@ public class Test : MonoBehaviour
 	*/
     void Start()
     {
+		Fee.ReflectionTool.Config.LOG_ENABLE = true;
+		Fee.ReflectionTool.ReflectionTool.CreateInstance();
+
 		this.StartCoroutine(this.TestCoroutine());
     }
 
@@ -17,7 +20,6 @@ public class Test : MonoBehaviour
 	*/
 	public System.Collections.IEnumerator TestCoroutine()
 	{
-		/*
 		//最大値。
 		Test_01.Main();
 
@@ -74,22 +76,38 @@ public class Test : MonoBehaviour
 
 		//IDictionary(key = string)
 		Test_19.Main();
-		*/
 
-		//要素をオブジェクト化できないGeneric。
+		//Stack。
 		Test_20.Main();
+
+		//LinkedList。
+		Test_21.Main();
+
+		//HashSet。
+		Test_22.Main();
+
+		//Queue。
+		Test_23.Main();
+
+		//SortedSet。
+		Test_24.Main();
+
+		/*
+		//要素をオブジェクト化できないGeneric。
+		Test_99.Main();
+		*/
 
 		yield break;
 	}
 
-	/** ToBinaryString
+	/** バイト配列文字列。
 	*/
 	public static string ToBinaryString(char a_char)
 	{
 		return string.Format("{0:X4}",(ushort)a_char);
 	}
 
-	/** CharToBinaryString
+	/** バイト配列文字列。
 	*/
 	public static string ToBinaryString(char[] a_char_array)
 	{
@@ -102,84 +120,112 @@ public class Test : MonoBehaviour
 		return t_result;
 	}
 
-	/** StringToBinaryString
+	/** バイト配列文字列。
 	*/
 	public static string ToBinaryString(string a_string)
 	{
 		return Test.ToBinaryString(a_string.ToCharArray());
 	}
 
-	/** NullCheckDictionary
+	/** 片方だけＮＵＬＬ、サイズが違う。のチェック。
 	*/
-	public static bool NullCheckDictionary<A,B>(System.Collections.Generic.IDictionary<A,B> a_list_a,System.Collections.Generic.IDictionary<A,B> a_list_b)
+	public static bool NullSizeCheck(System.Collections.IEnumerable a_list_a,System.Collections.IEnumerable a_list_b)
 	{
 		if((a_list_a == null)&&(a_list_b == null)){
+			//両方NULL。
 			return true;
 		}else if((a_list_a == null)||(a_list_b == null)){
+			//片方だけNULL。
+			return false;
+		}else{
+			System.Collections.IEnumerator t_a = a_list_a.GetEnumerator();
+			System.Collections.IEnumerator t_b = a_list_b.GetEnumerator();
+
+			while(true){
+				{
+					bool t_ret_a = t_a.MoveNext();
+					bool t_ret_b = t_b.MoveNext();
+
+					if((t_ret_a == false)&&(t_ret_b == false)){
+						break;
+					}
+
+					if((t_ret_a == false)||(t_ret_b == false)){
+						//片方のリストのサイズが違う。
+						return false;
+					}
+				}
+
+				if((t_a.Current == null)&&(t_b.Current == null)){
+					//要素の両方がNULL。
+				}else if((t_a.Current == null)||(t_b.Current== null)){
+					//要素が片方だけNULL。
+					return false;
+				}
+			}
+		}
+
+		return true;
+	}
+
+	/** NullSizeCheck_Dictionary
+	*/
+	public static bool NullSizeCheck_Dictionary<A,B>(System.Collections.Generic.IDictionary<A,B> a_list_a,System.Collections.Generic.IDictionary<A,B> a_list_b)
+	{
+		if((a_list_a == null)&&(a_list_b == null)){
+			//両方NULL。
+			return true;
+		}else if((a_list_a == null)||(a_list_b == null)){
+			//片方だけNULL。
 			return false;
 		}else{
 			if(a_list_a.Count != a_list_b.Count){
+				//サイズが違う。
 				return false;
 			}else{
 				foreach(System.Collections.Generic.KeyValuePair<A,B> t_pair_a in a_list_a){
 					B t_value_b;
 					if(a_list_b.TryGetValue(t_pair_a.Key,out t_value_b) == false){
+						//片方にしかキーがない。
 						return false;
 					}else{
 						if((t_pair_a.Value == null)&&(t_value_b == null)){
 						}else if((t_pair_a.Value == null)||(t_value_b == null)){
+							//片方がNULL。
 							return false;
 						}
 					}
 				}
 			}
 		}
+
 		return true;
 	}
 
-	/** NullCheckList
+	/** NullSizeCheck_HashSet
 	*/
-	public static bool NullCheckList<A>(System.Collections.Generic.IList<A> a_list_a,System.Collections.Generic.IList<A> a_list_b)
+	public static bool NullSizeCheck_HashSet<A>(System.Collections.Generic.HashSet<A> a_list_a,System.Collections.Generic.HashSet<A> a_list_b)
 	{
 		if((a_list_a == null)&&(a_list_b == null)){
+			//両方NULL。
 			return true;
 		}else if((a_list_a == null)||(a_list_b == null)){
+			//片方だけNULL。
 			return false;
 		}else{
 			if(a_list_a.Count != a_list_b.Count){
+				//サイズが違う。
 				return false;
 			}else{
-				for(int ii=0;ii<a_list_a.Count;ii++){
-					if((a_list_a[ii] == null)&&(a_list_b[ii] == null)){
-					}else if((a_list_a[ii] == null)||(a_list_b[ii] == null)){
+				foreach(A t_item_a in a_list_a){
+					if(a_list_b.Contains(t_item_a) == false){
+						//片方にしかない。
 						return false;
 					}
 				}
 			}
 		}
-		return true;
-	}
 
-	/** NullCheckArray
-	*/
-	public static bool NullCheckArray<A>(A[] a_list_a,A[] a_list_b)
-	{
-		if((a_list_a == null)&&(a_list_b == null)){
-			return true;
-		}else if((a_list_a == null)||(a_list_b == null)){
-			return false;
-		}else{
-			if(a_list_a.Length != a_list_b.Length){
-				return false;
-			}else{
-				for(int ii=0;ii<a_list_a.Length;ii++){
-					if((a_list_a[ii] == null)&&(a_list_b[ii] == null)){
-					}else if((a_list_a[ii] == null)||(a_list_b[ii] == null)){
-						return false;
-					}
-				}
-			}
-		}
 		return true;
 	}
 }

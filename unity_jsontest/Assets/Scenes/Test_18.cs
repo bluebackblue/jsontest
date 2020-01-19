@@ -246,11 +246,10 @@ public class Test_18
 			//チェック。
 			{
 				if(t_item_from.Compare(t_item_to) == false){
-					UnityEngine.Debug.LogWarning("mis match");
+					UnityEngine.Debug.LogWarning("mismatch");
 				}
 			}
 		}
-
 	}
 }
 

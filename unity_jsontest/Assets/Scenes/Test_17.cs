@@ -77,34 +77,34 @@ public class Test_17
 
 			//チェック。
 			{
-				if(Test.NullCheckList(t_item_from.value_list,t_item_to.value_list) == true){
+				if(Test.NullSizeCheck(t_item_from.value_list,t_item_to.value_list) == true){
 					for(int ii=0;ii<t_item_from.value_list.Count;ii++){
 						if(t_item_from.value_list[ii] != t_item_to.value_list[ii]){
-							UnityEngine.Debug.LogWarning(ii.ToString() + " : " + t_item_from.value_list[ii].ToString() + " : " + t_item_to.value_list[ii].ToString());
+							UnityEngine.Debug.LogWarning("mismatch : " + ii.ToString() + " : " + t_item_from.value_list[ii].ToString() + " : " + t_item_to.value_list[ii].ToString());
 						}
 					}
 				}else{
-					UnityEngine.Debug.LogWarning("null");
+					UnityEngine.Debug.LogWarning("mismatch");
 				}
 
-				if(Test.NullCheckDictionary(t_item_from.value_dictionary,t_item_to.value_dictionary) == true){
+				if(Test.NullSizeCheck(t_item_from.value_dictionary,t_item_to.value_dictionary) == true){
 					foreach(string t_key in t_item_from.value_dictionary.Keys){
 						if(t_item_from.value_dictionary[t_key] != t_item_to.value_dictionary[t_key]){
-							UnityEngine.Debug.LogWarning(t_key + " : " + t_item_from.value_dictionary[t_key].ToString() + " : " + t_item_to.value_dictionary[t_key].ToString());
+							UnityEngine.Debug.LogWarning("mismatch : " + t_key + " : " + t_item_from.value_dictionary[t_key].ToString() + " : " + t_item_to.value_dictionary[t_key].ToString());
 						}
 					}
 				}else{
-					UnityEngine.Debug.LogWarning("null");
+					UnityEngine.Debug.LogWarning("mismatch");
 				}
 
-				if(Test.NullCheckArray(t_item_from.value_array,t_item_to.value_array) == true){
+				if(Test.NullSizeCheck(t_item_from.value_array,t_item_to.value_array) == true){
 					for(int ii=0;ii<t_item_from.value_array.Length;ii++){
 						if(t_item_from.value_array[ii] != t_item_to.value_array[ii]){
-							UnityEngine.Debug.LogWarning(ii.ToString() + " : " + t_item_from.value_array[ii] + " : " + t_item_to.value_array[ii]);
+							UnityEngine.Debug.LogWarning("mismatch : " + ii.ToString() + " : " + t_item_from.value_array[ii] + " : " + t_item_to.value_array[ii]);
 						}
 					}
 				}else{
-					UnityEngine.Debug.LogWarning("null");
+					UnityEngine.Debug.LogWarning("mismatch");
 				}
 			}
 		}

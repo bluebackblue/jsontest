@@ -33,29 +33,29 @@ public class Test_11
 			this.value = a_value;
 			this.item = a_item;
 		}
+	}
 
-		/** 比較。
-		*/
-		public static bool Compare(Item a_item_a,Item a_item_b)
-		{
-			if((a_item_a == null)&&(a_item_b == null)){
-				return true;
-			}
-
-			if((a_item_a == null)||(a_item_b == null)){
-				return false;
-			}
-
-			if(a_item_a.value != a_item_b.value){
-				return false;
-			}
-
-			if(Compare(a_item_a.item,a_item_b.item) == false){
-				return false;
-			}
-
+	/** 比較。
+	*/
+	public static bool Compare(Item a_item_a,Item a_item_b)
+	{
+		if((a_item_a == null)&&(a_item_b == null)){
 			return true;
 		}
+
+		if((a_item_a == null)||(a_item_b == null)){
+			return false;
+		}
+
+		if(a_item_a.value != a_item_b.value){
+			return false;
+		}
+
+		if(Compare(a_item_a.item,a_item_b.item) == false){
+			return false;
+		}
+
+		return true;
 	}
 
 	/** 更新。
@@ -99,8 +99,8 @@ public class Test_11
 
 			//チェック。
 			{
-				if(Item.Compare(t_item_from,t_item_to) == false){
-					UnityEngine.Debug.LogWarning("mis match");
+				if(Compare(t_item_from,t_item_to) == false){
+					UnityEngine.Debug.LogWarning("mismatch");
 				}
 			}
 		}

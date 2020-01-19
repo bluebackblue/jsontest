@@ -46,14 +46,14 @@ public class Test_08
 
 			//チェック。
 			{
-				if(Test.NullCheckList(t_item_from,t_item_to) == true){
+				if(Test.NullSizeCheck(t_item_from,t_item_to) == true){
 					for(int ii=0;ii<t_item_from.Count;ii++){
 						if(t_item_from[ii] != t_item_to[ii]){
-							UnityEngine.Debug.LogWarning(ii.ToString() + " : " + t_item_from[ii] + " : " + t_item_to[ii]);
+							UnityEngine.Debug.LogWarning("mismatch : " + ii.ToString() + " : " + t_item_from[ii] + " : " + t_item_to[ii]);
 						}
 					}
 				}else{
-					UnityEngine.Debug.LogWarning("null");
+					UnityEngine.Debug.LogWarning("mismatch");
 				}
 			}
 		}

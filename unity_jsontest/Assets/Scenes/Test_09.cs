@@ -45,14 +45,14 @@ public class Test_09
 
 			//チェック。
 			{
-				if(Test.NullCheckArray(t_item_from,t_item_to) == true){
+				if(Test.NullSizeCheck(t_item_from,t_item_to) == true){
 					for(int ii=0;ii<t_item_from.Length;ii++){
 						if(t_item_from[ii] != t_item_to[ii]){
-							UnityEngine.Debug.LogWarning(ii.ToString() + " : " + t_item_from[ii] + " : " + t_item_to[ii]);
+							UnityEngine.Debug.LogWarning("mismatch : " + ii.ToString() + " : " + t_item_from[ii] + " : " + t_item_to[ii]);
 						}
 					}
 				}else{
-					UnityEngine.Debug.LogWarning("null");
+					UnityEngine.Debug.LogWarning("mismatch");
 				}
 			}
 		}

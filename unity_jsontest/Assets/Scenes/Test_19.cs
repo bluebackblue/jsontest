@@ -12,7 +12,12 @@ public class Test_19
 	*/
 	public class Item
 	{
+		/** SortedDictionary
+		*/
 		public System.Collections.Generic.SortedDictionary<string,int> sorted_dictionary;
+
+		/** SortedList
+		*/
 		public System.Collections.Generic.SortedList<string,int> sorted_list;
 	};
 
@@ -60,28 +65,27 @@ public class Test_19
 
 			//チェック。
 			{
-				if(Test.NullCheckDictionary(t_item_from.sorted_dictionary,t_item_to.sorted_dictionary) == true){
+				if(Test.NullSizeCheck_Dictionary(t_item_from.sorted_dictionary,t_item_to.sorted_dictionary) == true){
 					foreach(string t_key in t_item_from.sorted_dictionary.Keys){
 						if(t_item_from.sorted_dictionary[t_key] != t_item_to.sorted_dictionary[t_key]){
-							UnityEngine.Debug.LogWarning(t_key + " : " + t_item_from.sorted_dictionary[t_key] + " : " + t_item_to.sorted_dictionary[t_key]);
+							UnityEngine.Debug.LogWarning("mismatch : " + t_key + " : " + t_item_from.sorted_dictionary[t_key] + " : " + t_item_to.sorted_dictionary[t_key]);
 						}
 					}
 				}else{
-					UnityEngine.Debug.LogWarning("null");
+					UnityEngine.Debug.LogWarning("mismatch");
 				}
 
-				if(Test.NullCheckDictionary(t_item_from.sorted_list,t_item_to.sorted_list) == true){
+				if(Test.NullSizeCheck_Dictionary(t_item_from.sorted_list,t_item_to.sorted_list) == true){
 					foreach(string t_key in t_item_from.sorted_list.Keys){
 						if(t_item_from.sorted_list[t_key] != t_item_to.sorted_list[t_key]){
-							UnityEngine.Debug.LogWarning(t_key + " : " + t_item_from.sorted_list[t_key] + " : " + t_item_to.sorted_list[t_key]);
+							UnityEngine.Debug.LogWarning("mismatch : " + t_key + " : " + t_item_from.sorted_list[t_key] + " : " + t_item_to.sorted_list[t_key]);
 						}
 					}
 				}else{
-					UnityEngine.Debug.LogWarning("null");
+					UnityEngine.Debug.LogWarning("mismatch");
 				}
 			}
 		}
-
 	}
 }
 

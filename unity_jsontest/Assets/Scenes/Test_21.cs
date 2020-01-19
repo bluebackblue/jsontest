@@ -4,27 +4,27 @@
 #define FEE_JSON
 
 
-/** Stack。
+/** LinkedList。
 */
-public class Test_20
+public class Test_21
 {
 	/** 更新。
 	*/
 	public static void Main()
 	{
-		UnityEngine.Debug.Log("----- Test_20 -----");
+		UnityEngine.Debug.Log("----- Test_21 -----");
 
 		{
-			System.Collections.Generic.Stack<int> t_item_from = new System.Collections.Generic.Stack<int>();
+			System.Collections.Generic.LinkedList<int> t_item_from = new System.Collections.Generic.LinkedList<int>();
 			{
-				t_item_from.Push(1);
-				t_item_from.Push(2);
-				t_item_from.Push(3);
+				t_item_from.AddLast(1);
+				t_item_from.AddLast(2);
+				t_item_from.AddLast(3);
 			}
 
 			//オブジェクト ==> ＪＳＯＮＩＴＥＭ。
 			#if(FEE_JSON)
-			Fee.JsonItem.JsonItem t_jsonitem = Fee.JsonItem.Convert.ObjectToJsonItem<System.Collections.Generic.Stack<int>>(t_item_from);
+			Fee.JsonItem.JsonItem t_jsonitem = Fee.JsonItem.Convert.ObjectToJsonItem<System.Collections.Generic.LinkedList<int>>(t_item_from);
 			#endif
 
 			//ＪＳＯＮＩＴＥＭ ==> ＪＳＯＮ文字列。
@@ -36,13 +36,13 @@ public class Test_20
 
 			//ＪＳＯＮ文字列 ==> オブジェクト。
 			#if(FEE_JSON)
-			System.Collections.Generic.Stack<int> t_item_to = Fee.JsonItem.Convert.JsonStringToObject<System.Collections.Generic.Stack<int>>(t_jsonstring);
+			System.Collections.Generic.LinkedList<int> t_item_to = Fee.JsonItem.Convert.JsonStringToObject<System.Collections.Generic.LinkedList<int>>(t_jsonstring);
 			#else
-			System.Collections.Generic.Stack<int> t_item_to = UnityEngine.JsonUtility.FromJson<System.Collections.Generic.Stack<int>>(t_jsonstring);
+			System.Collections.Generic.LinkedList<int> t_item_to = UnityEngine.JsonUtility.FromJson<System.Collections.Generic.LinkedList<int>>(t_jsonstring);
 			#endif
 		
 			//ログ。
-			UnityEngine.Debug.Log("Test_20 : " + t_jsonstring);
+			UnityEngine.Debug.Log("Test_21 : " + t_jsonstring);
 
 			//チェック。
 			{
