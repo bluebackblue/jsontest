@@ -35,27 +35,40 @@ public class Test_11
 		}
 	}
 
-	/** 比較。
+	/** Check_Member
 	*/
-	public static bool Compare(Item a_item_a,Item a_item_b)
+	public static void Check_Member(int a_nest,Item a_from,Item a_to)
 	{
-		if((a_item_a == null)&&(a_item_b == null)){
-			return true;
+		if((a_from == null)&&(a_to == null)){
+			return;
 		}
 
-		if((a_item_a == null)||(a_item_b == null)){
-			return false;
+		if(a_from == null){
+			UnityEngine.Debug.LogWarning("mismatch : " + a_nest.ToString() + " : null : to");
+			return;
+		}else if(a_to == null){
+			UnityEngine.Debug.LogWarning("mismatch : " + a_nest.ToString() + " : from : null");
+			return;
 		}
 
-		if(a_item_a.value != a_item_b.value){
-			return false;
+		//Item.value
+		Test.Check_Int("value : " + a_nest.ToString(),a_from.value,a_to.value);
+
+		//Item.item
+		Check_Member(a_nest + 1,a_from.item,a_to.item);
+	}
+
+	/** チェック。
+	*/
+	public static void Check(Item a_from,Item a_to)
+	{
+		if(a_to == null){
+			UnityEngine.Debug.LogWarning("mismatch : null");
+			return;
 		}
 
-		if(Compare(a_item_a.item,a_item_b.item) == false){
-			return false;
-		}
-
-		return true;
+		//member
+		Check_Member(0,a_from,a_to);
 	}
 
 	/** 更新。
@@ -98,11 +111,7 @@ public class Test_11
 			UnityEngine.Debug.Log("Test_11 : " + t_jsonstring);
 
 			//チェック。
-			{
-				if(Compare(t_item_from,t_item_to) == false){
-					UnityEngine.Debug.LogWarning("mismatch");
-				}
-			}
+			Check(t_item_from,t_item_to);
 		}
 	}
 }

@@ -17,8 +17,40 @@ public class Test_12
 	*/
 	public struct Item<T>
 	{
+		/** value
+		*/
 		public int value;
+
+		/** item
+		*/
 		public T item;
+	}
+
+	/** チェック。
+	*/
+	public static void Check(ITEM_TYPE a_from,ITEM_TYPE a_to)
+	{
+		/*
+		if(a_to == null){
+			UnityEngine.Debug.LogWarning("mismatch : null");
+			return;
+		}
+		*/
+
+		Test.Check_Int("0.value",	a_from.value,															a_to.value);
+		Test.Check_Int("1.value",	a_from.item.value,														a_to.item.value);
+		Test.Check_Int("2.value",	a_from.item.item.value,													a_to.item.item.value);
+		Test.Check_Int("3.value",	a_from.item.item.item.value,											a_to.item.item.item.value);
+		Test.Check_Int("4.value",	a_from.item.item.item.item.value,										a_to.item.item.item.item.value);
+		Test.Check_Int("5.value",	a_from.item.item.item.item.item.value,									a_to.item.item.item.item.item.value);
+		Test.Check_Int("6.value",	a_from.item.item.item.item.item.item.value,								a_to.item.item.item.item.item.item.value);
+		Test.Check_Int("7.value",	a_from.item.item.item.item.item.item.item.value,						a_to.item.item.item.item.item.item.item.value);
+		Test.Check_Int("8.value",	a_from.item.item.item.item.item.item.item.item.value,					a_to.item.item.item.item.item.item.item.item.value);
+		Test.Check_Int("9.value",	a_from.item.item.item.item.item.item.item.item.item.value,				a_to.item.item.item.item.item.item.item.item.item.value);
+		Test.Check_Int("10.value",	a_from.item.item.item.item.item.item.item.item.item.item.value,			a_to.item.item.item.item.item.item.item.item.item.item.value);
+		Test.Check_Int("11.value",	a_from.item.item.item.item.item.item.item.item.item.item.item.value,	a_to.item.item.item.item.item.item.item.item.item.item.item.value);
+
+		Test.Check_Int("11.item",	a_from.item.item.item.item.item.item.item.item.item.item.item.item,		a_to.item.item.item.item.item.item.item.item.item.item.item.item);
 	}
 
 	/** 更新。
@@ -69,21 +101,7 @@ public class Test_12
 
 			//チェック。
 			{
-				if(t_item_from.value != t_item_to.value){
-					UnityEngine.Debug.LogWarning("mismatch : item0.value : "		+ t_item_from.value.ToString()																	+ " : " + t_item_to.value.ToString());
-				}
 
-				if(t_item_from.item.item.item.item.item.item.item.item.item.item.value != t_item_to.item.item.item.item.item.item.item.item.item.item.value){
-					UnityEngine.Debug.LogWarning("mismatch : item10.value : "		+ t_item_from.item.item.item.item.item.item.item.item.item.item.value.ToString()				+ " : " + t_item_to.item.item.item.item.item.item.item.item.item.item.value.ToString());
-				}
-
-				if(t_item_from.item.item.item.item.item.item.item.item.item.item.item.value != t_item_to.item.item.item.item.item.item.item.item.item.item.item.value){
-					UnityEngine.Debug.LogWarning("mismatch : item11.value : "		+ t_item_from.item.item.item.item.item.item.item.item.item.item.item.value.ToString()			+ " : " + t_item_to.item.item.item.item.item.item.item.item.item.item.item.value.ToString());
-				}
-
-				if(t_item_from.item.item.item.item.item.item.item.item.item.item.item.item != t_item_to.item.item.item.item.item.item.item.item.item.item.item.item){
-					UnityEngine.Debug.LogWarning("mismatch : item11 : "				+ t_item_from.item.item.item.item.item.item.item.item.item.item.item.item.ToString()			+ " : " + t_item_to.item.item.item.item.item.item.item.item.item.item.item.item.ToString());
-				}
 			}
 		}
 	}

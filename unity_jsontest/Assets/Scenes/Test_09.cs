@@ -8,6 +8,31 @@
 */
 public class Test_09
 {
+	/** チェック。
+	*/
+	public static void Check(int[] a_from,int[] a_to)
+	{
+		if(a_to == null){
+			UnityEngine.Debug.LogWarning("mismatch : null");
+			return;
+		}
+
+		//int[]
+		{
+			if(a_from.Length != a_to.Length){
+				UnityEngine.Debug.LogWarning("mismatch : " + "count : " + a_from.Length.ToString() + " : " + a_to.Length.ToString());
+			}
+
+			for(int ii=0;ii<a_from.Length;ii++){
+				if(ii >= a_to.Length){
+					UnityEngine.Debug.LogWarning("mismatch : " + ii.ToString() + " : notexist");
+				}else{
+					Test.Check_Int(ii.ToString(),a_from[ii],a_to[ii]);
+				}
+			}
+		}
+	}
+
 	/** 更新。
 	*/
 	public static void Main()
@@ -44,17 +69,7 @@ public class Test_09
 			UnityEngine.Debug.Log("Test_09 : " + t_jsonstring);
 
 			//チェック。
-			{
-				if(Test.NullSizeCheck(t_item_from,t_item_to) == true){
-					for(int ii=0;ii<t_item_from.Length;ii++){
-						if(t_item_from[ii] != t_item_to[ii]){
-							UnityEngine.Debug.LogWarning("mismatch : " + ii.ToString() + " : " + t_item_from[ii] + " : " + t_item_to[ii]);
-						}
-					}
-				}else{
-					UnityEngine.Debug.LogWarning("mismatch");
-				}
-			}
+			Check(t_item_from,t_item_to);
 		}
 	}
 }

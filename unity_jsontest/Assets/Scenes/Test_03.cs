@@ -59,8 +59,54 @@ public class Test_03
 		/** ニューページ。
 		*/
 		public string value_new_page;
-
 	}
+
+	/** チェック。
+	*/
+	public static void Check(Item a_from,Item a_to)
+	{
+		if(a_to == null){
+			UnityEngine.Debug.LogWarning("mismatch : null");
+			return;
+		}
+
+		//文字。
+		Test.Check_String("value_string",			a_from.value_string,			a_to.value_string);
+
+		//ベル。
+		Test.Check_String("value_bell",				a_from.value_bell,				a_to.value_bell);
+
+		//ヌル。
+		Test.Check_String("value_null",				a_from.value_null,				a_to.value_null);
+
+		//バックスペース。
+		Test.Check_String("value_backspace",		a_from.value_backspace,			a_to.value_backspace);
+
+		//ラインフィード。
+		Test.Check_String("value_linefeed",			a_from.value_linefeed,			a_to.value_linefeed);
+
+		//タブ。
+		Test.Check_String("value_tab",				a_from.value_tab,				a_to.value_tab);
+
+		//ダブルクォーテーション。
+		Test.Check_String("value_double_quotation",	a_from.value_double_quotation,	a_to.value_double_quotation);
+
+		//シングルクォーテーション。
+		Test.Check_String("value_single_quotation",	a_from.value_single_quotation,	a_to.value_single_quotation);
+
+		//バックスラッシュ。
+		Test.Check_String("value_back_slash",		a_from.value_back_slash,		a_to.value_back_slash);
+
+		//キャリッジリターン。
+		Test.Check_String("value_carriage_return",	a_from.value_carriage_return,	a_to.value_carriage_return);
+
+		//スラッシュ。
+		Test.Check_String("value_slash",			a_from.value_slash,				a_to.value_slash);
+
+		//ニューページ。
+		Test.Check_String("value_new_page",			a_from.value_new_page,			a_to.value_new_page);
+	}
+
 
 	/** 更新。
 	*/
@@ -131,127 +177,7 @@ public class Test_03
 			UnityEngine.Debug.Log("Test_03 : " + t_jsonstring);
 
 			//チェック。
-			{
-				//文字。
-				{
-					string t_log = "value_string : " + Test.ToBinaryString(t_item_from.value_string) + " : " + Test.ToBinaryString(t_item_to.value_string);
-					if(t_item_from.value_string == t_item_to.value_string){
-						UnityEngine.Debug.Log(t_log);
-					}else{
-						UnityEngine.Debug.LogWarning("mismatch : " + t_log);
-					}
-				}
-
-				//ベル。
-				{
-					string t_log = "value_bell : " + Test.ToBinaryString(t_item_from.value_bell) + " : " + Test.ToBinaryString(t_item_to.value_bell);
-					if(t_item_from.value_bell == t_item_to.value_bell){
-						UnityEngine.Debug.Log(t_log);
-					}else{
-						UnityEngine.Debug.LogWarning("mismatch : " + t_log);
-					}
-				}
-
-				//ヌル。
-				{
-					string t_log = "value_null : " + Test.ToBinaryString(t_item_from.value_null) + " : " + Test.ToBinaryString(t_item_to.value_null);
-					if(t_item_from.value_null == t_item_to.value_null){
-						UnityEngine.Debug.Log(t_log);
-					}else{
-						UnityEngine.Debug.LogWarning("mismatch : " + t_log);
-					}
-				}
-
-				//バックスペース。
-				{
-					string t_log = "value_backspace : " + Test.ToBinaryString(t_item_from.value_backspace) + " : " + Test.ToBinaryString(t_item_to.value_backspace);
-					if(t_item_from.value_backspace == t_item_to.value_backspace){
-						UnityEngine.Debug.Log(t_log);
-					}else{
-						UnityEngine.Debug.LogWarning("mismatch : " + t_log);
-					}
-				}
-
-				//ラインフィード。
-				{
-					string t_log = "value_linefeed : " + Test.ToBinaryString(t_item_from.value_linefeed) + " : " + Test.ToBinaryString(t_item_to.value_linefeed);
-					if(t_item_from.value_linefeed == t_item_to.value_linefeed){
-						UnityEngine.Debug.Log(t_log);
-					}else{
-						UnityEngine.Debug.LogWarning("mismatch : " + t_log);
-					}
-				}
-
-				//タブ。
-				{
-					string t_log = "value_tab : " + Test.ToBinaryString(t_item_from.value_tab) + " : " + Test.ToBinaryString(t_item_to.value_tab);
-					if(t_item_from.value_tab == t_item_to.value_tab){
-						UnityEngine.Debug.Log(t_log);
-					}else{
-						UnityEngine.Debug.LogWarning("mismatch : " + t_log);
-					}
-				}
-
-				//ダブルクォーテーション。
-				{
-					string t_log = "value_double_quotation : " + Test.ToBinaryString(t_item_from.value_double_quotation) + " : " + Test.ToBinaryString(t_item_to.value_double_quotation);
-					if(t_item_from.value_double_quotation == t_item_to.value_double_quotation){
-						UnityEngine.Debug.Log(t_log);
-					}else{
-						UnityEngine.Debug.LogWarning("mismatch : " + t_log);
-					}
-				}
-
-				//シングルクォーテーション。
-				{
-					string t_log = "value_single_quotation : " + Test.ToBinaryString(t_item_from.value_single_quotation) + " : " + Test.ToBinaryString(t_item_to.value_single_quotation);
-					if(t_item_from.value_single_quotation == t_item_to.value_single_quotation){
-						UnityEngine.Debug.Log(t_log);
-					}else{
-						UnityEngine.Debug.LogWarning("mismatch : " + t_log);
-					}
-				}
-
-				//バックスラッシュ。
-				{
-					string t_log = "value_back_slash : " + Test.ToBinaryString(t_item_from.value_back_slash) + " : " + Test.ToBinaryString(t_item_to.value_back_slash);
-					if(t_item_from.value_back_slash == t_item_to.value_back_slash){
-						UnityEngine.Debug.Log(t_log);
-					}else{
-						UnityEngine.Debug.LogWarning("mismatch : " + t_log);
-					}
-				}
-
-				//キャリッジリターン。
-				{
-					string t_log = "value_carriage_return : " + Test.ToBinaryString(t_item_from.value_carriage_return) + " : " + Test.ToBinaryString(t_item_to.value_carriage_return);
-					if(t_item_from.value_carriage_return == t_item_to.value_carriage_return){
-						UnityEngine.Debug.Log(t_log);
-					}else{
-						UnityEngine.Debug.LogWarning("mismatch : " + t_log);
-					}
-				}
-
-				//スラッシュ。
-				{
-					string t_log = "value_slash : " + Test.ToBinaryString(t_item_from.value_slash) + " : " + Test.ToBinaryString(t_item_to.value_slash);
-					if(t_item_from.value_slash == t_item_to.value_slash){
-						UnityEngine.Debug.Log(t_log);
-					}else{
-						UnityEngine.Debug.LogWarning("mismatch : " + t_log);
-					}
-				}
-
-				//ニューページ。
-				{
-					string t_log = "value_new_page : " + Test.ToBinaryString(t_item_from.value_new_page) + " : " + Test.ToBinaryString(t_item_to.value_new_page);
-					if(t_item_from.value_new_page == t_item_to.value_new_page){
-						UnityEngine.Debug.Log(t_log);
-					}else{
-						UnityEngine.Debug.LogWarning("mismatch : " + t_log);
-					}
-				}
-			}
+			Check(t_item_from,t_item_to);
 		}
 	}
 }

@@ -8,40 +8,136 @@
 */
 public class Test_05
 {
+	/** Type
+	*/
+	public enum Type
+	{
+		Value = 0,
+	}
+
+	/** Type_Byte
+	*/
+	public enum Type_Byte : byte
+	{
+		Min = byte.MinValue,
+		Max = byte.MaxValue,
+	}
+
+	/** Type_SByte
+	*/
+	public enum Type_SByte : sbyte
+	{
+		Min = sbyte.MinValue,
+		Max = sbyte.MaxValue,
+	}
+
+	/** Type_Short
+	*/
+	public enum Type_Short : short
+	{
+		Min = short.MinValue,
+		Max = short.MaxValue,
+	}
+
+	/** Type_Ushort
+	*/
+	public enum Type_Ushort : ushort
+	{
+		Min = ushort.MinValue,
+		Max = ushort.MaxValue,
+	}
+
+	/** Type_Int
+	*/
+	public enum Type_Int : int
+	{
+		Min = int.MinValue,
+		Max = int.MaxValue,
+	}
+
+	/** Type_Uint
+	*/
+	public enum Type_Uint : uint
+	{
+		Min = uint.MinValue,
+		Max = uint.MaxValue,
+	}
+
+	/** Type_Long
+	*/
+	public enum Type_Long : long
+	{
+		Min = long.MinValue,
+		Max = long.MaxValue,
+	}
+
+	/** Type_Ulong
+	*/
+	public enum Type_Ulong : ulong
+	{
+		Min = ulong.MinValue,
+		Max = ulong.MaxValue,
+	}
+
 	/** Item
 	*/
 	public class Item
 	{
-		/** Type
+		/** 型指定なし。
 		*/
-		public enum Type
-		{
-			/** TypeA
-			*/
-			TypeA = 10,
+		public Type type;
 
-			/** TypeB
-			*/
-			TypeB = 20,
+		/** 型指定。最小値。
+		*/
+		public Type_Byte type_byte_min;
+		public Type_SByte type_sbyte_min;
+		public Type_Short type_short_min;
+		public Type_Ushort type_ushort_min;
+		public Type_Int type_int_min;
+		public Type_Uint type_uint_min;
+		public Type_Long type_long_min;
+		public Type_Ulong type_ulong_min;
 
-			/** TypeC
-			*/
-			TypeC = 30,
+		/** 型指定。最大値。
+		*/
+		public Type_Byte type_byte_max;
+		public Type_SByte type_sbyte_max;
+		public Type_Short type_short_max;
+		public Type_Ushort type_ushort_max;
+		public Type_Int type_int_max;
+		public Type_Uint type_uint_max;
+		public Type_Long type_long_max;
+		public Type_Ulong type_ulong_max;
+	}
+
+	/** チェック。
+	*/
+	public static void Check(Item a_from,Item a_to)
+	{
+		if(a_to == null){
+			UnityEngine.Debug.LogWarning("mismatch : null");
+			return;
 		}
 
-		/** デフォルト。
-		*/
-		public Type value_type;
+		Test.Check_Enum("value_type",			a_from.type,				a_to.type);
 
-		/** 数値としてＪＳＯＮ出力。
-		*/
-		[Fee.JsonItem.EnumInt]
-		public Type value_type_int;
+		Test.Check_Enum("type_byte_min",		a_from.type_byte_min,		a_to.type_byte_min);
+		Test.Check_Enum("type_sbyte_min",		a_from.type_sbyte_min,		a_to.type_sbyte_min);
+		Test.Check_Enum("type_short_min",		a_from.type_short_min,		a_to.type_short_min);
+		Test.Check_Enum("type_ushort_min",		a_from.type_ushort_min,		a_to.type_ushort_min);
+		Test.Check_Enum("type_int_min",			a_from.type_int_min,		a_to.type_int_min);
+		Test.Check_Enum("type_uint_min",		a_from.type_uint_min,		a_to.type_uint_min);
+		Test.Check_Enum("type_long_min",		a_from.type_long_min,		a_to.type_long_min);
+		Test.Check_Enum("type_ulong_min",		a_from.type_ulong_min,		a_to.type_ulong_min);
 
-		/** 文字列としてＪＳＯＮ出力。
-		*/
-		[Fee.JsonItem.EnumString]
-		public Type value_type_string;
+		Test.Check_Enum("type_byte_max",		a_from.type_byte_max,		a_to.type_byte_max);
+		Test.Check_Enum("type_sbyte_max",		a_from.type_sbyte_max,		a_to.type_sbyte_max);
+		Test.Check_Enum("type_short_max",		a_from.type_short_max,		a_to.type_short_max);
+		Test.Check_Enum("type_ushort_max",		a_from.type_ushort_max,		a_to.type_ushort_max);
+		Test.Check_Enum("type_int_max",			a_from.type_int_max,		a_to.type_int_max);
+		Test.Check_Enum("type_uint_max",		a_from.type_uint_max,		a_to.type_uint_max);
+		Test.Check_Enum("type_long_max",		a_from.type_long_max,		a_to.type_long_max);
+		Test.Check_Enum("type_ulong_max",		a_from.type_ulong_max,		a_to.type_ulong_max);
 	}
 
 	/** 更新。
@@ -53,9 +149,25 @@ public class Test_05
 		{
 			Item t_item_from = new Item();
 			{
-				t_item_from.value_type = Item.Type.TypeA;
-				t_item_from.value_type_int = Item.Type.TypeB;
-				t_item_from.value_type_string = Item.Type.TypeC;
+				t_item_from.type = Type.Value;
+
+				t_item_from.type_byte_min = Type_Byte.Min;
+				t_item_from.type_sbyte_min = Type_SByte.Min;
+				t_item_from.type_short_min = Type_Short.Min;
+				t_item_from.type_ushort_min = Type_Ushort.Min;
+				t_item_from.type_int_min = Type_Int.Min;
+				t_item_from.type_uint_min = Type_Uint.Min;
+				t_item_from.type_long_min = Type_Long.Min;
+				t_item_from.type_ulong_min = Type_Ulong.Min;
+
+				t_item_from.type_byte_max = Type_Byte.Max;
+				t_item_from.type_sbyte_max = Type_SByte.Max;
+				t_item_from.type_short_max = Type_Short.Max;
+				t_item_from.type_ushort_max = Type_Ushort.Max;
+				t_item_from.type_int_max = Type_Int.Max;
+				t_item_from.type_uint_max = Type_Uint.Max;
+				t_item_from.type_long_max = Type_Long.Max;
+				t_item_from.type_ulong_max = Type_Ulong.Max;
 			}
 
 			//オブジェクト ==> ＪＳＯＮＩＴＥＭ。
@@ -81,19 +193,7 @@ public class Test_05
 			UnityEngine.Debug.Log("Test_05 : " + t_jsonstring);
 
 			//チェック。
-			{
-				if(t_item_from.value_type != t_item_to.value_type){
-					UnityEngine.Debug.LogWarning("mismatch : value_type : "			+ t_item_from.value_type.ToString()				+ " : " + t_item_to.value_type.ToString());
-				}
-
-				if(t_item_from.value_type_int != t_item_to.value_type_int){
-					UnityEngine.Debug.LogWarning("mismatch : value_type_int : "		+ t_item_from.value_type_int.ToString()			+ " : " + t_item_to.value_type_int.ToString());
-				}
-
-				if(t_item_from.value_type_string != t_item_to.value_type_string){
-					UnityEngine.Debug.LogWarning("mismatch : value_type_string : "	+ t_item_from.value_type_string.ToString()		+ " : " + t_item_to.value_type_string.ToString());
-				}
-			}
+			Check(t_item_from,t_item_to);
 		}
 	}
 }

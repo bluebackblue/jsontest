@@ -13,6 +13,31 @@ using ITEM_TYPE = System.Collections.Generic.List<System.Collections.Generic.Lis
 */
 public class Test_13
 {
+	/** チェック。
+	*/
+	public static void Check(ITEM_TYPE a_from,ITEM_TYPE a_to)
+	{
+		if(a_to == null){
+			UnityEngine.Debug.LogWarning("mismatch : null");
+			return;
+		}
+
+		Test.Check_Int("0.count",	a_from.Count,									a_to.Count);
+		Test.Check_Int("1.count",	a_from[0].Count,								a_to[0].Count);
+		Test.Check_Int("2.count",	a_from[0][0].Count,								a_to[0][0].Count);
+		Test.Check_Int("3.count",	a_from[0][0][0].Count,							a_to[0][0][0].Count);
+		Test.Check_Int("4.count",	a_from[0][0][0][0].Count,						a_to[0][0][0][0].Count);
+		Test.Check_Int("5.count",	a_from[0][0][0][0][0].Count,					a_to[0][0][0][0][0].Count);
+		Test.Check_Int("6.count",	a_from[0][0][0][0][0][0].Count,					a_to[0][0][0][0][0][0].Count);
+		Test.Check_Int("7.count",	a_from[0][0][0][0][0][0][0].Count,				a_to[0][0][0][0][0][0][0].Count);
+		Test.Check_Int("8.count",	a_from[0][0][0][0][0][0][0][0].Count,			a_to[0][0][0][0][0][0][0][0].Count);
+		Test.Check_Int("9.count",	a_from[0][0][0][0][0][0][0][0][0].Count,		a_to[0][0][0][0][0][0][0][0][0].Count);
+		Test.Check_Int("10.count",	a_from[0][0][0][0][0][0][0][0][0][0].Count,		a_to[0][0][0][0][0][0][0][0][0][0].Count);
+		Test.Check_Int("11.count",	a_from[0][0][0][0][0][0][0][0][0][0][0].Count,	a_to[0][0][0][0][0][0][0][0][0][0][0].Count);
+
+		Test.Check_Int("11.value",	a_from[0][0][0][0][0][0][0][0][0][0][0][0],		a_to[0][0][0][0][0][0][0][0][0][0][0][0]);
+	}
+
 	/** 更新。
 	*/
 	public static void Main()

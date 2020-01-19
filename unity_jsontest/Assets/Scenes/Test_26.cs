@@ -4,41 +4,49 @@
 #define FEE_JSON
 
 
-/** 構造体。
+/** Enum(内部型)。
 */
-public class Test_06
+public class Test_26
 {
 	/** Item
 	*/
-	public struct Item
+	public class Item
 	{
-		public int value;
-	};
+
+
+
+	}
 
 	/** チェック。
 	*/
-	public static void Check(in Item a_from,in Item a_to)
+	public static void Check(Item a_item_from,Item a_item_to)
 	{
-		/*
-		if(a_to == null){
+		if(a_item_to == null){
 			UnityEngine.Debug.LogWarning("mismatch : null");
 			return;
 		}
-		*/
 
-		Test.Check_Int("value",a_from.value,a_to.value);
+		/*
+		Test.Check_Enum("value_type",			a_item_from.value_type,			a_item_to.value_type);
+		Test.Check_Enum("value_type_int",		a_item_from.value_type_int,		a_item_to.value_type_int);
+		Test.Check_Enum("value_type_string",	a_item_from.value_type_string,	a_item_to.value_type_string);
+		*/
 	}
 
 	/** 更新。
 	*/
 	public static void Main()
 	{
-		UnityEngine.Debug.Log("----- Test_06 -----");
+		UnityEngine.Debug.Log("----- Test_26 -----");
 
 		{
 			Item t_item_from = new Item();
 			{
-				t_item_from.value = 1;
+				/*
+				t_item_from.value_type = Item.Type.TypeA;
+				t_item_from.value_type_int = Item.Type.TypeB;
+				t_item_from.value_type_string = Item.Type.TypeC;
+				*/
 			}
 
 			//オブジェクト ==> ＪＳＯＮＩＴＥＭ。
@@ -61,7 +69,7 @@ public class Test_06
 			#endif
 		
 			//ログ。
-			UnityEngine.Debug.Log("Test_06 : " + t_jsonstring);
+			UnityEngine.Debug.Log("Test_05 : " + t_jsonstring);
 
 			//チェック。
 			Check(t_item_from,t_item_to);

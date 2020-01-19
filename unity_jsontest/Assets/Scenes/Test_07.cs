@@ -8,6 +8,34 @@
 */
 public class Test_07
 {
+	/** チェック。
+	*/
+	public static void Check(System.Collections.Generic.Dictionary<string,int> a_from,System.Collections.Generic.Dictionary<string,int> a_to)
+	{
+		if(a_to == null){
+			UnityEngine.Debug.LogWarning("mismatch : null");
+			return;
+		}
+
+		//Generic.Dictionary
+		{
+			if(a_from.Count != a_to.Count){
+				UnityEngine.Debug.LogWarning("mismatch : " + "count : " + a_from.Count.ToString() + " : " + a_to.Count.ToString());
+			}
+
+			foreach(System.Collections.Generic.KeyValuePair<string,int> t_from_pair in a_from){
+				int t_to_value;
+				if(a_to.TryGetValue(t_from_pair.Key,out t_to_value) == false){
+					UnityEngine.Debug.LogWarning("mismatch : " + t_from_pair.Key + " : notexist");
+				}else{
+					int t_from_value = t_from_pair.Value;
+					Test.Check_Int(t_from_pair.Key,t_from_value,t_to_value);
+				}
+			}
+		}
+
+	}
+
 	/** 更新。
 	*/
 	public static void Main()
@@ -31,6 +59,7 @@ public class Test_07
 			#if(FEE_JSON)
 			string t_jsonstring = t_jsonitem.ConvertJsonString();
 			#else
+			//{}
 			string t_jsonstring = UnityEngine.JsonUtility.ToJson(t_item_from);
 			#endif
 
@@ -42,20 +71,10 @@ public class Test_07
 			#endif
 		
 			//ログ。
-			UnityEngine.Debug.Log("Test_07 : 3 : " + t_jsonstring);
+			UnityEngine.Debug.Log("Test_07 : " + t_jsonstring);
 
 			//チェック。
-			{
-				if(Test.NullSizeCheck_Dictionary(t_item_from,t_item_to) == true){
-					foreach(string t_key in t_item_from.Keys){
-						if(t_item_from[t_key] != t_item_to[t_key]){
-							UnityEngine.Debug.LogWarning("mismatch : " + t_key + " : " + t_item_from[t_key] + " : " + t_item_to[t_key]);
-						}
-					}
-				}else{
-					UnityEngine.Debug.LogWarning("mismatch");
-				}
-			}
+			Check(t_item_from,t_item_to);
 		}
 	}
 }

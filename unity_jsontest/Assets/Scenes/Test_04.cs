@@ -56,6 +56,7 @@ public class Test_04
 			#if(FEE_JSON)
 			Item t_item_to = Fee.JsonItem.Convert.JsonStringToObject<Item>(t_jsonstring);
 			#else
+			//ArgumentException: JSON parse error: Invalid escape character in string.
 			Item t_item_to = UnityEngine.JsonUtility.FromJson<Item>(t_jsonstring);
 			#endif
 

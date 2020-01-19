@@ -13,24 +13,42 @@ public class Test_02
 	public class Item
 	{
 		public bool value_bool;
-
 		public sbyte value_sbyte;
 		public byte value_byte;
-
 		public short value_short;
 		public ushort value_ushort;
-
 		public int value_int;
 		public uint value_uint;
-
 		public long value_long;
 		public ulong value_ulong;
-
 		public char value_char;
-
 		public float value_float;
 		public double value_double;
 		public decimal value_decimal;
+	}
+
+	/** チェック。
+	*/
+	public static void Check(Item a_from,Item a_to)
+	{
+		if(a_to == null){
+			UnityEngine.Debug.LogWarning("mismatch : null");
+			return;
+		}
+
+		Test.Check_Bool(	"value_bool",		a_from.value_bool,		a_to.value_bool);
+		Test.Check_Sbyte(	"value_sbyte",		a_from.value_sbyte,		a_to.value_sbyte);
+		Test.Check_Byte(	"value_byte",		a_from.value_byte,		a_to.value_byte);
+		Test.Check_Short(	"value_short",		a_from.value_short,		a_to.value_short);
+		Test.Check_Ushort(	"value_ushort",		a_from.value_ushort,	a_to.value_ushort);
+		Test.Check_Int(		"value_int",		a_from.value_int,		a_to.value_int);
+		Test.Check_Uint(	"value_uint",		a_from.value_uint,		a_to.value_uint);
+		Test.Check_Long(	"value_long",		a_from.value_long,		a_to.value_long);
+		Test.Check_Ulong(	"value_ulong",		a_from.value_ulong,		a_to.value_ulong);
+		Test.Check_Char(	"value_char",		a_from.value_char,		a_to.value_char);
+		Test.Check_Float(	"value_float",		a_from.value_float,		a_to.value_float);
+		Test.Check_Double(	"value_double",		a_from.value_double,	a_to.value_double);
+		Test.Check_Decimal(	"value_decimal",	a_from.value_decimal,	a_to.value_decimal);
 	}
 
 	/** 更新。
@@ -43,21 +61,15 @@ public class Test_02
 			Item t_item_from = new Item();
 			{
 				t_item_from.value_bool = false;
-
 				t_item_from.value_sbyte = sbyte.MinValue;
 				t_item_from.value_byte = byte.MinValue;
-
 				t_item_from.value_short = short.MinValue;
 				t_item_from.value_ushort = ushort.MinValue;
-
 				t_item_from.value_int = int.MinValue;
 				t_item_from.value_uint = uint.MinValue;
-
 				t_item_from.value_long = long.MinValue;
 				t_item_from.value_ulong = ulong.MinValue;
-
 				t_item_from.value_char = char.MinValue;
-
 				t_item_from.value_float = float.MinValue;
 				t_item_from.value_double = double.MinValue;
 				t_item_from.value_decimal = decimal.MinValue;
@@ -86,47 +98,7 @@ public class Test_02
 			UnityEngine.Debug.Log("Test_02 : " + t_jsonstring);
 
 			//チェック。
-			{
-				if(t_item_from.value_bool != t_item_to.value_bool){
-					UnityEngine.Debug.LogWarning("mismatch : value_bool : "		+ t_item_from.value_bool.ToString()		+ " : " + t_item_to.value_bool.ToString());
-				}
-				if(t_item_from.value_sbyte != t_item_to.value_sbyte){
-					UnityEngine.Debug.LogWarning("mismatch : value_sbyte : "		+ t_item_from.value_sbyte.ToString()		+ " : " + t_item_to.value_sbyte.ToString());
-				}
-				if(t_item_from.value_byte != t_item_to.value_byte){
-					UnityEngine.Debug.LogWarning("mismatch : value_byte : "		+ t_item_from.value_byte.ToString()			+ " : " + t_item_to.value_byte.ToString());
-				}
-				if(t_item_from.value_short != t_item_to.value_short){
-					UnityEngine.Debug.LogWarning("mismatch : value_short : "		+ t_item_from.value_short.ToString()		+ " : " + t_item_to.value_short.ToString());
-				}
-				if(t_item_from.value_ushort != t_item_to.value_ushort){
-					UnityEngine.Debug.LogWarning("mismatch : value_ushort : "		+ t_item_from.value_ushort.ToString()		+ " : " + t_item_to.value_ushort.ToString());
-				}
-				if(t_item_from.value_int != t_item_to.value_int){
-					UnityEngine.Debug.LogWarning("mismatch : value_int : "			+ t_item_from.value_int.ToString()			+ " : " + t_item_to.value_int.ToString());
-				}
-				if(t_item_from.value_uint != t_item_to.value_uint){
-					UnityEngine.Debug.LogWarning("mismatch : value_uint : "		+ t_item_from.value_uint.ToString()			+ " : " + t_item_to.value_uint.ToString());
-				}
-				if(t_item_from.value_long != t_item_to.value_long){
-					UnityEngine.Debug.LogWarning("mismatch : value_long : "		+ t_item_from.value_long.ToString()			+ " : " + t_item_to.value_long.ToString());
-				}
-				if(t_item_from.value_ulong != t_item_to.value_ulong){
-					UnityEngine.Debug.LogWarning("mismatch : value_ulong : "		+ t_item_from.value_ulong.ToString()		+ " : " + t_item_to.value_ulong.ToString());
-				}
-				if(t_item_from.value_char != t_item_to.value_char){
-					UnityEngine.Debug.LogWarning("mismatch : value_char : "		+ t_item_from.value_char.ToString()			+ " : " + t_item_to.value_char.ToString());
-				}
-				if(t_item_from.value_float != t_item_to.value_float){
-					UnityEngine.Debug.LogWarning("mismatch : value_float : "		+ t_item_from.value_float.ToString()		+ " : " + t_item_to.value_float.ToString());
-				}
-				if(t_item_from.value_double != t_item_to.value_double){
-					UnityEngine.Debug.LogWarning("mismatch : value_double : "		+ t_item_from.value_double.ToString()		+ " : " + t_item_to.value_double.ToString());
-				}
-				if(t_item_from.value_decimal != t_item_to.value_decimal){
-					UnityEngine.Debug.LogWarning("mismatch : value_decimal : "		+ t_item_from.value_decimal.ToString()		+ " : " + t_item_to.value_decimal.ToString());
-				}
-			}
+			Check(t_item_from,t_item_to);
 		}
 	}
 }

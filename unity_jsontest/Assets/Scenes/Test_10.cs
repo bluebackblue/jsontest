@@ -18,6 +18,19 @@ public class Test_10
 		public int ignore;
 	}
 
+	/** チェック。
+	*/
+	public static void Check(Item a_from,Item a_to)
+	{
+		if(a_to == null){
+			UnityEngine.Debug.LogWarning("mismatch : null");
+			return;
+		}
+
+		//Item.ignore
+		Test.Check_Int("ignore",0,a_to.ignore);
+	}
+
 	/** 更新。
 	*/
 	public static void Main()
@@ -54,8 +67,7 @@ public class Test_10
 			UnityEngine.Debug.Log("Test_10 : " + t_jsonstring);
 
 			//チェック。
-			{
-			}
+			Check(t_item_from,t_item_to);
 		}
 	}
 }

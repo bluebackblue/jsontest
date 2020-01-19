@@ -20,6 +20,7 @@ public class Test : MonoBehaviour
 	*/
 	public System.Collections.IEnumerator TestCoroutine()
 	{
+		/*
 		//最大値。
 		Test_01.Main();
 
@@ -92,10 +93,14 @@ public class Test : MonoBehaviour
 		//SortedSet。
 		Test_24.Main();
 
-		/*
+		//Enum(要素の文字列処理)。
+		Test_25.Main();
+
 		//要素をオブジェクト化できないGeneric。
 		Test_99.Main();
 		*/
+
+		Test_13.Main();
 
 		yield break;
 	}
@@ -126,6 +131,209 @@ public class Test : MonoBehaviour
 	{
 		return Test.ToBinaryString(a_string.ToCharArray());
 	}
+
+
+	/** Check_Bool
+	*/
+	public static bool Check_Bool(string a_label,bool a_from,bool a_to)
+	{
+		if(a_from != a_to){
+			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + ":" + a_to.ToString());
+			return false;
+		}
+		return true;
+	}
+	/** Check_Sbyte
+	*/
+	public static bool Check_Sbyte(string a_label,sbyte a_from,sbyte a_to)
+	{
+		if(a_from != a_to){
+			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + ":" + a_to.ToString());
+			return false;
+		}
+		return true;
+	}
+	/** Check_Byte
+	*/
+	public static bool Check_Byte(string a_label,byte a_from,byte a_to)
+	{
+		if(a_from != a_to){
+			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + ":" + a_to.ToString());
+			return false;
+		}
+		return true;
+	}
+	/** Check_Short
+	*/
+	public static bool Check_Short(string a_label,short a_from,short a_to)
+	{
+		if(a_from != a_to){
+			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + ":" + a_to.ToString());
+			return false;
+		}
+		return true;
+	}
+	/** Check_Ushort
+	*/
+	public static bool Check_Ushort(string a_label,ushort a_from,ushort a_to)
+	{
+		if(a_from != a_to){
+			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + ":" + a_to.ToString());
+			return false;
+		}
+		return true;
+	}
+	/** Check_Int
+	*/
+	public static bool Check_Int(string a_label,int a_from,int a_to)
+	{
+		if(a_from != a_to){
+			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + ":" + a_to.ToString());
+			return false;
+		}
+		return true;
+	}
+	/** Check_Uint
+	*/
+	public static bool Check_Uint(string a_label,uint a_from,uint a_to)
+	{
+		if(a_from != a_to){
+			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + ":" + a_to.ToString());
+			return false;
+		}
+		return true;
+	}
+	/** Check_Long
+	*/
+	public static bool Check_Long(string a_label,long a_from,long a_to)
+	{
+		if(a_from != a_to){
+			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + ":" + a_to.ToString());
+			return false;
+		}
+		return true;
+	}
+	/** Check_Ulong
+	*/
+	public static bool Check_Ulong(string a_label,ulong a_from,ulong a_to)
+	{
+		if(a_from != a_to){
+			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + ":" + a_to.ToString());
+			return false;
+		}
+		return true;
+	}
+	/** Check_Char
+	*/
+	public static bool Check_Char(string a_label,char a_from,char a_to)
+	{
+		if(a_from != a_to){
+			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + ":" + a_to.ToString());
+			return false;
+		}
+		return true;
+	}
+	/** Check_Float
+	*/
+	public static bool Check_Float(string a_label,float a_from,float a_to)
+	{
+		if(a_from != a_to){
+			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + ":" + a_to.ToString());
+			return false;
+		}
+		return true;
+	}
+	/** Check_Double
+	*/
+	public static bool Check_Double(string a_label,double a_from,double a_to)
+	{
+		if(a_from != a_to){
+			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + ":" + a_to.ToString());
+			return false;
+		}
+		return true;
+	}
+	/** Check_Decimal
+	*/
+	public static bool Check_Decimal(string a_label,decimal a_from,decimal a_to)
+	{
+		if(a_from != a_to){
+			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + ":" + a_to.ToString());
+			return false;
+		}
+		return true;
+	}
+	/** Check_String
+	*/
+	public static bool Check_String(string a_label,string a_from,string a_to)
+	{
+		if(a_from != a_to){
+			if(a_from == null){
+				UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + "null" + ":" + a_to);
+			}else if(a_to == null){
+				UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from + ":" + "null");
+			}else{
+				UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from + ":" + a_to);
+			}
+			return false;
+		}
+		return true;
+	}
+
+	public static bool Check_Enum<T>(string a_label,T a_from,T a_to)
+		where T : System.Enum
+	{
+		switch(a_from.GetTypeCode()){
+		case System.TypeCode.Byte:
+			{
+				return Check_Byte(a_label,(byte)((System.Object)a_from),(byte)((System.Object)a_to));
+			}//break;
+		case System.TypeCode.SByte:
+			{
+				return Check_Sbyte(a_label,(sbyte)((System.Object)a_from),(sbyte)((System.Object)a_to));
+			}//break;
+		case System.TypeCode.Int16:
+			{
+				return Check_Short(a_label,(short)((System.Object)a_from),(short)((System.Object)a_to));
+			}//break;
+		case System.TypeCode.UInt16:
+			{
+				return Check_Ushort(a_label,(ushort)((System.Object)a_from),(ushort)((System.Object)a_to));
+			}//break;
+		case System.TypeCode.Int32:
+			{
+				return Check_Int(a_label,(int)((System.Object)a_from),(int)((System.Object)a_to));
+			}//break;
+		case System.TypeCode.UInt32:
+			{
+				return Check_Uint(a_label,(uint)((System.Object)a_from),(uint)((System.Object)a_to));
+			}//break;
+		case System.TypeCode.Int64:
+			{
+				return Check_Long(a_label,(long)((System.Object)a_from),(long)((System.Object)a_to));
+			}//break;
+		case System.TypeCode.UInt64:
+			{
+				return Check_Ulong(a_label,(ulong)((System.Object)a_from),(ulong)((System.Object)a_to));
+			}//break;
+		}
+
+		return true;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	/** 片方だけＮＵＬＬ、サイズが違う。のチェック。
 	*/
