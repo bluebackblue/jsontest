@@ -25,6 +25,8 @@ public class Test_25
 		Type_C = 100,
 	}
 
+	/** Item_Type
+	*/
 	public class Item_Type
 	{
 		/** value_type
@@ -44,6 +46,8 @@ public class Test_25
 		}
 	}
 
+	/** Item
+	*/
 	public class Item
 	{
 		/** 属性指定なし。
@@ -79,7 +83,52 @@ public class Test_25
 		*/
 		[Fee.JsonItem.EnumString]
 		public System.Collections.Generic.Dictionary<string,Item_Type> dictionary_item;
+	}
 
+	/** チェック。
+	*/
+	public static bool Check(Item a_from,Item a_to)
+	{
+		if(a_to == null){
+			UnityEngine.Debug.LogWarning("mismatch : null");
+			return false;
+		}
+
+		bool t_result = true;
+
+		t_result &= Test.Check_Enum("value_type",			a_from.value_type,			a_to.value_type);
+		t_result &= Test.Check_Enum("value_type_int",		a_from.value_type_int,		a_to.value_type_int);
+		t_result &= Test.Check_Enum("value_type_string",	a_from.value_type_string,	a_to.value_type_string);
+
+		//list_type
+		t_result &= Test.Check_Enumerator("list_type",a_from.list_type,a_to.list_type,(string a_a_label,in Type a_a_from,in Type a_a_to) => {
+			bool t_t_result = true;	
+			t_t_result &= Test.Check_Enum(a_a_label,a_a_from,a_a_to);
+			return t_t_result;
+		});
+
+		//dictionary_type
+		t_result &= Test.Check_Dictionary("dictionary_type",a_from.dictionary_type,a_to.dictionary_type,(string a_a_llabel,in Type a_a_from,in Type a_a_to) => {
+			bool t_t_result = true;	
+			t_t_result &= Test.Check_Enum(a_a_llabel,a_a_from,a_a_to);
+			return t_t_result;
+		});
+
+		//list_item
+		t_result &= Test.Check_Enumerator("list_item",a_from.list_item,a_to.list_item,(string a_a_label,in Item_Type a_a_from,in Item_Type a_a_to) => {
+			bool t_t_result = true;	
+			t_t_result &= Test.Check_Enum(a_a_label,a_a_from.value_type,a_a_to.value_type);
+			return t_t_result;
+		});
+
+		//dictionary_item
+		t_result &= Test.Check_Dictionary("dictionary_item",a_from.dictionary_item,a_to.dictionary_item,(string a_a_llabel,in Item_Type a_a_from,in Item_Type a_a_to) => {
+			bool t_t_result = true;	
+			t_t_result &= Test.Check_Enum(a_a_llabel,a_a_from.value_type,a_a_to.value_type);
+			return t_t_result;
+		});
+
+		return t_result;
 	}
 
 	/** 更新。
@@ -141,47 +190,8 @@ public class Test_25
 			UnityEngine.Debug.Log("Test_25 : " + t_jsonstring);
 
 			//チェック。
-			{
-
-				if(Test.NullSizeCheck(t_item_from.list_type,t_item_to.list_type) == true){
-					for(int ii=0;ii<t_item_from.list_type.Count;ii++){
-						if(t_item_from.list_type[ii] != t_item_to.list_type[ii]){
-							UnityEngine.Debug.LogWarning("mismatch : " + ii.ToString() + " : " + t_item_from.list_type[ii].ToString() + " : " + t_item_to.list_type[ii].ToString());
-						}
-					}
-				}else{
-					UnityEngine.Debug.LogWarning("mismatch");
-				}
-
-				if(Test.NullSizeCheck_Dictionary(t_item_from.dictionary_type,t_item_to.dictionary_type) == true){
-					foreach(string t_key in t_item_from.dictionary_type.Keys){
-						if(t_item_from.dictionary_type[t_key] != t_item_to.dictionary_type[t_key]){
-							UnityEngine.Debug.LogWarning("mismatch : " + t_key + " : " + t_item_from.dictionary_type[t_key].ToString() + " : " + t_item_to.dictionary_type[t_key].ToString());
-						}
-					}
-				}else{
-					UnityEngine.Debug.LogWarning("mismatch");
-				}
-
-				if(Test.NullSizeCheck(t_item_from.list_item,t_item_to.list_item) == true){
-					for(int ii=0;ii<t_item_from.list_item.Count;ii++){
-						if(t_item_from.list_item[ii].value_type != t_item_to.list_item[ii].value_type){
-							UnityEngine.Debug.LogWarning("mismatch : " + ii.ToString() + " : " + t_item_from.list_item[ii].value_type.ToString() + " : " + t_item_to.list_item[ii].value_type.ToString());
-						}
-					}
-				}else{
-					UnityEngine.Debug.LogWarning("mismatch");
-				}
-
-				if(Test.NullSizeCheck_Dictionary(t_item_from.dictionary_item,t_item_to.dictionary_item) == true){
-					foreach(string t_key in t_item_from.dictionary_item.Keys){
-						if(t_item_from.dictionary_item[t_key].value_type != t_item_to.dictionary_item[t_key].value_type){
-							UnityEngine.Debug.LogWarning("mismatch : " + t_key + " : " + t_item_from.dictionary_item[t_key].value_type.ToString() + " : " + t_item_to.dictionary_item[t_key].value_type.ToString());
-						}
-					}
-				}else{
-					UnityEngine.Debug.LogWarning("mismatch");
-				}
+			if(Check(t_item_from,t_item_to) == false){
+				UnityEngine.Debug.LogError("mismatch");
 			}
 		}
 	}

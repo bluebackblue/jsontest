@@ -33,27 +33,15 @@ public class Test_18
 			this.pri_4 = 34 + a_base;
 		}
 
-		/** Compare
+		/** Check
 		*/
-		public bool Compare(Item_Base_Base_Base obj)
+		public static bool Check(Item_Base_Base_Base a_from,Item_Base_Base_Base a_to)
 		{
-			Item_Base_Base t_item = obj as Item_Base_Base;
-
-			if(t_item == null){
-				return false;
-			}
-
-			if(this.pub_4 != t_item.pub_4){
-				return false;
-			}
-			if(this.pro_4 != t_item.pro_4){
-				return false;
-			}
-			if(this.pri_4 != t_item.pri_4){
-				return false;
-			}
-
-			return true;
+			bool t_result = true;
+			t_result &= Test.Check_Int("pub_4",a_from.pub_4,a_to.pub_4);
+			t_result &= Test.Check_Int("pro_4",a_from.pub_4,a_to.pub_4);
+			t_result &= Test.Check_Int("pri_4",a_from.pub_4,a_to.pub_4);
+			return t_result;
 		}
 	}
 
@@ -84,27 +72,15 @@ public class Test_18
 			this.pri_3 = 33 + a_base;
 		}
 
-		/** Compare
+		/** Check
 		*/
-		public bool Compare(Item_Base_Base obj)
+		public static bool Check(Item_Base_Base a_from,Item_Base_Base a_to)
 		{
-			Item_Base_Base t_item = obj as Item_Base_Base;
-
-			if(t_item == null){
-				return false;
-			}
-
-			if(this.pub_3 != t_item.pub_3){
-				return false;
-			}
-			if(this.pro_3 != t_item.pro_3){
-				return false;
-			}
-			if(this.pri_3 != t_item.pri_3){
-				return false;
-			}
-
-			return base.Compare(obj);
+			bool t_result = true;
+			t_result &= Test.Check_Int("pub_3",a_from.pub_3,a_to.pub_3);
+			t_result &= Test.Check_Int("pro_3",a_from.pub_3,a_to.pub_3);
+			t_result &= Test.Check_Int("pri_3",a_from.pub_3,a_to.pub_3);
+			return t_result & Item_Base_Base_Base.Check(a_from,a_to);
 		}
 	}
 
@@ -135,27 +111,15 @@ public class Test_18
 			this.pri_2 = 32 + a_base;
 		}
 
-		/** Compare
+		/** Check
 		*/
-		public bool Compare(Item_Base obj)
+		public static bool Check(Item_Base a_from,Item_Base a_to)
 		{
-			Item_Base t_item = obj as Item_Base;
-
-			if(t_item == null){
-				return false;
-			}
-
-			if(this.pub_2 != t_item.pub_2){
-				return false;
-			}
-			if(this.pro_2 != t_item.pro_2){
-				return false;
-			}
-			if(this.pri_2 != t_item.pri_2){
-				return false;
-			}
-
-			return base.Compare(obj);
+			bool t_result = true;
+			t_result &= Test.Check_Int("pub_2",a_from.pub_2,a_to.pub_2);
+			t_result &= Test.Check_Int("pro_2",a_from.pub_2,a_to.pub_2);
+			t_result &= Test.Check_Int("pri_2",a_from.pub_2,a_to.pub_2);
+			return t_result & Item_Base_Base.Check(a_from,a_to);
 		}
 	}
 
@@ -186,29 +150,36 @@ public class Test_18
 			this.pri_1 = 31 + a_base;
 		}
 
-		/** Compare
+		/** Check
 		*/
-		public bool Compare(Item obj)
+		public static bool Check(Item a_from,Item a_to)
 		{
-			Item t_item = obj as Item;
-
-			if(t_item == null){
-				return false;
-			}
-
-			if(this.pub_1 != t_item.pub_1){
-				return false;
-			}
-			if(this.pro_1 != t_item.pro_1){
-				return false;
-			}
-			if(this.pri_1 != t_item.pri_1){
-				return false;
-			}
-
-			return base.Compare(obj);
+			bool t_result = true;
+			t_result &= Test.Check_Int("pub_1",a_from.pub_1,a_to.pub_1);
+			t_result &= Test.Check_Int("pro_1",a_from.pub_1,a_to.pub_1);
+			t_result &= Test.Check_Int("pri_1",a_from.pub_1,a_to.pub_1);
+			return t_result & Item_Base.Check(a_from,a_to);
 		}
 	};
+
+	/** チェック。
+	*/
+	public static bool Check(Item a_from,Item a_to)
+	{
+		if(a_to == null){
+			UnityEngine.Debug.LogWarning("mismatch : null");
+			return false;
+		}
+
+		bool t_result = true;
+
+		if(Item.Check(a_from,a_to) == false){
+			t_result = false;
+			UnityEngine.Debug.LogWarning("mismatch");
+		}
+
+		return t_result;
+	}
 
 	/** 更新。
 	*/
@@ -244,10 +215,8 @@ public class Test_18
 			UnityEngine.Debug.Log("Test_18 : " + t_jsonstring);
 
 			//チェック。
-			{
-				if(t_item_from.Compare(t_item_to) == false){
-					UnityEngine.Debug.LogWarning("mismatch");
-				}
+			if(Check(t_item_from,t_item_to) == false){
+				UnityEngine.Debug.LogError("mismatch");
 			}
 		}
 	}

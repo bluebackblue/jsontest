@@ -8,6 +8,23 @@
 */
 public class Test_22
 {
+	/** チェック。
+	*/
+	public static bool Check(System.Collections.Generic.HashSet<int> a_from,System.Collections.Generic.HashSet<int> a_to)
+	{
+		if(a_to == null){
+			UnityEngine.Debug.LogWarning("mismatch : null");
+			return false;
+		}
+
+		bool t_result = true;
+
+		t_result &= Test.Check_HashSet("",a_from,a_to);
+
+		return t_result;
+	}
+
+
 	/** 更新。
 	*/
 	public static void Main()
@@ -45,12 +62,8 @@ public class Test_22
 			UnityEngine.Debug.Log("Test_22 : " + t_jsonstring);
 
 			//チェック。
-			{
-				if(Test.NullSizeCheck_HashSet(t_item_from,t_item_to) == true){
-					//順不同。
-				}else{
-					UnityEngine.Debug.LogWarning("mismatch");
-				}
+			if(Check(t_item_from,t_item_to) == false){
+				UnityEngine.Debug.LogError("mismatch");
 			}
 		}
 	}

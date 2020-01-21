@@ -63,48 +63,52 @@ public class Test_03
 
 	/** チェック。
 	*/
-	public static void Check(Item a_from,Item a_to)
+	public static bool Check(Item a_from,Item a_to)
 	{
 		if(a_to == null){
 			UnityEngine.Debug.LogWarning("mismatch : null");
-			return;
+			return false;
 		}
 
+		bool t_result = true;
+
 		//文字。
-		Test.Check_String("value_string",			a_from.value_string,			a_to.value_string);
+		t_result &= Test.Check_String("value_string",			a_from.value_string,			a_to.value_string);
 
 		//ベル。
-		Test.Check_String("value_bell",				a_from.value_bell,				a_to.value_bell);
+		t_result &= Test.Check_String("value_bell",				a_from.value_bell,				a_to.value_bell);
 
 		//ヌル。
-		Test.Check_String("value_null",				a_from.value_null,				a_to.value_null);
+		t_result &= Test.Check_String("value_null",				a_from.value_null,				a_to.value_null);
 
 		//バックスペース。
-		Test.Check_String("value_backspace",		a_from.value_backspace,			a_to.value_backspace);
+		t_result &= Test.Check_String("value_backspace",		a_from.value_backspace,			a_to.value_backspace);
 
 		//ラインフィード。
-		Test.Check_String("value_linefeed",			a_from.value_linefeed,			a_to.value_linefeed);
+		t_result &= Test.Check_String("value_linefeed",			a_from.value_linefeed,			a_to.value_linefeed);
 
 		//タブ。
-		Test.Check_String("value_tab",				a_from.value_tab,				a_to.value_tab);
+		t_result &= Test.Check_String("value_tab",				a_from.value_tab,				a_to.value_tab);
 
 		//ダブルクォーテーション。
-		Test.Check_String("value_double_quotation",	a_from.value_double_quotation,	a_to.value_double_quotation);
+		t_result &= Test.Check_String("value_double_quotation",	a_from.value_double_quotation,	a_to.value_double_quotation);
 
 		//シングルクォーテーション。
-		Test.Check_String("value_single_quotation",	a_from.value_single_quotation,	a_to.value_single_quotation);
+		t_result &= Test.Check_String("value_single_quotation",	a_from.value_single_quotation,	a_to.value_single_quotation);
 
 		//バックスラッシュ。
-		Test.Check_String("value_back_slash",		a_from.value_back_slash,		a_to.value_back_slash);
+		t_result &= Test.Check_String("value_back_slash",		a_from.value_back_slash,		a_to.value_back_slash);
 
 		//キャリッジリターン。
-		Test.Check_String("value_carriage_return",	a_from.value_carriage_return,	a_to.value_carriage_return);
+		t_result &= Test.Check_String("value_carriage_return",	a_from.value_carriage_return,	a_to.value_carriage_return);
 
 		//スラッシュ。
-		Test.Check_String("value_slash",			a_from.value_slash,				a_to.value_slash);
+		t_result &= Test.Check_String("value_slash",			a_from.value_slash,				a_to.value_slash);
 
 		//ニューページ。
-		Test.Check_String("value_new_page",			a_from.value_new_page,			a_to.value_new_page);
+		t_result &= Test.Check_String("value_new_page",			a_from.value_new_page,			a_to.value_new_page);
+
+		return t_result;
 	}
 
 
@@ -121,37 +125,37 @@ public class Test_03
 				t_item_from.value_string = "aあア亜ぁｱA\u3042";
 
 				//ベル。
-				t_item_from.value_bell = "-\a-";
+				t_item_from.value_bell = "\a";
 
 				//ヌル。
 				t_item_from.value_null = "-\0-";
 
 				//バックスペース。
-				t_item_from.value_backspace = "-\b-";
+				t_item_from.value_backspace = "\b";
 
 				//ラインフィード。
-				t_item_from.value_linefeed = "-\r-";
+				t_item_from.value_linefeed = "\r";
 
 				//タブ。
-				t_item_from.value_tab = "-\t-";
+				t_item_from.value_tab = "\t";
 
 				//ダブルクォーテーション。
-				t_item_from.value_double_quotation = "-\"-";
+				t_item_from.value_double_quotation = "\"";
 
 				//シングルクォーテーション。
-				t_item_from.value_single_quotation = "-'-";
+				t_item_from.value_single_quotation = "'";
 
 				//バックスラッシュ。
-				t_item_from.value_back_slash = "-\\-";
+				t_item_from.value_back_slash = "\\";
 
 				//キャリッジリターン。
-				t_item_from.value_carriage_return = "-\n-";
+				t_item_from.value_carriage_return = "\n";
 
 				//スラッシュ。
-				t_item_from.value_slash = "-/-";
+				t_item_from.value_slash = "/";
 
 				//ニューページ。
-				t_item_from.value_new_page = "-\f-";
+				t_item_from.value_new_page = "\f";
 			}
 
 			//オブジェクト ==> ＪＳＯＮＩＴＥＭ。
@@ -177,7 +181,9 @@ public class Test_03
 			UnityEngine.Debug.Log("Test_03 : " + t_jsonstring);
 
 			//チェック。
-			Check(t_item_from,t_item_to);
+			if(Check(t_item_from,t_item_to) == false){
+				UnityEngine.Debug.LogError("mismatch");
+			}
 		}
 	}
 }

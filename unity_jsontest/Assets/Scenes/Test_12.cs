@@ -28,7 +28,7 @@ public class Test_12
 
 	/** チェック。
 	*/
-	public static void Check(ITEM_TYPE a_from,ITEM_TYPE a_to)
+	public static bool Check(in ITEM_TYPE a_from,in ITEM_TYPE a_to)
 	{
 		/*
 		if(a_to == null){
@@ -37,20 +37,24 @@ public class Test_12
 		}
 		*/
 
-		Test.Check_Int("0.value",	a_from.value,															a_to.value);
-		Test.Check_Int("1.value",	a_from.item.value,														a_to.item.value);
-		Test.Check_Int("2.value",	a_from.item.item.value,													a_to.item.item.value);
-		Test.Check_Int("3.value",	a_from.item.item.item.value,											a_to.item.item.item.value);
-		Test.Check_Int("4.value",	a_from.item.item.item.item.value,										a_to.item.item.item.item.value);
-		Test.Check_Int("5.value",	a_from.item.item.item.item.item.value,									a_to.item.item.item.item.item.value);
-		Test.Check_Int("6.value",	a_from.item.item.item.item.item.item.value,								a_to.item.item.item.item.item.item.value);
-		Test.Check_Int("7.value",	a_from.item.item.item.item.item.item.item.value,						a_to.item.item.item.item.item.item.item.value);
-		Test.Check_Int("8.value",	a_from.item.item.item.item.item.item.item.item.value,					a_to.item.item.item.item.item.item.item.item.value);
-		Test.Check_Int("9.value",	a_from.item.item.item.item.item.item.item.item.item.value,				a_to.item.item.item.item.item.item.item.item.item.value);
-		Test.Check_Int("10.value",	a_from.item.item.item.item.item.item.item.item.item.item.value,			a_to.item.item.item.item.item.item.item.item.item.item.value);
-		Test.Check_Int("11.value",	a_from.item.item.item.item.item.item.item.item.item.item.item.value,	a_to.item.item.item.item.item.item.item.item.item.item.item.value);
+		bool t_result = true;
 
-		Test.Check_Int("11.item",	a_from.item.item.item.item.item.item.item.item.item.item.item.item,		a_to.item.item.item.item.item.item.item.item.item.item.item.item);
+		t_result &= Test.Check_Int("0.value",	a_from.value,															a_to.value);
+		t_result &= Test.Check_Int("1.value",	a_from.item.value,														a_to.item.value);
+		t_result &= Test.Check_Int("2.value",	a_from.item.item.value,													a_to.item.item.value);
+		t_result &= Test.Check_Int("3.value",	a_from.item.item.item.value,											a_to.item.item.item.value);
+		t_result &= Test.Check_Int("4.value",	a_from.item.item.item.item.value,										a_to.item.item.item.item.value);
+		t_result &= Test.Check_Int("5.value",	a_from.item.item.item.item.item.value,									a_to.item.item.item.item.item.value);
+		t_result &= Test.Check_Int("6.value",	a_from.item.item.item.item.item.item.value,								a_to.item.item.item.item.item.item.value);
+		t_result &= Test.Check_Int("7.value",	a_from.item.item.item.item.item.item.item.value,						a_to.item.item.item.item.item.item.item.value);
+		t_result &= Test.Check_Int("8.value",	a_from.item.item.item.item.item.item.item.item.value,					a_to.item.item.item.item.item.item.item.item.value);
+		t_result &= Test.Check_Int("9.value",	a_from.item.item.item.item.item.item.item.item.item.value,				a_to.item.item.item.item.item.item.item.item.item.value);
+		t_result &= Test.Check_Int("10.value",	a_from.item.item.item.item.item.item.item.item.item.item.value,			a_to.item.item.item.item.item.item.item.item.item.item.value);
+		t_result &= Test.Check_Int("11.value",	a_from.item.item.item.item.item.item.item.item.item.item.item.value,	a_to.item.item.item.item.item.item.item.item.item.item.item.value);
+
+		t_result &= Test.Check_Int("11.item",	a_from.item.item.item.item.item.item.item.item.item.item.item.item,		a_to.item.item.item.item.item.item.item.item.item.item.item.item);
+
+		return t_result;
 	}
 
 	/** 更新。
@@ -100,8 +104,8 @@ public class Test_12
 			UnityEngine.Debug.Log("Test_12 : " + t_jsonstring);
 
 			//チェック。
-			{
-
+			if(Check(t_item_from,t_item_to) == false){
+				UnityEngine.Debug.LogError("mismatch");
 			}
 		}
 	}

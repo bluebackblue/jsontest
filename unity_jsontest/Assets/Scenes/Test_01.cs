@@ -29,26 +29,30 @@ public class Test_01
 
 	/** チェック。
 	*/
-	public static void Check(Item a_from,Item a_to)
+	public static bool Check(Item a_from,Item a_to)
 	{
 		if(a_to == null){
 			UnityEngine.Debug.LogWarning("mismatch : null");
-			return;
+			return false;
 		}
 
-		Test.Check_Bool(	"value_bool",		a_from.value_bool,		a_to.value_bool);
-		Test.Check_Sbyte(	"value_sbyte",		a_from.value_sbyte,		a_to.value_sbyte);
-		Test.Check_Byte(	"value_byte",		a_from.value_byte,		a_to.value_byte);
-		Test.Check_Short(	"value_short",		a_from.value_short,		a_to.value_short);
-		Test.Check_Ushort(	"value_ushort",		a_from.value_ushort,	a_to.value_ushort);
-		Test.Check_Int(		"value_int",		a_from.value_int,		a_to.value_int);
-		Test.Check_Uint(	"value_uint",		a_from.value_uint,		a_to.value_uint);
-		Test.Check_Long(	"value_long",		a_from.value_long,		a_to.value_long);
-		Test.Check_Ulong(	"value_ulong",		a_from.value_ulong,		a_to.value_ulong);
-		Test.Check_Char(	"value_char",		a_from.value_char,		a_to.value_char);
-		Test.Check_Float(	"value_float",		a_from.value_float,		a_to.value_float);
-		Test.Check_Double(	"value_double",		a_from.value_double,	a_to.value_double);
-		Test.Check_Decimal(	"value_decimal",	a_from.value_decimal,	a_to.value_decimal);
+		bool t_result = true;
+
+		t_result &= Test.Check_Bool(	"value_bool",		a_from.value_bool,		a_to.value_bool);
+		t_result &= Test.Check_Sbyte(	"value_sbyte",		a_from.value_sbyte,		a_to.value_sbyte);
+		t_result &= Test.Check_Byte(	"value_byte",		a_from.value_byte,		a_to.value_byte);
+		t_result &= Test.Check_Short(	"value_short",		a_from.value_short,		a_to.value_short);
+		t_result &= Test.Check_Ushort(	"value_ushort",		a_from.value_ushort,	a_to.value_ushort);
+		t_result &= Test.Check_Int(		"value_int",		a_from.value_int,		a_to.value_int);
+		t_result &= Test.Check_Uint(	"value_uint",		a_from.value_uint,		a_to.value_uint);
+		t_result &= Test.Check_Long(	"value_long",		a_from.value_long,		a_to.value_long);
+		t_result &= Test.Check_Ulong(	"value_ulong",		a_from.value_ulong,		a_to.value_ulong);
+		t_result &= Test.Check_Char(	"value_char",		a_from.value_char,		a_to.value_char);
+		t_result &= Test.Check_Float(	"value_float",		a_from.value_float,		a_to.value_float);
+		t_result &= Test.Check_Double(	"value_double",		a_from.value_double,	a_to.value_double);
+		t_result &= Test.Check_Decimal(	"value_decimal",	a_from.value_decimal,	a_to.value_decimal);
+
+		return t_result;
 	}
 
 	/** 更新。
@@ -98,7 +102,9 @@ public class Test_01
 			UnityEngine.Debug.Log("Test_01 : " + t_jsonstring);
 
 			//チェック。
-			Check(t_item_from,t_item_to);
+			if(Check(t_item_from,t_item_to) == false){
+				UnityEngine.Debug.LogError("mismatch");
+			}
 		}
 	}
 }

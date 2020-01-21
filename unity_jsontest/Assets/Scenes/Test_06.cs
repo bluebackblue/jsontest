@@ -17,7 +17,7 @@ public class Test_06
 
 	/** チェック。
 	*/
-	public static void Check(in Item a_from,in Item a_to)
+	public static bool Check(in Item a_from,in Item a_to)
 	{
 		/*
 		if(a_to == null){
@@ -25,8 +25,11 @@ public class Test_06
 			return;
 		}
 		*/
+		bool t_result = true;
 
-		Test.Check_Int("value",a_from.value,a_to.value);
+		t_result &= Test.Check_Int("value",a_from.value,a_to.value);
+
+		return t_result;
 	}
 
 	/** 更新。
@@ -64,7 +67,9 @@ public class Test_06
 			UnityEngine.Debug.Log("Test_06 : " + t_jsonstring);
 
 			//チェック。
-			Check(t_item_from,t_item_to);
+			if(Check(t_item_from,t_item_to) == false){
+				UnityEngine.Debug.LogError("mismatch");
+			}
 		}
 	}
 }

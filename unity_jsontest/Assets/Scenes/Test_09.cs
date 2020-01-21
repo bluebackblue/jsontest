@@ -10,27 +10,22 @@ public class Test_09
 {
 	/** チェック。
 	*/
-	public static void Check(int[] a_from,int[] a_to)
+	public static bool Check(int[] a_from,int[] a_to)
 	{
 		if(a_to == null){
 			UnityEngine.Debug.LogWarning("mismatch : null");
-			return;
+			return false;
 		}
 
-		//int[]
-		{
-			if(a_from.Length != a_to.Length){
-				UnityEngine.Debug.LogWarning("mismatch : " + "count : " + a_from.Length.ToString() + " : " + a_to.Length.ToString());
-			}
+		bool t_result = true;
 
-			for(int ii=0;ii<a_from.Length;ii++){
-				if(ii >= a_to.Length){
-					UnityEngine.Debug.LogWarning("mismatch : " + ii.ToString() + " : notexist");
-				}else{
-					Test.Check_Int(ii.ToString(),a_from[ii],a_to[ii]);
-				}
-			}
-		}
+		t_result &= Test.Check_Enumerator("",a_from,a_to,(string a_a_label,in int a_a_from,in int a_a_to) => {
+			bool t_t_result = true;
+			t_t_result &= Test.Check_Int(a_a_label,a_a_from,a_a_to);
+			return t_t_result;
+		});
+
+		return t_result;
 	}
 
 	/** 更新。
@@ -69,7 +64,9 @@ public class Test_09
 			UnityEngine.Debug.Log("Test_09 : " + t_jsonstring);
 
 			//チェック。
-			Check(t_item_from,t_item_to);
+			if(Check(t_item_from,t_item_to) == false){
+				UnityEngine.Debug.LogError("mismatch");
+			}
 		}
 	}
 }

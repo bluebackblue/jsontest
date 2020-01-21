@@ -4,7 +4,7 @@
 #define FEE_JSON
 
 
-/** Enum(内部型)。
+/** Array。
 */
 public class Test_26
 {
@@ -12,25 +12,19 @@ public class Test_26
 	*/
 	public class Item
 	{
-
-
-
 	}
 
 	/** チェック。
 	*/
-	public static void Check(Item a_item_from,Item a_item_to)
+	public static bool Check(Item a_item_from,Item a_item_to)
 	{
 		if(a_item_to == null){
 			UnityEngine.Debug.LogWarning("mismatch : null");
-			return;
+			return false;
 		}
 
-		/*
-		Test.Check_Enum("value_type",			a_item_from.value_type,			a_item_to.value_type);
-		Test.Check_Enum("value_type_int",		a_item_from.value_type_int,		a_item_to.value_type_int);
-		Test.Check_Enum("value_type_string",	a_item_from.value_type_string,	a_item_to.value_type_string);
-		*/
+		bool t_result = true;
+		return t_result;
 	}
 
 	/** 更新。
@@ -42,11 +36,6 @@ public class Test_26
 		{
 			Item t_item_from = new Item();
 			{
-				/*
-				t_item_from.value_type = Item.Type.TypeA;
-				t_item_from.value_type_int = Item.Type.TypeB;
-				t_item_from.value_type_string = Item.Type.TypeC;
-				*/
 			}
 
 			//オブジェクト ==> ＪＳＯＮＩＴＥＭ。
@@ -72,7 +61,9 @@ public class Test_26
 			UnityEngine.Debug.Log("Test_05 : " + t_jsonstring);
 
 			//チェック。
-			Check(t_item_from,t_item_to);
+			if(Check(t_item_from,t_item_to) == false){
+				UnityEngine.Debug.LogError("mismatch");
+			}
 		}
 	}
 }

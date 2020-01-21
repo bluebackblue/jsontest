@@ -20,7 +20,6 @@ public class Test : MonoBehaviour
 	*/
 	public System.Collections.IEnumerator TestCoroutine()
 	{
-		/*
 		//最大値。
 		Test_01.Main();
 
@@ -98,12 +97,13 @@ public class Test : MonoBehaviour
 
 		//要素をオブジェクト化できないGeneric。
 		Test_99.Main();
-		*/
-
-		Test_13.Main();
 
 		yield break;
 	}
+
+	/** CallBack_Check
+	*/
+	public delegate bool CallBack_Check<T>(string a_label,in T a_from,in T a_to);
 
 	/** バイト配列文字列。
 	*/
@@ -132,156 +132,169 @@ public class Test : MonoBehaviour
 		return Test.ToBinaryString(a_string.ToCharArray());
 	}
 
-
 	/** Check_Bool
 	*/
 	public static bool Check_Bool(string a_label,bool a_from,bool a_to)
 	{
 		if(a_from != a_to){
-			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + ":" + a_to.ToString());
+			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + " => " + a_to.ToString());
 			return false;
 		}
 		return true;
 	}
+
 	/** Check_Sbyte
 	*/
 	public static bool Check_Sbyte(string a_label,sbyte a_from,sbyte a_to)
 	{
 		if(a_from != a_to){
-			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + ":" + a_to.ToString());
+			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + " => " + a_to.ToString());
 			return false;
 		}
 		return true;
 	}
+
 	/** Check_Byte
 	*/
 	public static bool Check_Byte(string a_label,byte a_from,byte a_to)
 	{
 		if(a_from != a_to){
-			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + ":" + a_to.ToString());
+			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + " => " + a_to.ToString());
 			return false;
 		}
 		return true;
 	}
+
 	/** Check_Short
 	*/
 	public static bool Check_Short(string a_label,short a_from,short a_to)
 	{
 		if(a_from != a_to){
-			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + ":" + a_to.ToString());
+			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + " => " + a_to.ToString());
 			return false;
 		}
 		return true;
 	}
+
 	/** Check_Ushort
 	*/
 	public static bool Check_Ushort(string a_label,ushort a_from,ushort a_to)
 	{
 		if(a_from != a_to){
-			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + ":" + a_to.ToString());
+			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + " => " + a_to.ToString());
 			return false;
 		}
 		return true;
 	}
+
 	/** Check_Int
 	*/
 	public static bool Check_Int(string a_label,int a_from,int a_to)
 	{
 		if(a_from != a_to){
-			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + ":" + a_to.ToString());
+			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + " => " + a_to.ToString());
 			return false;
 		}
 		return true;
 	}
+
 	/** Check_Uint
 	*/
 	public static bool Check_Uint(string a_label,uint a_from,uint a_to)
 	{
 		if(a_from != a_to){
-			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + ":" + a_to.ToString());
+			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + " => " + a_to.ToString());
 			return false;
 		}
 		return true;
 	}
+
 	/** Check_Long
 	*/
 	public static bool Check_Long(string a_label,long a_from,long a_to)
 	{
 		if(a_from != a_to){
-			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + ":" + a_to.ToString());
+			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + " => " + a_to.ToString());
 			return false;
 		}
 		return true;
 	}
+
 	/** Check_Ulong
 	*/
 	public static bool Check_Ulong(string a_label,ulong a_from,ulong a_to)
 	{
 		if(a_from != a_to){
-			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + ":" + a_to.ToString());
+			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + " => " + a_to.ToString());
 			return false;
 		}
 		return true;
 	}
+
 	/** Check_Char
 	*/
 	public static bool Check_Char(string a_label,char a_from,char a_to)
 	{
 		if(a_from != a_to){
-			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + ":" + a_to.ToString());
+			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + " => " + a_to.ToString());
 			return false;
 		}
 		return true;
 	}
+
 	/** Check_Float
 	*/
 	public static bool Check_Float(string a_label,float a_from,float a_to)
 	{
 		if(a_from != a_to){
-			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + ":" + a_to.ToString());
+			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + " => " + a_to.ToString());
 			return false;
 		}
 		return true;
 	}
+
 	/** Check_Double
 	*/
 	public static bool Check_Double(string a_label,double a_from,double a_to)
 	{
 		if(a_from != a_to){
-			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + ":" + a_to.ToString());
+			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + " => " + a_to.ToString());
 			return false;
 		}
 		return true;
 	}
+
 	/** Check_Decimal
 	*/
 	public static bool Check_Decimal(string a_label,decimal a_from,decimal a_to)
 	{
 		if(a_from != a_to){
-			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + ":" + a_to.ToString());
+			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from.ToString() + " => " + a_to.ToString());
 			return false;
 		}
 		return true;
 	}
+
 	/** Check_String
 	*/
 	public static bool Check_String(string a_label,string a_from,string a_to)
 	{
 		if(a_from != a_to){
 			if(a_from == null){
-				UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + "null" + ":" + a_to);
+				UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + "null" + " => " + a_to);
 			}else if(a_to == null){
-				UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from + ":" + "null");
+				UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from + " => " + "null");
 			}else{
-				UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from + ":" + a_to);
+				UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + a_from + " => " + a_to);
 			}
 			return false;
 		}
 		return true;
 	}
 
-	public static bool Check_Enum<T>(string a_label,T a_from,T a_to)
-		where T : System.Enum
+	/** Check_Enum
+	*/
+	public static bool Check_Enum(string a_label,System.Enum a_from,System.Enum a_to)
 	{
 		switch(a_from.GetTypeCode()){
 		case System.TypeCode.Byte:
@@ -316,125 +329,170 @@ public class Test : MonoBehaviour
 			{
 				return Check_Ulong(a_label,(ulong)((System.Object)a_from),(ulong)((System.Object)a_to));
 			}//break;
+		default:
+			{
+				UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : unknown");
+			}break;
 		}
 
 		return true;
 	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	/** 片方だけＮＵＬＬ、サイズが違う。のチェック。
+	/** Check_Dictionary
 	*/
-	public static bool NullSizeCheck(System.Collections.IEnumerable a_list_a,System.Collections.IEnumerable a_list_b)
+	public static bool Check_Dictionary<K,T>(string a_label,System.Collections.Generic.IDictionary<K,T> a_from,System.Collections.Generic.IDictionary<K,T> a_to,CallBack_Check<T> a_callback)
 	{
-		if((a_list_a == null)&&(a_list_b == null)){
-			//両方NULL。
+		if((a_from == null)&&(a_to == null)){
 			return true;
-		}else if((a_list_a == null)||(a_list_b == null)){
-			//片方だけNULL。
+		}else if(a_from == null){
+			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : from == null");
 			return false;
+		}else if(a_to == null){
+			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : to == null");
+			return false;
+		}
+
+		bool t_result = true;
+
+		if(a_from.Count != a_to.Count){
+			//サイズが違う。
+			t_result = false;
+			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : counterror");
 		}else{
-			System.Collections.IEnumerator t_a = a_list_a.GetEnumerator();
-			System.Collections.IEnumerator t_b = a_list_b.GetEnumerator();
-
-			while(true){
-				{
-					bool t_ret_a = t_a.MoveNext();
-					bool t_ret_b = t_b.MoveNext();
-
-					if((t_ret_a == false)&&(t_ret_b == false)){
-						break;
+			foreach(System.Collections.Generic.KeyValuePair<K,T> t_from_pair in a_from){
+				T t_to_value;
+				if(a_to.TryGetValue(t_from_pair.Key,out t_to_value) == false){
+					//存在しない。
+					t_result = false;
+					UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : notexist");
+					break;
+				}else{
+					T t_from_value = t_from_pair.Value;
+					if(a_callback(a_label,in t_from_value,in t_to_value) == false){
+						t_result = false;
 					}
-
-					if((t_ret_a == false)||(t_ret_b == false)){
-						//片方のリストのサイズが違う。
-						return false;
-					}
-				}
-
-				if((t_a.Current == null)&&(t_b.Current == null)){
-					//要素の両方がNULL。
-				}else if((t_a.Current == null)||(t_b.Current== null)){
-					//要素が片方だけNULL。
-					return false;
 				}
 			}
 		}
 
-		return true;
+		return t_result;
 	}
 
-	/** NullSizeCheck_Dictionary
+	/** Check_Enumerator
 	*/
-	public static bool NullSizeCheck_Dictionary<A,B>(System.Collections.Generic.IDictionary<A,B> a_list_a,System.Collections.Generic.IDictionary<A,B> a_list_b)
+	public static bool Check_Enumerator<T>(string a_label,System.Collections.IEnumerable a_from,System.Collections.IEnumerable a_to,CallBack_Check<T> a_callback)
 	{
-		if((a_list_a == null)&&(a_list_b == null)){
-			//両方NULL。
+		if((a_from == null)&&(a_to == null)){
 			return true;
-		}else if((a_list_a == null)||(a_list_b == null)){
-			//片方だけNULL。
+		}else if(a_from == null){
+			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : from == null");
 			return false;
-		}else{
-			if(a_list_a.Count != a_list_b.Count){
+		}else if(a_to == null){
+			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : to == null");
+			return false;
+		}
+
+		bool t_result = true;
+
+		System.Collections.IEnumerator t_from = a_from.GetEnumerator();
+		System.Collections.IEnumerator t_to = a_to.GetEnumerator();
+
+		int t_index = 0;
+		while(true){
+			{
+				if(t_from != null){
+					if(t_from.MoveNext() == false){
+						t_from = null;
+					}
+				}
+				if(t_to != null){
+					if(t_to.MoveNext() == false){
+						t_to = null;
+					}
+				}
+				if((t_from == null)&&(t_to == null)){
+					break;
+				}
+			}
+
+			if(t_from == null){
 				//サイズが違う。
-				return false;
+				t_result = false;
+				UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : counterror");
+				break;
+			}else if(t_to == null){
+				//サイズが違う。
+				t_result = false;
+				UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : counterror");
+				break;
 			}else{
-				foreach(System.Collections.Generic.KeyValuePair<A,B> t_pair_a in a_list_a){
-					B t_value_b;
-					if(a_list_b.TryGetValue(t_pair_a.Key,out t_value_b) == false){
-						//片方にしかキーがない。
-						return false;
-					}else{
-						if((t_pair_a.Value == null)&&(t_value_b == null)){
-						}else if((t_pair_a.Value == null)||(t_value_b == null)){
-							//片方がNULL。
-							return false;
-						}
-					}
+				T t_from_value = (T)t_from.Current;
+				T t_to_value = (T)t_to.Current;
+				if(a_callback(a_label,in t_from_value,in t_to_value) == false){
+					t_result = false;
+					break;
 				}
 			}
+
+			t_index++;
 		}
 
-		return true;
+		return t_result;
 	}
 
-	/** NullSizeCheck_HashSet
+	/** Check_HashSet
 	*/
-	public static bool NullSizeCheck_HashSet<A>(System.Collections.Generic.HashSet<A> a_list_a,System.Collections.Generic.HashSet<A> a_list_b)
+	public static bool Check_HashSet<T>(string a_label,System.Collections.Generic.HashSet<T> a_from,System.Collections.Generic.HashSet<T> a_to)
 	{
-		if((a_list_a == null)&&(a_list_b == null)){
-			//両方NULL。
+		if((a_from == null)&&(a_to == null)){
 			return true;
-		}else if((a_list_a == null)||(a_list_b == null)){
-			//片方だけNULL。
+		}else if(a_from == null){
+			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : from == null");
 			return false;
-		}else{
-			if(a_list_a.Count != a_list_b.Count){
-				//サイズが違う。
-				return false;
-			}else{
-				foreach(A t_item_a in a_list_a){
-					if(a_list_b.Contains(t_item_a) == false){
-						//片方にしかない。
-						return false;
-					}
-				}
+		}else if(a_to == null){
+			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : to == null");
+			return false;
+		}
+
+		bool t_result = true;
+
+		if(a_from.Count != a_to.Count){
+			//サイズが違う。
+			t_result = false;
+			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : counterror");
+		}
+
+		foreach(T t_from_value in a_from){
+			if(a_to.Contains(t_from_value) == false){
+				//存在しない。
+				t_result = false;
+				UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : notexist");
+				break;
 			}
 		}
 
-		return true;
+		return t_result;
+	}
+
+	/** どちらかがＮＵＬＬのオブジェクトのチェック。
+	*/
+	public static bool Check_NullObject(string a_label,System.Object a_from,System.Object a_to)
+	{
+		if((a_from == null)&&(a_to == null)){
+			//両方ＮＵＬＬ。
+			return true;
+		}else if(a_from == null){
+			//ＦＲＯＭがＮＵＬＬ。
+			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + "null");
+			return false;
+		}else if(a_to == null){
+			//ＴＯがＮＵＬＬ。
+			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : " + "null");
+			return false;
+		}
+
+		UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : unknown");
+		return false;
 	}
 }
 

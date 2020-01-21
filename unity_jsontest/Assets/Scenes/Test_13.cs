@@ -15,27 +15,31 @@ public class Test_13
 {
 	/** チェック。
 	*/
-	public static void Check(ITEM_TYPE a_from,ITEM_TYPE a_to)
+	public static bool Check(ITEM_TYPE a_from,ITEM_TYPE a_to)
 	{
 		if(a_to == null){
 			UnityEngine.Debug.LogWarning("mismatch : null");
-			return;
+			return false;
 		}
 
-		Test.Check_Int("0.count",	a_from.Count,									a_to.Count);
-		Test.Check_Int("1.count",	a_from[0].Count,								a_to[0].Count);
-		Test.Check_Int("2.count",	a_from[0][0].Count,								a_to[0][0].Count);
-		Test.Check_Int("3.count",	a_from[0][0][0].Count,							a_to[0][0][0].Count);
-		Test.Check_Int("4.count",	a_from[0][0][0][0].Count,						a_to[0][0][0][0].Count);
-		Test.Check_Int("5.count",	a_from[0][0][0][0][0].Count,					a_to[0][0][0][0][0].Count);
-		Test.Check_Int("6.count",	a_from[0][0][0][0][0][0].Count,					a_to[0][0][0][0][0][0].Count);
-		Test.Check_Int("7.count",	a_from[0][0][0][0][0][0][0].Count,				a_to[0][0][0][0][0][0][0].Count);
-		Test.Check_Int("8.count",	a_from[0][0][0][0][0][0][0][0].Count,			a_to[0][0][0][0][0][0][0][0].Count);
-		Test.Check_Int("9.count",	a_from[0][0][0][0][0][0][0][0][0].Count,		a_to[0][0][0][0][0][0][0][0][0].Count);
-		Test.Check_Int("10.count",	a_from[0][0][0][0][0][0][0][0][0][0].Count,		a_to[0][0][0][0][0][0][0][0][0][0].Count);
-		Test.Check_Int("11.count",	a_from[0][0][0][0][0][0][0][0][0][0][0].Count,	a_to[0][0][0][0][0][0][0][0][0][0][0].Count);
+		bool t_result = true;
 
-		Test.Check_Int("11.value",	a_from[0][0][0][0][0][0][0][0][0][0][0][0],		a_to[0][0][0][0][0][0][0][0][0][0][0][0]);
+		t_result &= Test.Check_Int("0.count",	a_from.Count,									a_to.Count);
+		t_result &= Test.Check_Int("1.count",	a_from[0].Count,								a_to[0].Count);
+		t_result &= Test.Check_Int("2.count",	a_from[0][0].Count,								a_to[0][0].Count);
+		t_result &= Test.Check_Int("3.count",	a_from[0][0][0].Count,							a_to[0][0][0].Count);
+		t_result &= Test.Check_Int("4.count",	a_from[0][0][0][0].Count,						a_to[0][0][0][0].Count);
+		t_result &= Test.Check_Int("5.count",	a_from[0][0][0][0][0].Count,					a_to[0][0][0][0][0].Count);
+		t_result &= Test.Check_Int("6.count",	a_from[0][0][0][0][0][0].Count,					a_to[0][0][0][0][0][0].Count);
+		t_result &= Test.Check_Int("7.count",	a_from[0][0][0][0][0][0][0].Count,				a_to[0][0][0][0][0][0][0].Count);
+		t_result &= Test.Check_Int("8.count",	a_from[0][0][0][0][0][0][0][0].Count,			a_to[0][0][0][0][0][0][0][0].Count);
+		t_result &= Test.Check_Int("9.count",	a_from[0][0][0][0][0][0][0][0][0].Count,		a_to[0][0][0][0][0][0][0][0][0].Count);
+		t_result &= Test.Check_Int("10.count",	a_from[0][0][0][0][0][0][0][0][0][0].Count,		a_to[0][0][0][0][0][0][0][0][0][0].Count);
+		t_result &= Test.Check_Int("11.count",	a_from[0][0][0][0][0][0][0][0][0][0][0].Count,	a_to[0][0][0][0][0][0][0][0][0][0][0].Count);
+
+		t_result &= Test.Check_Int("11.value",	a_from[0][0][0][0][0][0][0][0][0][0][0][0],		a_to[0][0][0][0][0][0][0][0][0][0][0][0]);
+
+		return t_result;
 	}
 
 	/** 更新。
@@ -85,22 +89,8 @@ public class Test_13
 			UnityEngine.Debug.Log("Test_13 : " + t_jsonstring);
 
 			//チェック。
-			{
-				if(t_item_from.Count != t_item_to.Count){
-					UnityEngine.Debug.LogWarning("mismatch : item0.value : "		+ t_item_from.Count.ToString()												+ " : " + t_item_to.Count.ToString());
-				}
-
-				if(t_item_from[0][0][0][0][0][0][0][0][0][0].Count != t_item_to[0][0][0][0][0][0][0][0][0][0].Count){
-					UnityEngine.Debug.LogWarning("mismatch : item10.value : "		+ t_item_from[0][0][0][0][0][0][0][0][0][0].Count.ToString()				+ " : " + t_item_to[0][0][0][0][0][0][0][0][0][0].Count.ToString());
-				}
-
-				if(t_item_from[0][0][0][0][0][0][0][0][0][0][0].Count != t_item_to[0][0][0][0][0][0][0][0][0][0][0].Count){
-					UnityEngine.Debug.LogWarning("mismatch : item11.value : "		+ t_item_from[0][0][0][0][0][0][0][0][0][0][0].Count.ToString()				+ " : " + t_item_to[0][0][0][0][0][0][0][0][0][0][0].Count.ToString());
-				}
-
-				if(t_item_from[0][0][0][0][0][0][0][0][0][0][0][0] != t_item_to[0][0][0][0][0][0][0][0][0][0][0][0]){
-					UnityEngine.Debug.LogWarning("mismatch : item11 : "				+ t_item_from[0][0][0][0][0][0][0][0][0][0][0][0].ToString()				+ " : " + t_item_to[0][0][0][0][0][0][0][0][0][0][0][0].ToString());
-				}
+			if(Check(t_item_from,t_item_to) == false){
+				UnityEngine.Debug.LogError("mismatch");
 			}
 		}
 	}

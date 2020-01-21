@@ -21,6 +21,34 @@ public class Test_19
 		public System.Collections.Generic.SortedList<string,int> sorted_list;
 	};
 
+	/** チェック。
+	*/
+	public static bool Check(Item a_from,Item a_to)
+	{
+		if(a_to == null){
+			UnityEngine.Debug.LogWarning("mismatch : null");
+			return false;
+		}
+
+		bool t_result = true;
+
+		//sorted_dictionary
+		t_result &= Test.Check_Dictionary("sorted_dictionary",a_from.sorted_dictionary,a_to.sorted_dictionary,(string a_a_llabel,in int a_a_from,in int a_a_to)=>{
+			bool t_t_result = true;	
+			t_t_result &= Test.Check_Int(a_a_llabel,a_a_from,a_a_to);
+			return t_t_result;
+		});
+
+		//sorted_list
+		t_result &= Test.Check_Dictionary("sorted_list",a_from.sorted_list,a_to.sorted_list,(string a_a_llabel,in int a_a_from,in int a_a_to)=>{
+			bool t_t_result = true;	
+			t_t_result &= Test.Check_Int(a_a_llabel,a_a_from,a_a_to);
+			return t_t_result;
+		});
+
+		return t_result;
+	}
+
 	/** 更新。
 	*/
 	public static void Main()
@@ -64,26 +92,8 @@ public class Test_19
 			UnityEngine.Debug.Log("Test_19 : " + t_jsonstring);
 
 			//チェック。
-			{
-				if(Test.NullSizeCheck_Dictionary(t_item_from.sorted_dictionary,t_item_to.sorted_dictionary) == true){
-					foreach(string t_key in t_item_from.sorted_dictionary.Keys){
-						if(t_item_from.sorted_dictionary[t_key] != t_item_to.sorted_dictionary[t_key]){
-							UnityEngine.Debug.LogWarning("mismatch : " + t_key + " : " + t_item_from.sorted_dictionary[t_key] + " : " + t_item_to.sorted_dictionary[t_key]);
-						}
-					}
-				}else{
-					UnityEngine.Debug.LogWarning("mismatch");
-				}
-
-				if(Test.NullSizeCheck_Dictionary(t_item_from.sorted_list,t_item_to.sorted_list) == true){
-					foreach(string t_key in t_item_from.sorted_list.Keys){
-						if(t_item_from.sorted_list[t_key] != t_item_to.sorted_list[t_key]){
-							UnityEngine.Debug.LogWarning("mismatch : " + t_key + " : " + t_item_from.sorted_list[t_key] + " : " + t_item_to.sorted_list[t_key]);
-						}
-					}
-				}else{
-					UnityEngine.Debug.LogWarning("mismatch");
-				}
+			if(Check(t_item_from,t_item_to) == false){
+				UnityEngine.Debug.LogError("mismatch");
 			}
 		}
 	}

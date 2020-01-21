@@ -20,15 +20,19 @@ public class Test_10
 
 	/** チェック。
 	*/
-	public static void Check(Item a_from,Item a_to)
+	public static bool Check(Item a_from,Item a_to)
 	{
 		if(a_to == null){
 			UnityEngine.Debug.LogWarning("mismatch : null");
-			return;
+			return false;
 		}
 
+		bool t_result = true;
+
 		//Item.ignore
-		Test.Check_Int("ignore",0,a_to.ignore);
+		t_result &= Test.Check_Int("ignore",0,a_to.ignore);
+
+		return t_result;
 	}
 
 	/** 更新。
@@ -67,7 +71,9 @@ public class Test_10
 			UnityEngine.Debug.Log("Test_10 : " + t_jsonstring);
 
 			//チェック。
-			Check(t_item_from,t_item_to);
+			if(Check(t_item_from,t_item_to) == false){
+				UnityEngine.Debug.LogError("mismatch");
+			}
 		}
 	}
 }

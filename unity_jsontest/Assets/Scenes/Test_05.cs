@@ -112,32 +112,36 @@ public class Test_05
 
 	/** チェック。
 	*/
-	public static void Check(Item a_from,Item a_to)
+	public static bool Check(Item a_from,Item a_to)
 	{
 		if(a_to == null){
 			UnityEngine.Debug.LogWarning("mismatch : null");
-			return;
+			return false;
 		}
 
-		Test.Check_Enum("value_type",			a_from.type,				a_to.type);
+		bool t_result = true;
 
-		Test.Check_Enum("type_byte_min",		a_from.type_byte_min,		a_to.type_byte_min);
-		Test.Check_Enum("type_sbyte_min",		a_from.type_sbyte_min,		a_to.type_sbyte_min);
-		Test.Check_Enum("type_short_min",		a_from.type_short_min,		a_to.type_short_min);
-		Test.Check_Enum("type_ushort_min",		a_from.type_ushort_min,		a_to.type_ushort_min);
-		Test.Check_Enum("type_int_min",			a_from.type_int_min,		a_to.type_int_min);
-		Test.Check_Enum("type_uint_min",		a_from.type_uint_min,		a_to.type_uint_min);
-		Test.Check_Enum("type_long_min",		a_from.type_long_min,		a_to.type_long_min);
-		Test.Check_Enum("type_ulong_min",		a_from.type_ulong_min,		a_to.type_ulong_min);
+		t_result &= Test.Check_Enum("value_type",			a_from.type,				a_to.type);
 
-		Test.Check_Enum("type_byte_max",		a_from.type_byte_max,		a_to.type_byte_max);
-		Test.Check_Enum("type_sbyte_max",		a_from.type_sbyte_max,		a_to.type_sbyte_max);
-		Test.Check_Enum("type_short_max",		a_from.type_short_max,		a_to.type_short_max);
-		Test.Check_Enum("type_ushort_max",		a_from.type_ushort_max,		a_to.type_ushort_max);
-		Test.Check_Enum("type_int_max",			a_from.type_int_max,		a_to.type_int_max);
-		Test.Check_Enum("type_uint_max",		a_from.type_uint_max,		a_to.type_uint_max);
-		Test.Check_Enum("type_long_max",		a_from.type_long_max,		a_to.type_long_max);
-		Test.Check_Enum("type_ulong_max",		a_from.type_ulong_max,		a_to.type_ulong_max);
+		t_result &= Test.Check_Enum("type_byte_min",		a_from.type_byte_min,		a_to.type_byte_min);
+		t_result &= Test.Check_Enum("type_sbyte_min",		a_from.type_sbyte_min,		a_to.type_sbyte_min);
+		t_result &= Test.Check_Enum("type_short_min",		a_from.type_short_min,		a_to.type_short_min);
+		t_result &= Test.Check_Enum("type_ushort_min",		a_from.type_ushort_min,		a_to.type_ushort_min);
+		t_result &= Test.Check_Enum("type_int_min",			a_from.type_int_min,		a_to.type_int_min);
+		t_result &= Test.Check_Enum("type_uint_min",		a_from.type_uint_min,		a_to.type_uint_min);
+		t_result &= Test.Check_Enum("type_long_min",		a_from.type_long_min,		a_to.type_long_min);
+		t_result &= Test.Check_Enum("type_ulong_min",		a_from.type_ulong_min,		a_to.type_ulong_min);
+
+		t_result &= Test.Check_Enum("type_byte_max",		a_from.type_byte_max,		a_to.type_byte_max);
+		t_result &= Test.Check_Enum("type_sbyte_max",		a_from.type_sbyte_max,		a_to.type_sbyte_max);
+		t_result &= Test.Check_Enum("type_short_max",		a_from.type_short_max,		a_to.type_short_max);
+		t_result &= Test.Check_Enum("type_ushort_max",		a_from.type_ushort_max,		a_to.type_ushort_max);
+		t_result &= Test.Check_Enum("type_int_max",			a_from.type_int_max,		a_to.type_int_max);
+		t_result &= Test.Check_Enum("type_uint_max",		a_from.type_uint_max,		a_to.type_uint_max);
+		t_result &= Test.Check_Enum("type_long_max",		a_from.type_long_max,		a_to.type_long_max);
+		t_result &= Test.Check_Enum("type_ulong_max",		a_from.type_ulong_max,		a_to.type_ulong_max);
+
+		return t_result;
 	}
 
 	/** 更新。
@@ -193,7 +197,9 @@ public class Test_05
 			UnityEngine.Debug.Log("Test_05 : " + t_jsonstring);
 
 			//チェック。
-			Check(t_item_from,t_item_to);
+			if(Check(t_item_from,t_item_to) == false){
+				UnityEngine.Debug.LogError("mismatch");
+			}
 		}
 	}
 }

@@ -35,40 +35,48 @@ public class Test_11
 		}
 	}
 
-	/** Check_Member
-	*/
-	public static void Check_Member(int a_nest,Item a_from,Item a_to)
-	{
-		if((a_from == null)&&(a_to == null)){
-			return;
-		}
-
-		if(a_from == null){
-			UnityEngine.Debug.LogWarning("mismatch : " + a_nest.ToString() + " : null : to");
-			return;
-		}else if(a_to == null){
-			UnityEngine.Debug.LogWarning("mismatch : " + a_nest.ToString() + " : from : null");
-			return;
-		}
-
-		//Item.value
-		Test.Check_Int("value : " + a_nest.ToString(),a_from.value,a_to.value);
-
-		//Item.item
-		Check_Member(a_nest + 1,a_from.item,a_to.item);
-	}
-
 	/** チェック。
 	*/
-	public static void Check(Item a_from,Item a_to)
+	public static bool Check(Item a_from,Item a_to)
 	{
 		if(a_to == null){
 			UnityEngine.Debug.LogWarning("mismatch : null");
-			return;
+			return false;
 		}
 
+		bool t_result = true;
+
 		//member
-		Check_Member(0,a_from,a_to);
+		t_result &= Check_Member(a_from,a_to);
+
+		return t_result;
+	}
+
+	/** Check_Member
+	*/
+	public static bool Check_Member(Item a_from,Item a_to)
+	{
+		if((a_from == null)&&(a_to == null)){
+			return true;
+		}
+
+		if(a_from == null){
+			UnityEngine.Debug.LogWarning("mismatch : from == null");
+			return false;
+		}else if(a_to == null){
+			UnityEngine.Debug.LogWarning("mismatch : to == null");
+			return false;
+		}
+
+		bool t_result = true;
+
+		//value
+		t_result &= Test.Check_Int("value",a_from.value,a_to.value);
+
+		//item
+		t_result &= Check_Member(a_from.item,a_to.item);
+
+		return t_result;
 	}
 
 	/** 更新。
@@ -111,7 +119,9 @@ public class Test_11
 			UnityEngine.Debug.Log("Test_11 : " + t_jsonstring);
 
 			//チェック。
-			Check(t_item_from,t_item_to);
+			if(Check(t_item_from,t_item_to) == false){
+				UnityEngine.Debug.LogError("mismatch");
+			}
 		}
 	}
 }

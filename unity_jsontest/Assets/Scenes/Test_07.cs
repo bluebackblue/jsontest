@@ -10,30 +10,22 @@ public class Test_07
 {
 	/** チェック。
 	*/
-	public static void Check(System.Collections.Generic.Dictionary<string,int> a_from,System.Collections.Generic.Dictionary<string,int> a_to)
+	public static bool Check(System.Collections.Generic.Dictionary<string,int> a_from,System.Collections.Generic.Dictionary<string,int> a_to)
 	{
 		if(a_to == null){
 			UnityEngine.Debug.LogWarning("mismatch : null");
-			return;
+			return false;
 		}
 
-		//Generic.Dictionary
-		{
-			if(a_from.Count != a_to.Count){
-				UnityEngine.Debug.LogWarning("mismatch : " + "count : " + a_from.Count.ToString() + " : " + a_to.Count.ToString());
-			}
+		bool t_result = true;
 
-			foreach(System.Collections.Generic.KeyValuePair<string,int> t_from_pair in a_from){
-				int t_to_value;
-				if(a_to.TryGetValue(t_from_pair.Key,out t_to_value) == false){
-					UnityEngine.Debug.LogWarning("mismatch : " + t_from_pair.Key + " : notexist");
-				}else{
-					int t_from_value = t_from_pair.Value;
-					Test.Check_Int(t_from_pair.Key,t_from_value,t_to_value);
-				}
-			}
-		}
+		t_result &= Test.Check_Dictionary("",a_from,a_to,(string a_a_label,in int a_a_from,in int a_a_to) => {
+			bool t_t_result = true;
+			t_t_result &= Test.Check_Int(a_a_label,a_a_from,a_a_to) ;
+			return t_t_result;
+		});
 
+		return t_result;
 	}
 
 	/** 更新。
@@ -74,7 +66,9 @@ public class Test_07
 			UnityEngine.Debug.Log("Test_07 : " + t_jsonstring);
 
 			//チェック。
-			Check(t_item_from,t_item_to);
+			if(Check(t_item_from,t_item_to) == false){
+				UnityEngine.Debug.LogError("mismatch");
+			}
 		}
 	}
 }

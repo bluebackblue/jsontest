@@ -12,9 +12,30 @@ public class Test_04
 	*/
 	public class Item
 	{
-		/** 文字。
+		/** ＵＴＦ１６。
 		*/
-		public string value;
+		public string value_u;
+
+		/** 対応していないエスケープシーケンス。
+		*/
+		public string value_x;
+	}
+
+	/** チェック。
+	*/
+	public static bool Check(Item a_from,Item a_to)
+	{
+		if(a_to == null){
+			UnityEngine.Debug.LogWarning("mismatch : null");
+			return false;
+		}
+
+		bool t_result = true;
+
+		t_result &= Test.Check_String("value_u",a_from.value_u,a_to.value_u);
+		t_result &= Test.Check_String("value_x",a_from.value_x,a_to.value_x);
+
+		return t_result;
 	}
 
 	/** 更新。
@@ -23,34 +44,14 @@ public class Test_04
 	{
 		UnityEngine.Debug.Log("----- Test_04 -----");
 
-		//ＵＴＦ１６。
 		{
-			string t_jsonstring = "{\"value\":\"\\u3042\"}";
-
-			//ＪＳＯＮ文字列 ==> オブジェクト。
-			#if(FEE_JSON)
-			Item t_item_to = Fee.JsonItem.Convert.JsonStringToObject<Item>(t_jsonstring);
-			#else
-			Item t_item_to = UnityEngine.JsonUtility.FromJson<Item>(t_jsonstring);
-			#endif
-
-			//ログ。
-			UnityEngine.Debug.Log("Test_04 : 1 : " + t_jsonstring);
-
-			//チェック。
+			Item t_item_from = new Item();
 			{
-				string t_log = "value : " + Test.ToBinaryString("あ") + " : " + Test.ToBinaryString(t_item_to.value);
-				if("あ" == t_item_to.value){
-					UnityEngine.Debug.Log(t_log);
-				}else{
-					UnityEngine.Debug.LogWarning("mismatch : " + t_log);
-				}
+				t_item_from.value_u = "\u3042";
+				t_item_from.value_x = "\x3042";
 			}
-		}
 
-		//対応していないエスケープシーケンス。
-		{
-			string t_jsonstring = "{\"value\":\"\\x3042\"}";
+			string t_jsonstring = "{\"value_u\":\"\\u3042\",\"value_x\":\"\\x3042\"}";
 
 			//ＪＳＯＮ文字列 ==> オブジェクト。
 			#if(FEE_JSON)
@@ -64,13 +65,8 @@ public class Test_04
 			UnityEngine.Debug.Log("Test_04 : 2 : " + t_jsonstring);
 
 			//チェック。
-			{
-				string t_log = "value : " + Test.ToBinaryString("\x3042") + " : " + Test.ToBinaryString(t_item_to.value);
-				if("\x3042" == t_item_to.value){
-					UnityEngine.Debug.Log(t_log);
-				}else{
-					UnityEngine.Debug.LogWarning("mismatch : " + t_log);
-				}
+			if(Check(t_item_from,t_item_to) == false){
+				UnityEngine.Debug.LogError("mismatch");
 			}
 		}
 	}

@@ -8,6 +8,26 @@
 */
 public class Test_23
 {
+	/** チェック。
+	*/
+	public static bool Check(System.Collections.Generic.Queue<int> a_from,System.Collections.Generic.Queue<int> a_to)
+	{
+		if(a_to == null){
+			UnityEngine.Debug.LogWarning("mismatch : null");
+			return false;
+		}
+
+		bool t_result = true;
+
+		t_result &= Test.Check_Enumerator("",a_from,a_to,(string a_a_label,in int a_a_from,in int a_a_to) =>{
+			bool t_t_result = true;	
+			t_t_result &= Test.Check_Int(a_a_label,a_a_from,a_a_to);
+			return t_t_result;
+		});
+
+		return t_result;
+	}
+
 	/** 更新。
 	*/
 	public static void Main()
@@ -45,30 +65,8 @@ public class Test_23
 			UnityEngine.Debug.Log("Test_23 : " + t_jsonstring);
 
 			//チェック。
-			{
-				if(Test.NullSizeCheck(t_item_from,t_item_to) == true){
-					System.Collections.IEnumerator t_from = t_item_from.GetEnumerator();
-					System.Collections.IEnumerator t_to = t_item_to.GetEnumerator();
-
-					while(true){
-						{
-							bool t_ret_from = t_from.MoveNext();
-							bool t_ret_to = t_to.MoveNext();
-							if((t_ret_from == false)&&(t_ret_to == false)){
-								break;
-							}
-						}
-
-						int t_value_from = (int)t_from.Current;
-						int t_value_to = (int)t_to.Current;
-
-						if(t_value_from != t_value_to){
-							UnityEngine.Debug.LogWarning("mismatch");
-						}
-					}
-				}else{
-					UnityEngine.Debug.LogWarning("mismatch");
-				}
+			if(Check(t_item_from,t_item_to) == false){
+				UnityEngine.Debug.LogError("mismatch");
 			}
 		}
 	}

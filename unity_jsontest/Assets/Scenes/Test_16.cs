@@ -33,6 +33,26 @@ public class Test_16
 		public int[] value_array;
 	}
 
+	/** チェック。
+	*/
+	public static bool Check(Item a_from,Item a_to)
+	{
+		if(a_to == null){
+			UnityEngine.Debug.LogWarning("mismatch : null");
+			return false;
+		}
+
+		bool t_result = true;
+
+		t_result &= Test.Check_NullObject("value_class",		a_from.value_class,			a_to.value_class);
+		t_result &= Test.Check_NullObject("value_string",		a_from.value_string,		a_to.value_string);
+		t_result &= Test.Check_NullObject("value_list",			a_from.value_list,			a_to.value_list);
+		t_result &= Test.Check_NullObject("value_dictionary",	a_from.value_dictionary,	a_to.value_dictionary);
+		t_result &= Test.Check_NullObject("value_array",		a_from.value_array,			a_to.value_array);
+
+		return t_result;
+	}
+
 	/** 更新。
 	*/
 	public static void Main()
@@ -81,26 +101,8 @@ public class Test_16
 			UnityEngine.Debug.Log("Test_16 : " + t_jsonstring);
 
 			//チェック。
-			{
-				if(t_item_to.value_class != t_item_from.value_class){
-					UnityEngine.Debug.LogWarning("mismatch : value_class : "		+ t_item_to.value_class.ToString());
-				}
-
-				if(t_item_to.value_string != t_item_from.value_string){
-					UnityEngine.Debug.LogWarning("mismatch : value_string : "		+ t_item_to.value_list.ToString());
-				}
-
-				if(t_item_to.value_list != t_item_from.value_list){
-					UnityEngine.Debug.LogWarning("mismatch : value_list : "			+ t_item_to.value_list.ToString());
-				}
-
-				if(t_item_to.value_dictionary != t_item_from.value_dictionary){
-					UnityEngine.Debug.LogWarning("mismatch : value_dictionary : "	+ t_item_to.value_dictionary.ToString());
-				}
-
-				if(t_item_to.value_array != t_item_from.value_array){
-					UnityEngine.Debug.LogWarning("mismatch : value_array : "		+ t_item_to.value_array.ToString());
-				}
+			if(Check(t_item_from,t_item_to) == false){
+				UnityEngine.Debug.LogError("mismatch");
 			}
 		}
 	}

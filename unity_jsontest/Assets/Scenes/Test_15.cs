@@ -8,6 +8,35 @@
 */
 public class Test_15
 {
+	/** チェック。
+	*/
+	public static bool Check(int[][][][][][][][][][][][] a_from,int[][][][][][][][][][][][] a_to)
+	{
+		if(a_to == null){
+			UnityEngine.Debug.LogWarning("mismatch : null");
+			return false;
+		}
+
+		bool t_result = true;
+
+		t_result &= Test.Check_Int("0.length",	a_from.Length,										a_to.Length);
+		t_result &= Test.Check_Int("1.length",	a_from[0].Length,									a_to[0].Length);
+		t_result &= Test.Check_Int("2.length",	a_from[0][0].Length,								a_to[0][0].Length);
+		t_result &= Test.Check_Int("3.length",	a_from[0][0][0].Length,								a_to[0][0][0].Length);
+		t_result &= Test.Check_Int("4.length",	a_from[0][0][0][0].Length,							a_to[0][0][0][0].Length);
+		t_result &= Test.Check_Int("5.length",	a_from[0][0][0][0][0].Length,						a_to[0][0][0][0][0].Length);
+		t_result &= Test.Check_Int("6.length",	a_from[0][0][0][0][0][0].Length,					a_to[0][0][0][0][0][0].Length);
+		t_result &= Test.Check_Int("7.length",	a_from[0][0][0][0][0][0][0].Length,					a_to[0][0][0][0][0][0][0].Length);
+		t_result &= Test.Check_Int("8.length",	a_from[0][0][0][0][0][0][0][0].Length,				a_to[0][0][0][0][0][0][0][0].Length);
+		t_result &= Test.Check_Int("9.length",	a_from[0][0][0][0][0][0][0][0][0].Length,			a_to[0][0][0][0][0][0][0][0][0].Length);
+		t_result &= Test.Check_Int("10.length",	a_from[0][0][0][0][0][0][0][0][0][0].Length,		a_to[0][0][0][0][0][0][0][0][0][0].Length);
+		t_result &= Test.Check_Int("11.length",	a_from[0][0][0][0][0][0][0][0][0][0][0].Length,		a_to[0][0][0][0][0][0][0][0][0][0][0].Length);
+
+		t_result &= Test.Check_Int("11.value",	a_from[0][0][0][0][0][0][0][0][0][0][0][0],			a_to[0][0][0][0][0][0][0][0][0][0][0][0]);
+
+		return t_result;
+	}
+
 	/** 更新。
 	*/
 	public static void Main()
@@ -55,22 +84,8 @@ public class Test_15
 			UnityEngine.Debug.Log("Test_15 : " + t_jsonstring);
 
 			//チェック。
-			{
-				if(t_item_from.Length != t_item_to.Length){
-					UnityEngine.Debug.LogWarning("mismatch : item0.value : "		+ t_item_from.Length.ToString()											+ " : " + t_item_to.Length.ToString());
-				}
-
-				if(t_item_from[0][0][0][0][0][0][0][0][0][0].Length != t_item_to[0][0][0][0][0][0][0][0][0][0].Length){
-					UnityEngine.Debug.LogWarning("mismatch : item10.value : "		+ t_item_from[0][0][0][0][0][0][0][0][0][0].Length.ToString()			+ " : " + t_item_to[0][0][0][0][0][0][0][0][0][0].Length.ToString());
-				}
-
-				if(t_item_from[0][0][0][0][0][0][0][0][0][0][0].Length != t_item_to[0][0][0][0][0][0][0][0][0][0][0].Length){
-					UnityEngine.Debug.LogWarning("mismatch : item11.value : "		+ t_item_from[0][0][0][0][0][0][0][0][0][0][0].Length.ToString()		+ " : " + t_item_to[0][0][0][0][0][0][0][0][0][0][0].Length.ToString());
-				}
-
-				if(t_item_from[0][0][0][0][0][0][0][0][0][0][0][0] != t_item_to[0][0][0][0][0][0][0][0][0][0][0][0]){
-					UnityEngine.Debug.LogWarning("mismatch : item11 : "				+ t_item_from[0][0][0][0][0][0][0][0][0][0][0][0].ToString()			+ " : " + t_item_to[0][0][0][0][0][0][0][0][0][0][0][0].ToString());
-				}
+			if(Check(t_item_from,t_item_to) == false){
+				UnityEngine.Debug.LogError("mismatch");
 			}
 		}
 	}
