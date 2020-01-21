@@ -95,9 +95,6 @@ public class Test : MonoBehaviour
 		//Enum(要素の文字列処理)。
 		Test_25.Main();
 
-		//要素をオブジェクト化できないGeneric。
-		Test_99.Main();
-
 		yield break;
 	}
 

@@ -54,14 +54,14 @@ public class Test_25
 		*/
 		public Type value_type;
 
-		/** 数値としてＪＳＯＮ出力。
-		*/
-		[Fee.JsonItem.EnumInt]
-		public Type value_type_int;
-
 		/** 文字列としてＪＳＯＮ出力。
 		*/
 		[Fee.JsonItem.EnumString]
+		public Type value_type_int;
+
+		/** 数値としてＪＳＯＮ出力。
+		*/
+		[Fee.JsonItem.EnumInt]
 		public Type value_type_string;
 
 		/** list_type
