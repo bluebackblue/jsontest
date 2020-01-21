@@ -20,80 +20,36 @@ public class Test : MonoBehaviour
 	*/
 	public System.Collections.IEnumerator TestCoroutine()
 	{
-		//最大値。
+		/*
 		Test_01.Main();
-
-		//最小値。
 		Test_02.Main();
-
-		//文字１。
 		Test_03.Main();
-
-		//文字２。
 		Test_04.Main();
-
-		//Enum。
 		Test_05.Main();
-
-		//構造体。
 		Test_06.Main();
-
-		//Dictionary(key = string)。
 		Test_07.Main();
-
-		//List。
 		Test_08.Main();
-
-		//Array。
 		Test_09.Main();
-
-		//Ignore。
 		Test_10.Main();
-
-		//クラスネスト。
 		Test_11.Main();
-
-		//構造体ネスト。
 		Test_12.Main();
-		
-		//Listネスト。
 		Test_13.Main();
-
-		//Dictionaryネスト。
 		Test_14.Main();
-
-		//Arrayネスト。
 		Test_15.Main();
-
-		//null処理１。
 		Test_16.Main();
-
-		//null処理２。
 		Test_17.Main();
-
-		//継承。
 		Test_18.Main();
-
-		//IDictionary(key = string)
 		Test_19.Main();
-
-		//Stack。
 		Test_20.Main();
-
-		//LinkedList。
 		Test_21.Main();
-
-		//HashSet。
 		Test_22.Main();
-
-		//Queue。
 		Test_23.Main();
-
-		//SortedSet。
 		Test_24.Main();
-
-		//Enum(要素の文字列処理)。
 		Test_25.Main();
+		*/
+
+		Test_26.Main();
+
 
 		yield break;
 	}

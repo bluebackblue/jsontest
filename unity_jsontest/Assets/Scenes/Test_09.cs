@@ -4,7 +4,7 @@
 #define FEE_JSON
 
 
-/** Array。
+/** System.Array。
 */
 public class Test_09
 {

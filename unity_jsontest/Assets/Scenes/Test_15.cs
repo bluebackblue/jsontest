@@ -4,7 +4,7 @@
 #define FEE_JSON
 
 
-/** Arrayネスト。
+/** System.Arrayネスト。
 */
 public class Test_15
 {

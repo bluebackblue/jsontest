@@ -4,7 +4,7 @@
 #define FEE_JSON
 
 
-/** IDictionary(key = string)
+/** Generic.IDictionary(key = string)
 */
 public class Test_19
 {

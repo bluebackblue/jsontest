@@ -12,7 +12,7 @@ public class Test_10
 	*/
 	public class Item
 	{
-		/** ＪＳＯＮ文字列化しない。
+		/** ignore
 		*/
 		[Fee.JsonItem.Ignore]
 		public int ignore;

@@ -4,7 +4,7 @@
 #define FEE_JSON
 
 
-/** Stack。
+/** Generic.Stack。
 */
 public class Test_20
 {

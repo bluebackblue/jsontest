@@ -4,7 +4,7 @@
 #define FEE_JSON
 
 
-/** List。
+/** Generic.List。
 */
 public class Test_08
 {

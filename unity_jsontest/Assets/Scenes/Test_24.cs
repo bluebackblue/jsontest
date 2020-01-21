@@ -4,7 +4,7 @@
 #define FEE_JSON
 
 
-/** SortedSet。
+/** Generic.SortedSet。
 */
 public class Test_24
 {

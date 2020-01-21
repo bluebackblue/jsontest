@@ -4,7 +4,7 @@
 #define FEE_JSON
 
 
-/** HashSet。
+/** Generic.HashSet。
 */
 public class Test_22
 {
