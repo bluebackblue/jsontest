@@ -4,28 +4,27 @@
 #define FEE_JSON
 
 
-/** テストコード。
+/** Collections.ArrayList。
 */
-public class Test_99
+public class Test_27
 {
-	/** Item_Key
+	/** Type
 	*/
-	public class Item_Key
+	public enum Type : byte
 	{
-		/** key
-		*/
-		public int key;
+		TypeA = 100,
+	}
 
-		/** constructor
-		*/
-		public Item_Key(){
-		}
-
-		/** constructor
-		*/
-		public Item_Key(int a_key)
+	/** Item_Value
+	*/
+	public class Item_Value
+	{
+		public string value_string;
+		public bool value_bool;
+		public Item_Value(string a_value_string,bool a_value_bool)
 		{
-			this.key = a_key;
+			this.value_string = a_value_string;
+			this.value_bool = a_value_bool;
 		}
 	}
 
@@ -33,10 +32,8 @@ public class Test_99
 	*/
 	public class Item
 	{
-		public System.Collections.Generic.Dictionary<Item_Key,int> dictionary;
-
 		public System.Collections.ArrayList arraylist;
-	};
+	}
 
 	/** チェック。
 	*/
@@ -55,21 +52,30 @@ public class Test_99
 	*/
 	public static void Main()
 	{
-		UnityEngine.Debug.Log("----- Test_99 -----");
+		UnityEngine.Debug.Log("----- Test_27 -----");
 
 		{
 			Item t_item_from = new Item();
 			{
-				t_item_from.dictionary = new System.Collections.Generic.Dictionary<Item_Key,int>();
-				t_item_from.dictionary.Add(new Item_Key(1),1);
-				t_item_from.dictionary.Add(new Item_Key(2),2);
-				t_item_from.dictionary.Add(new Item_Key(3),3);
-
+				/*
+				System.Collections.Generic.HashSet<Item_Value> t_hashset = new System.Collections.Generic.HashSet<Item_Value>();
+				t_hashset.Add(new Item_Value("hash_1",false));
+				t_hashset.Add(new Item_Value("hash_2",false));
+				t_hashset.Add(new Item_Value("hash_3",false));
+				*/
 				t_item_from.arraylist = new System.Collections.ArrayList();
-				t_item_from.arraylist.Add(1);
-				t_item_from.arraylist.Add("2");
-				t_item_from.arraylist.Add(new Item_Key(3));
-				t_item_from.arraylist.Add(new int[]{1,2,3});
+
+				t_item_from.arraylist.Add(new Item_Value("value_4",true));
+
+				/*
+				t_item_from.arraylist.Add(t_hashset);
+				*/
+				/*
+				
+				t_item_from.arraylist.Add(100);
+				t_item_from.arraylist.Add("value_2");
+				t_item_from.arraylist.Add(Type.TypeA);
+				*/
 			}
 
 			//オブジェクト ==> ＪＳＯＮＩＴＥＭ。
@@ -90,9 +96,9 @@ public class Test_99
 			#else
 			Item t_item_to = UnityEngine.JsonUtility.FromJson<Item>(t_jsonstring);
 			#endif
-
+		
 			//ログ。
-			UnityEngine.Debug.Log("Test_99 : " + t_jsonstring);
+			UnityEngine.Debug.Log("Test_26 : " + t_jsonstring);
 
 			//チェック。
 			if(Check(t_item_from,t_item_to) == false){

@@ -20,7 +20,6 @@ public class Test : MonoBehaviour
 	*/
 	public System.Collections.IEnumerator TestCoroutine()
 	{
-		/*
 		Test_01.Main();
 		Test_02.Main();
 		Test_03.Main();
@@ -46,10 +45,7 @@ public class Test : MonoBehaviour
 		Test_23.Main();
 		Test_24.Main();
 		Test_25.Main();
-		*/
-
 		Test_26.Main();
-
 
 		yield break;
 	}

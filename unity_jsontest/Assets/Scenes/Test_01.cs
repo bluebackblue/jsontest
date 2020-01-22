@@ -76,7 +76,7 @@ public class Test_01
 				t_item_from.value_char = char.MaxValue;
 				t_item_from.value_float = float.MaxValue;
 				t_item_from.value_double = double.MaxValue;
-				t_item_from.value_decimal = decimal.MaxValue;
+				t_item_from.value_decimal = decimal.MaxValue - 0.1m;
 			}
 
 			//オブジェクト ==> ＪＳＯＮＩＴＥＭ。
@@ -86,7 +86,7 @@ public class Test_01
 
 			//ＪＳＯＮＩＴＥＭ ==> ＪＳＯＮ文字列。
 			#if(FEE_JSON)
-			string t_jsonstring = t_jsonitem.ConvertJsonString();
+			string t_jsonstring = t_jsonitem.ConvertToJsonString();
 			#else
 			string t_jsonstring = UnityEngine.JsonUtility.ToJson(t_item_from);
 			#endif

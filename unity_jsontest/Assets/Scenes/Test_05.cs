@@ -181,7 +181,7 @@ public class Test_05
 
 			//ＪＳＯＮＩＴＥＭ ==> ＪＳＯＮ文字列。
 			#if(FEE_JSON)
-			string t_jsonstring = t_jsonitem.ConvertJsonString();
+			string t_jsonstring = t_jsonitem.ConvertToJsonString();
 			#else
 			string t_jsonstring = UnityEngine.JsonUtility.ToJson(t_item_from);
 			#endif
