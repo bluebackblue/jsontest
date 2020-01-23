@@ -8,34 +8,11 @@
 */
 public class Test_99
 {
-	/** Item_Key
-	*/
-	public class Item_Key
-	{
-		/** key
-		*/
-		public int key;
-
-		/** constructor
-		*/
-		public Item_Key(){
-		}
-
-		/** constructor
-		*/
-		public Item_Key(int a_key)
-		{
-			this.key = a_key;
-		}
-	}
-
 	/** Item
 	*/
 	public class Item
 	{
-		public System.Collections.Generic.Dictionary<Item_Key,int> dictionary;
-
-		public System.Collections.ArrayList arraylist;
+		public System.Collections.Generic.Dictionary<int,int> dictionary;
 	};
 
 	/** チェック。
@@ -60,16 +37,10 @@ public class Test_99
 		{
 			Item t_item_from = new Item();
 			{
-				t_item_from.dictionary = new System.Collections.Generic.Dictionary<Item_Key,int>();
-				t_item_from.dictionary.Add(new Item_Key(1),1);
-				t_item_from.dictionary.Add(new Item_Key(2),2);
-				t_item_from.dictionary.Add(new Item_Key(3),3);
-
-				t_item_from.arraylist = new System.Collections.ArrayList();
-				t_item_from.arraylist.Add(1);
-				t_item_from.arraylist.Add("2");
-				t_item_from.arraylist.Add(new Item_Key(3));
-				t_item_from.arraylist.Add(new int[]{1,2,3});
+				t_item_from.dictionary = new System.Collections.Generic.Dictionary<int,int>();
+				t_item_from.dictionary.Add(1,10);
+				t_item_from.dictionary.Add(2,20);
+				t_item_from.dictionary.Add(3,30);
 			}
 
 			//オブジェクト ==> ＪＳＯＮＩＴＥＭ。

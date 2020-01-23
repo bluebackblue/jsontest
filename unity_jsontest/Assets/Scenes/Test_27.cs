@@ -37,14 +37,20 @@ public class Test_27
 
 	/** チェック。
 	*/
-	public static bool Check(Item a_item_from,Item a_item_to)
+	public static bool Check(Item a_from,Item a_to)
 	{
-		if(a_item_to == null){
+		if(a_to == null){
 			UnityEngine.Debug.LogWarning("mismatch : null");
 			return false;
 		}
 
 		bool t_result = true;
+
+		/* TODO:
+		string t_re_convert = Fee.JsonItem.Convert.ObjectToJsonString(a_to);
+		UnityEngine.Debug.Log(t_re_convert);
+		*/
+
 		return t_result;
 	}
 
@@ -102,7 +108,7 @@ public class Test_27
 			#endif
 		
 			//ログ。
-			UnityEngine.Debug.Log("Test_26 : " + t_jsonstring);
+			UnityEngine.Debug.Log("Test_27 : " + t_jsonstring);
 
 			//チェック。
 			if(Check(t_item_from,t_item_to) == false){

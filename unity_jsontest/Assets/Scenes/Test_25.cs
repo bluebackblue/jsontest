@@ -41,7 +41,8 @@ public class Test_25
 
 		/** constructor
 		*/
-		public Item_Type(Type a_value_type){
+		public Item_Type(Type a_value_type)
+		{
 			this.value_type = a_value_type;
 		}
 	}
@@ -141,9 +142,7 @@ public class Test_25
 			Item t_item_from = new Item();
 			{
 				t_item_from.value_type = Type.Type_A;
-				
 				t_item_from.value_type_int = Type.Type_B;
-				
 				t_item_from.value_type_string = Type.Type_C;
 
 				t_item_from.list_type = new System.Collections.Generic.List<Type>();
