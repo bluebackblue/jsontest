@@ -54,14 +54,13 @@ namespace Fee.JsonItem
 						//Generic.SortedDictionary<xxxx,>
 						//Generic.SortedList<xxxx,>
 
+						//未対応。
 					}
 				}
 			}
 							
 			//class,struct
 			{
-				//associativearray => class,strut
-
 				System.Collections.Generic.List<System.Reflection.FieldInfo> t_fieldinfo_list = new System.Collections.Generic.List<System.Reflection.FieldInfo>();
 				Fee.JsonItem.ConvertTool.GetMemberListAll(a_to_type,t_fieldinfo_list);
 

@@ -427,9 +427,9 @@ namespace Fee.JsonItem
 
 		/** 値取得。
 
-			char
-			sbyte
-			byte
+			System.Char(char)
+			System.SByte(sbyte)
+			System.Byte(byte)
 			System.Int16(short)
 			System.UInt16(ushort)
 			System.Int32(int)
@@ -468,7 +468,7 @@ namespace Fee.JsonItem
 
 		/** 値取得。
 		*/
-		public bool GetBoolData()
+		public System.Boolean GetBoolData()
 		{
 			this.JsonStringToValue();
 			return this.value.GetBoolData();
@@ -476,7 +476,7 @@ namespace Fee.JsonItem
 
 		/** 値取得。
 		*/
-		public decimal GetDecimalNumber()
+		public System.Decimal GetDecimalNumber()
 		{
 			this.JsonStringToValue();
 			return this.value.GetDecimalNumber();
@@ -654,7 +654,7 @@ namespace Fee.JsonItem
 		*/
 		public bool IsDecimalNumber()
 		{
-			return this.value.IsBoolData();
+			return this.value.IsDecimalNumber();
 		}
 
 		/** タイプチェック。バイナリデータ。
@@ -788,17 +788,6 @@ namespace Fee.JsonItem
 					if(t_binarydata != null){
 						return t_binarydata.Count;
 					}
-				}break;
-			case ValueType.Null:
-			case ValueType.SignedNumber:
-			case ValueType.UnsignedNumber:
-			case ValueType.FloatingNumber:
-			case ValueType.BoolData:
-			case ValueType.Calc_BoolDataFalse:
-			case ValueType.Calc_BoolDataTrue:
-			case ValueType.Calc_UnknownNumber:
-			default:
-				{
 				}break;
 			}
 
@@ -1221,6 +1210,8 @@ namespace Fee.JsonItem
 				}break;
 			case ValueType.DecimalNumber:
 				{
+					//文字列として出力する。
+
 					a_stringbuilder.Append("\"");
 
 					try{
@@ -1329,15 +1320,7 @@ namespace Fee.JsonItem
 							this.jsonstring = null;
 							return;
 						}else{
-							//TODO:decimal
-							decimal t_value_decimal;
-							if(decimal.TryParse(this.jsonstring,Config.STRING_TO_DOBULE_NUMBERSTYLE,Config.CULTURE,out t_value_decimal) == true){
-								this.value.raw = t_value;
-								this.jsonstring =  null;
-								this.value.valuetype = ValueType.DecimalNumber;
-							}else{
-								Tool.Assert(false);
-							}
+							Tool.Assert(false);
 						}
 					}break;
 				case ValueType.IndexArray:

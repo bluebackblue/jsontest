@@ -20,11 +20,19 @@ namespace Fee.JsonItem
 		*/
 		public System.Collections.Generic.LinkedList<JsonToObject_WorkPool_Item> list;
 
+		/** temp_parameter_list_1
+		*/
+		public System.Object[] temp_parameter_list_1;
+
 		/** constructor
 		*/
 		public JsonToObject_WorkPool()
 		{
+			//list
 			this.list = new System.Collections.Generic.LinkedList<JsonToObject_WorkPool_Item>();
+
+			//temp_parameter_list_1
+			this.temp_parameter_list_1 = new System.Object[1]{null};
 		}
 
 		/** 最後に追加。

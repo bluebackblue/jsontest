@@ -48,9 +48,9 @@ namespace Fee.JsonItem
 		*/
 		public static string DOUBLE_TO_STRING_FORMAT = "{0:e16}";
 
-		/** DOUBLE_SEPARATOR
+		/** FLOATING_SEPARATOR
 		*/
-		public static char DOUBLE_SEPARATOR = '.';
+		public static char FLOATING_SEPARATOR = '.';
 
 		/** String To Double
 

@@ -269,6 +269,7 @@ namespace Fee.JsonItem
 						this.to_list[this.to_index] = this.to_object;
 					}else{
 
+						//差し込み位置。
 						System.Collections.Generic.LinkedListNode<JsonToObject_WorkPool_Item> t_first_node = a_work_pool.GetFirst();
 
 						//メンバーの設定。
@@ -277,6 +278,7 @@ namespace Fee.JsonItem
 						//再登録。
 						this.mode = (int)ModeSetList.Fix;
 
+						//差し込み。
 						if(t_first_node != null){
 							a_work_pool.AddBefore(t_first_node,this);
 						}else{
@@ -316,6 +318,7 @@ namespace Fee.JsonItem
 						this.to_list.Add(this.to_object);
 					}else{
 
+						//差し込み位置。
 						System.Collections.Generic.LinkedListNode<JsonToObject_WorkPool_Item> t_first_node = a_work_pool.GetFirst();
 
 						//メンバーの設定。
@@ -324,6 +327,7 @@ namespace Fee.JsonItem
 						//再登録。
 						this.mode = (int)ModeAddList.Fix;
 
+						//差し込み。
 						if(t_first_node != null){
 							a_work_pool.AddBefore(t_first_node,this);
 						}else{
@@ -363,6 +367,7 @@ namespace Fee.JsonItem
 						this.to_dictionary.Add(this.to_key_string,this.to_object);
 					}else{
 
+						//差し込み位置。
 						System.Collections.Generic.LinkedListNode<JsonToObject_WorkPool_Item> t_first_node = a_work_pool.GetFirst();
 
 						//メンバーの設定。
@@ -371,6 +376,7 @@ namespace Fee.JsonItem
 						//再登録。
 						this.mode = (int)ModeAddDictionary.Fix;
 
+						//差し込み。
 						if(t_first_node != null){
 							a_work_pool.AddBefore(t_first_node,this);
 						}else{
@@ -410,6 +416,7 @@ namespace Fee.JsonItem
 						this.to_fieldinfo.SetValue(this.to_parent_object,this.to_object);
 					}else{
 
+						//差し込み位置。
 						System.Collections.Generic.LinkedListNode<JsonToObject_WorkPool_Item> t_first_node = a_work_pool.GetFirst();
 
 						//メンバーの設定。
@@ -418,6 +425,7 @@ namespace Fee.JsonItem
 						//再登録。
 						this.mode = (int)ModeFieldInfo.Fix;
 
+						//差し込み。
 						if(t_first_node != null){
 							a_work_pool.AddBefore(t_first_node,this);
 						}else{
@@ -458,13 +466,11 @@ namespace Fee.JsonItem
 					JsonToObject.Convert(ref this.to_object,this.to_type,this.from_jsonitem);
 
 					//パラメータリスト。
-					System.Object[] t_parameter_list = new System.Object[]{
-						this.to_object
-					};
+					a_work_pool.temp_parameter_list_1[0] = this.to_object;
 
 					//呼び出し。
 					try{
-						this.to_methodinfo.Invoke(this.to_enumerable,t_parameter_list);
+						this.to_methodinfo.Invoke(this.to_enumerable,a_work_pool.temp_parameter_list_1);
 					}catch(System.Exception t_exception){
 						Tool.DebugReThrow(t_exception);
 					}

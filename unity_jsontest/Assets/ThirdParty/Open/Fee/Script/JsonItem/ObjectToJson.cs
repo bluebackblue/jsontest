@@ -38,7 +38,7 @@ namespace Fee.JsonItem
 					switch(a_from_type.FullName){
 					case "System." + nameof(System.String):
 						{
-							string t_value = a_from_object as string;
+							System.String t_value = a_from_object as System.String;
 
 							if(t_value != null){
 								t_to_jsonitem = new JsonItem(new Value_StringData(t_value));
@@ -105,8 +105,10 @@ namespace Fee.JsonItem
 								//[]
 								t_to_jsonitem = ObjectToJson_FromArray.Convert(a_from_object,a_from_type,a_from_objectoption,a_nest,t_workpool);
 							}else if(a_from_type.IsEnum == true){
+								//Enum
 								t_to_jsonitem = ObjectToJson_FromEnum.Convert(a_from_object,a_from_objectoption);
 							}else{
+								//class struct generic
 								t_to_jsonitem = ObjectToJson_FromClass.Convert(a_from_object,a_from_type,a_from_objectoption,a_nest,t_workpool);
 							}
 						}break;

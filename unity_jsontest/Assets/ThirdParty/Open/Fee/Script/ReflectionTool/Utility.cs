@@ -68,10 +68,10 @@ namespace Fee.ReflectionTool
 					System.Reflection.BindingFlags.Instance |
 							
 					//パブリック メンバーを検索に含めることを指定します。
-					System.Reflection.BindingFlags.Public |
+					System.Reflection.BindingFlags.Public //|
 							
 					//パブリック メンバー以外のメンバーを検索に含めることを指定します。
-					System.Reflection.BindingFlags.NonPublic
+					//System.Reflection.BindingFlags.NonPublic
 
 				);
 			}catch(System.Exception t_exception){

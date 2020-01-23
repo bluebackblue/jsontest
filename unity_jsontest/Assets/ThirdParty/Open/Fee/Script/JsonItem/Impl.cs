@@ -8,6 +8,11 @@
 */
 
 
+/** Unreachable code detected.
+*/
+#pragma warning disable 0162
+
+
 /** Fee.JsonItem
 */
 namespace Fee.JsonItem
@@ -16,6 +21,13 @@ namespace Fee.JsonItem
 	*/
 	public class Impl
 	{
+		public static char[] STRING_FALSE_1 = {'F','A','L','S','E'};
+		public static char[] STRING_FALSE_2 = {'f','a','l','s','e'};
+		public static char[] STRING_TRUE_1 = {'T','R','U','E'};
+		public static char[] STRING_TRUE_2 = {'t','r','u','e'};
+		public static char[] STRING_NULL_1 = {'n','u','l','l'};
+		public static char[] STRING_NULL_2 = {'N','U','L','L'};
+
 		/** 最初の一文字からタイプを推測。
 		*/
 		public static ValueType GetValueTypeFromChar(char a_char)
@@ -25,29 +37,29 @@ namespace Fee.JsonItem
 			case '\'':
 				{
 					return ValueType.StringData;
-				}//break;
+				}break;
 			case '{':
 				{
 					return ValueType.AssociativeArray;
-				}//break;
+				}break;
 			case '[':
 				{
 					return ValueType.IndexArray;
-				}//break;
+				}break;
 			case '<':
 				{
 					return ValueType.BinaryData;
-				}//break;
+				}break;
 			case 't':
 			case 'T':
 				{
 					return ValueType.Calc_BoolDataTrue;
-				}//break;
+				}break;
 			case 'f':
 			case 'F':
 				{
 					return ValueType.Calc_BoolDataFalse;
-				}//break;
+				}break;
 			case '-':
 			case '0':
 			case '1':
@@ -61,18 +73,18 @@ namespace Fee.JsonItem
 			case '9':
 				{
 					return ValueType.Calc_UnknownNumber;
-				}//break;
+				}break;
 			case 'n':
 				{
 					return ValueType.Null;
-				}//break;
+				}break;
 			default:
 				{
 					//不明な開始文字。
 					Tool.Assert(false);
 
 					return ValueType.Null;
-				}//break;
+				}break;
 			}
 		}
 
@@ -84,63 +96,11 @@ namespace Fee.JsonItem
 		public static bool IsFloat(string a_string)
 		{
 			for(int ii=0;ii<a_string.Length;ii++){
-				if(a_string[ii] == Config.DOUBLE_SEPARATOR){
+				if(a_string[ii] == Config.FLOATING_SEPARATOR){
 					return true;
 				}
 			}
 			return false;
-		}
-
-		/** CharToByte
-		*/
-		public static byte CharToByte(char a_char)
-		{
-			switch(a_char){
-			case '0':return 0;
-			case '1':return 1;
-			case '2':return 2;
-			case '3':return 3;
-			case '4':return 4;
-			case '5':return 5;
-			case '6':return 6;
-			case '7':return 7;
-			case '8':return 8;
-			case '9':return 9;
-			case 'a':return 10;
-			case 'A':return 10;
-			case 'b':return 11;
-			case 'B':return 11;
-			case 'c':return 12;
-			case 'C':return 12;
-			case 'd':return 13;
-			case 'D':return 13;
-			case 'e':return 14;
-			case 'E':return 14;
-			case 'f':return 15;
-			case 'F':return 15;
-			default:
-				{
-					Tool.Assert(false);
-				}return 0;
-			}
-		}
-
-		/**
-		
-			"3040" ==> (char)'あ'
-
-		*/
-		public static string Utf16StringToChar(string a_string,int a_index)
-		{
-			byte[] t_byte = new byte[2];
-			{
-				t_byte[0] = (byte)((CharToByte(a_string[a_index + 2]) << 4) + CharToByte(a_string[a_index + 3]));
-				t_byte[1] = (byte)((CharToByte(a_string[a_index + 0]) << 4) + CharToByte(a_string[a_index + 1]));
-			}
-
-			string t_string = System.Text.Encoding.Unicode.GetString(t_byte);
-
-			return t_string;
 		}
 
 		/** 特殊文字 ==> ＪＳＯＮ文字列。
@@ -149,78 +109,7 @@ namespace Fee.JsonItem
 		{
 			if(a_string != null){
 				for(int ii=0;ii<a_string.Length;ii++){
-					switch(a_string[ii]){
-					case '\\':
-						{
-							//バックスラッシュ。
-							a_stringbuilder.Append("\\\\");
-						}break;
-					case '\"':
-						{
-							//ダブルクォーテーション。
-							a_stringbuilder.Append("\\\"");
-						}break;
-					case '\n':
-						{
-							//キャリッジリターン。
-							a_stringbuilder.Append("\\n");
-						}break;
-					case '\0':
-						{
-							//ヌル。
-							a_stringbuilder.Append("\\0");
-						}break;
-
-
-
-
-					case '\'':
-						{
-							//シングルクォーテーション。
-							a_stringbuilder.Append("\\\'");
-						}break;
-
-
-
-
-						/*
-
-					case '/':
-						{
-							//スラッシュ。
-							a_stringbuilder.Append("\\/");
-						}break;
-					case 'b':
-						{
-							//バックスペース。
-							a_stringbuilder.Append("\\b");
-						}break;
-					case 'f':
-						{
-							//ニューページ。
-							a_stringbuilder.Append("\\f");
-						}break;
-					case 'r':
-						{
-							//ラインフィード。
-							a_stringbuilder.Append("\\r");
-						}break;
-					case 't':
-						{
-							//タブ。
-							a_stringbuilder.Append("\\t");
-						}break;
-
-						*/
-
-					default:
-						{
-							//\\u0000。
-
-							//そのまま。
-							a_stringbuilder.Append(a_string[ii]);
-						}break;
-					}
+					StringConvert.SpecialStringToJsonItemEscapeString.Convert(a_string,ii,a_stringbuilder);
 				}
 			}else{
 				Tool.Assert(false);
@@ -236,104 +125,8 @@ namespace Fee.JsonItem
 			while(t_index <= a_index_end){
 				if(a_string[t_index] == '\\'){
 					if((t_index + 1) < a_string.Length){
-						switch(a_string[t_index + 1]){
-						case '\\':
-							{
-								//バックスラッシュ。
-								a_stringbuilder.Append('\\');
-								t_index += 2;
-							}break;
-						case '\"':
-							{
-								//ダブルクォーテーション。
-								a_stringbuilder.Append("\"");
-								t_index += 2;
-							}break;
-						case 'n':
-							{
-								//キャリッジリターン。
-								a_stringbuilder.Append("\n");
-								t_index += 2;
-							}break;
-						case '0':
-							{
-								//ヌル。
-								a_stringbuilder.Append('\0');
-								t_index += 2;
-							}break;
-
-
-
-
-						case '\'':
-							{
-								//シングルクォーテーション。
-								a_stringbuilder.Append('\'');
-								t_index += 2;
-							}break;
-
-
-
-
-						case 'u':
-							{
-								//ＵＴＦ１６。
-								if((t_index + 5) < a_string.Length){
-									string t_string = Utf16StringToChar(a_string,t_index + 2);
-									a_stringbuilder.Append(t_string);
-
-									t_index += 6;
-								}else{
-									//後ろにコードがあるはずだった。
-									Tool.Assert(false);
-									return;
-								}
-							}break;
-
-
-
-
-						case '/':
-							{
-								//スラッシュ。
-								a_stringbuilder.Append('/');
-								t_index += 2;
-							}break;
-						case 'b':
-							{
-								//バックスペース。
-								a_stringbuilder.Append('\b');
-								t_index += 2;
-							}break;
-						case 'f':
-							{
-								//ニューページ。
-								a_stringbuilder.Append('\f');
-								t_index += 2;
-							}break;
-						case 'r':
-							{
-								//ラインフィード。
-								a_stringbuilder.Append('\r');
-								t_index += 2;
-							}break;
-						case 't':
-							{
-								//タブ。
-								a_stringbuilder.Append('\t');
-								t_index += 2;
-							}break;
-						default:
-							{
-								//対応していない。
-								a_stringbuilder.Append(a_string[t_index]);
-								t_index++;
-							}break;
-						}
-					}else{
-						//後ろにコードがあるはずだった。
-						Tool.Assert(false);
-						return;
+						int t_use_index = StringConvert.EscapeCodeStringToSpecialString.Convert(a_string,t_index + 1,a_stringbuilder);
+						Tool.Assert(t_index > 0);
 					}
 				}else{
 					//そのまま。
@@ -600,11 +393,6 @@ namespace Fee.JsonItem
 			}
 		}
 
-		public static char[] STRING_FALSE_1 = {'F','A','L','S','E'};
-		public static char[] STRING_FALSE_2 = {'f','a','l','s','e'};
-		public static char[] STRING_TRUE_1 = {'T','R','U','E'};
-		public static char[] STRING_TRUE_2 = {'t','r','u','e'};
-
 		/** TRUEJSONの長さ。
 		*/
 		public static int GetLength_BoolTrue(string a_string,int a_index)
@@ -768,13 +556,11 @@ namespace Fee.JsonItem
 		*/
 		public static int GetLength_Null(string a_string,int a_index)
 		{
-			char[] t_null = {'n','u','l','l'};
-
-			for(int ii=0;ii<t_null.Length;ii++){
+			for(int ii=0;ii<STRING_NULL_1.Length;ii++){
 				int t_index = a_index + ii;
 
 				if(t_index < a_string.Length){
-					if(a_string[t_index] == t_null[ii]){
+					if((a_string[t_index] == STRING_NULL_1[ii])||(a_string[t_index] == STRING_NULL_2[ii])){
 					}else{
 						//null以外。
 						Tool.Assert(false);
@@ -790,12 +576,12 @@ namespace Fee.JsonItem
 			}
 
 			{
-				int t_index = a_index + t_null.Length;
+				int t_index = a_index + STRING_NULL_1.Length;
 
 				if(t_index < a_string.Length){
 					if((a_string[t_index] == '}')||(a_string[t_index] == ']')||(a_string[t_index] == ',')){
 						//終端。
-						return t_null.Length;
+						return STRING_NULL_1.Length;
 					}else{
 						//null以外。
 						Tool.Assert(false);
@@ -803,7 +589,7 @@ namespace Fee.JsonItem
 						return 0;					
 					}
 				}else{
-					return t_null.Length;
+					return STRING_NULL_1.Length;
 				}
 			}
 		}
@@ -1049,80 +835,22 @@ namespace Fee.JsonItem
 					}
 				}else{
 
-					byte t_binary = 0x00;
+					if(t_index + 1 < a_jsonstring.Length){
 
-					switch(a_jsonstring[t_index]){
-					case '0':t_binary = 0x00;break;
-					case '1':t_binary = 0x10;break;
-					case '2':t_binary = 0x20;break;
-					case '3':t_binary = 0x30;break;
-					case '4':t_binary = 0x40;break;
-					case '5':t_binary = 0x50;break;
-					case '6':t_binary = 0x60;break;
-					case '7':t_binary = 0x70;break;
-					case '8':t_binary = 0x80;break;
-					case '9':t_binary = 0x90;break;
-					case 'a':t_binary = 0xA0;break;
-					case 'A':t_binary = 0xA0;break;
-					case 'b':t_binary = 0xB0;break;
-					case 'B':t_binary = 0xB0;break;
-					case 'c':t_binary = 0xC0;break;
-					case 'C':t_binary = 0xC0;break;
-					case 'd':t_binary = 0xD0;break;
-					case 'D':t_binary = 0xD0;break;
-					case 'e':t_binary = 0xE0;break;
-					case 'E':t_binary = 0xE0;break;
-					case 'f':t_binary = 0xF0;break;
-					case 'F':t_binary = 0xF0;break;
-					default:
-						{
-							//不明。
-							Tool.Assert(false);
-							return;
-						}//break;
-					}
+						byte t_binary_1;
+						byte t_binary_2;
+						Fee.StringConvert.HexStringToByte.Convert_NoCheck(a_jsonstring[t_index + 0],out t_binary_1);
+						Fee.StringConvert.HexStringToByte.Convert_NoCheck(a_jsonstring[t_index + 1],out t_binary_2);
 
-					t_index++;
-
-					if(t_index < a_jsonstring.Length){
-						switch(a_jsonstring[t_index]){
-						case '0':t_binary |= 0x00;break;
-						case '1':t_binary |= 0x01;break;
-						case '2':t_binary |= 0x02;break;
-						case '3':t_binary |= 0x03;break;
-						case '4':t_binary |= 0x04;break;
-						case '5':t_binary |= 0x05;break;
-						case '6':t_binary |= 0x06;break;
-						case '7':t_binary |= 0x07;break;
-						case '8':t_binary |= 0x08;break;
-						case '9':t_binary |= 0x09;break;
-						case 'a':t_binary |= 0x0A;break;
-						case 'A':t_binary |= 0x0A;break;
-						case 'b':t_binary |= 0x0B;break;
-						case 'B':t_binary |= 0x0B;break;
-						case 'c':t_binary |= 0x0C;break;
-						case 'C':t_binary |= 0x0C;break;
-						case 'd':t_binary |= 0x0D;break;
-						case 'D':t_binary |= 0x0D;break;
-						case 'e':t_binary |= 0x0E;break;
-						case 'E':t_binary |= 0x0E;break;
-						case 'f':t_binary |= 0x0F;break;
-						case 'F':t_binary |= 0x0F;break;
-						default:
-							{
-								//不明。
-								Tool.Assert(false);
-								return;
-							}//break;
-						}
-
-						t_index++;
-
+						byte t_binary = (byte)(t_binary_1 << 8 | t_binary_2);
 						a_out_list.Add(t_binary);
+
+						t_index += 2;
 					}else{
 						//不明。
 						Tool.Assert(false);
 						return;
+
 					}
 				}
 			}

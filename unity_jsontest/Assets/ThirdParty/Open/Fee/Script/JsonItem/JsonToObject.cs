@@ -45,7 +45,7 @@ namespace Fee.JsonItem
 				}break;
 			case ValueType.StringData:
 				{
-					t_type = typeof(string);
+					t_type = typeof(System.String);
 				}break;
 			case ValueType.SignedNumber:
 				{
@@ -61,11 +61,11 @@ namespace Fee.JsonItem
 				}break;
 			case ValueType.BoolData:
 				{
-					t_type = typeof(bool);
+					t_type = typeof(System.Boolean);
 				}break;
 			case ValueType.DecimalNumber:
 				{
-					t_type = typeof(decimal);
+					t_type = typeof(System.Decimal);
 				}break;
 			case ValueType.BinaryData:
 				{
@@ -79,7 +79,6 @@ namespace Fee.JsonItem
 
 			return t_type;
 		}
-
 
 		/** インスタンス作成。
 		*/
@@ -105,50 +104,52 @@ namespace Fee.JsonItem
 					a_to_object = null;
 					return;
 				}break;
-			}
+			default:
+				{
+					if(a_to_type.IsArray == true){
+						//[]
 
-			if(a_to_type.IsArray == true){
-				//[]
+						int t_list_count = 0;
+						if(a_from_jsonitem.IsIndexArray() == true){
+							t_list_count = a_from_jsonitem.GetListMax();
+						}
 
-				int t_list_count = 0;
-				if(a_from_jsonitem.IsIndexArray() == true){
-					t_list_count = a_from_jsonitem.GetListMax();
-				}
+						try{
+							System.Type t_element_type = a_to_type.GetElementType();
+							a_to_object = System.Array.CreateInstance(t_element_type,t_list_count);
+							return;
+						}catch(System.Exception t_exception){
+							Tool.DebugReThrow(t_exception);
+						}
 
-				try{
-					System.Type t_element_type = a_to_type.GetElementType();
-					a_to_object = System.Array.CreateInstance(t_element_type,t_list_count);
-					return;
-				}catch(System.Exception t_exception){
-					Tool.DebugReThrow(t_exception);
-				}
-
-				//失敗。
-				Tool.Assert(false);
-				a_to_object = null;
-				return;
-			}
-
-			//インスタンス。
-			{
-				if(a_from_jsonitem.IsNull() == true){
-					//NULL処理。
-					a_to_object = null;
-					return;
-				}else{
-					try{
-						a_to_object = System.Activator.CreateInstance(a_to_type);
+						//失敗。
+						Tool.Assert(false);
+						a_to_object = null;
 						return;
-					}catch(System.Exception t_exception){
-						//引数なしconstructorの呼び出しに失敗。
-						Tool.DebugReThrow(t_exception);
 					}
 
-					//失敗。
-					Tool.Assert(false);
-					a_to_object = null;
-					return;
-				}
+					//インスタンス。
+					{
+						if(a_from_jsonitem.IsNull() == true){
+							//NULL処理。
+							a_to_object = null;
+							return;
+						}else{
+							try{
+								a_to_object = System.Activator.CreateInstance(a_to_type);
+								return;
+							}catch(System.Exception t_exception){
+								//引数なしconstructorの呼び出しに失敗。
+								Tool.DebugReThrow(t_exception);
+							}
+
+							//失敗。
+							Tool.Assert(false);
+							a_to_object = null;
+							return;
+						}
+					}
+				}break;
 			}
 		}
 

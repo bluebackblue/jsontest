@@ -13,7 +13,7 @@ public class Test : MonoBehaviour
 		Fee.ReflectionTool.Config.LOG_ENABLE = true;
 		Fee.ReflectionTool.ReflectionTool.CreateInstance();
 
-		this.StartCoroutine(this.TestCoroutine());
+		Test_AB();
     }
 
 	/** TestCoroutine
@@ -48,6 +48,111 @@ public class Test : MonoBehaviour
 		Test_26.Main();
 
 		yield break;
+	}
+
+	/** CreateString
+	*/
+	public static string CreateString()
+	{
+		/*
+		string[] t_list = new string[]{
+			"0",
+			"1",
+			"2",
+			"3",
+			"4",
+			"5",
+			"6",
+			"7",
+			"8",
+			"9",
+			"A",
+			"B",
+			"C",
+			"D",
+			"E",
+			"F",
+		};
+		*/
+		string[] t_list = new string[]{
+			"\n",
+			"\0",
+			"\"",
+			"\'",
+			"\n",
+			"\\",
+			"a",
+			"あ",
+			"\t",
+		};
+
+		string t_string = "";
+		for(int xx=0;xx<1000;xx++){
+		for(int ii=0;ii<t_list.Length;ii++){
+			t_string += t_list[ii];
+		}
+		}
+		return t_string;
+	}
+
+	public static void Test_AB()
+	{
+		string t_string = CreateString();
+
+		Test_A(t_string);
+		Test_S(t_string);
+	}
+
+	public static void Test_A(string a_string)
+	{
+		//byte t_byte = 0;
+		System.Text.StringBuilder t_stringbuilder = new System.Text.StringBuilder();
+
+		{
+			float t_time_start = Time.realtimeSinceStartup;
+
+			for(int xx=0;xx<1000;xx++){
+				for(int ii=0;ii<a_string.Length;ii++){
+					/*
+					byte t_out_byte;
+					Fee.StringConvert.HexStringToByte.Convert_NoCheck(a_string,ii,out t_out_byte);
+					t_byte += t_out_byte;
+					*/
+
+					Fee.StringConvert.SpecialStringToJsonItemEscapeString.Convert_T(a_string,ii,t_stringbuilder);
+				}
+			}
+
+			float t_time_end = Time.realtimeSinceStartup;
+
+			//UnityEngine.Debug.Log((t_time_end - t_time_start).ToString("0.0000") + " : " + t_byte.ToString());
+			UnityEngine.Debug.Log((t_time_end - t_time_start).ToString("0.0000") + " : " + t_stringbuilder.ToString());}
+	}
+
+	public static void Test_S(string a_string)
+	{
+		//byte t_byte = 0;
+		System.Text.StringBuilder t_stringbuilder = new System.Text.StringBuilder();
+
+		{
+			float t_time_start = Time.realtimeSinceStartup;
+
+			for(int xx=0;xx<1000;xx++){
+				for(int ii=0;ii<a_string.Length;ii++){
+					/*
+					byte t_out_byte;
+					Fee.StringConvert.HexStringToByte.Convert_NoCheck_S(a_string,ii,out t_out_byte);
+					t_byte += t_out_byte;
+					*/
+					Fee.StringConvert.SpecialStringToJsonItemEscapeString.Convert(a_string,ii,t_stringbuilder);
+				}
+			}
+
+			float t_time_end = Time.realtimeSinceStartup;
+
+			//UnityEngine.Debug.Log((t_time_end - t_time_start).ToString("0.0000") + " : " + t_byte.ToString());
+			UnityEngine.Debug.Log((t_time_end - t_time_start).ToString("0.0000") + " : " + t_stringbuilder.ToString());
+		}
 	}
 
 	/** CallBack_Check
