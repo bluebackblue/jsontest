@@ -97,7 +97,7 @@ public class Test_01
 			#else
 			Item t_item_to = UnityEngine.JsonUtility.FromJson<Item>(t_jsonstring);
 			#endif
-		
+
 			//ログ。
 			UnityEngine.Debug.Log("Test_01 : " + t_jsonstring);
 

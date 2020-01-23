@@ -14,20 +14,29 @@ public class Test : MonoBehaviour
 		Fee.JsonItem.Config.DEFAULT_CONVERTTOJSONSTRING_OPTION = Fee.JsonItem.ConvertToJsonStringOption.NoFloatingNumberSuffix | Fee.JsonItem.ConvertToJsonStringOption.NoSignedNumberSuffix | Fee.JsonItem.ConvertToJsonStringOption.NoUnsignedNumberSuffix;
 
 		this.StartCoroutine(this.TestCoroutine());
+		//Test_00();
     }
 
 	public class Item
 	{
-		public float x;
-		public long y;
 	}
 
+	public void Test_00()
+	{
+		System.Collections.Generic.List<int[]> t_list = new List<int[]>();
+		t_list.Add(null);
+		t_list.Add(null);
+		t_list.Add(null);
+
+		string t_jsonstring = Fee.JsonItem.Convert.ObjectToJsonString(t_list);
+
+		System.Collections.Generic.List<int[]> t_out = Fee.JsonItem.Convert.JsonStringToObject<System.Collections.Generic.List<int[]>>(t_jsonstring);
+	}
 
 	/** TestCoroutine
 	*/
 	public System.Collections.IEnumerator TestCoroutine()
 	{
-		/*
 		Test_01.Main();
 		Test_02.Main();
 		Test_03.Main();
@@ -54,7 +63,6 @@ public class Test : MonoBehaviour
 		Test_24.Main();
 		Test_25.Main();
 		Test_26.Main();
-		*/
 		Test_27.Main();
 
 		yield break;
@@ -113,10 +121,6 @@ public class Test : MonoBehaviour
 	public static void Test_AB()
 	{
 		string t_string = CreateString();
-
-		System.Collections.Generic.Dictionary<string,Fee.JsonItem.JsonItem> t_dic = null;
-		Fee.JsonItem.Convert_AssociativeArray_FromJsonString.Convert("" ,t_dic);
-
 		Test_A(t_string);
 		Test_S(t_string);
 	}
