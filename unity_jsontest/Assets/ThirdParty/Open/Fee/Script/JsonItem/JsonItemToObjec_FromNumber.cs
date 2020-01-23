@@ -17,9 +17,9 @@
 */
 namespace Fee.JsonItem
 {
-	/** JsonToObject_FromNumber
+	/** JsonItemToObject_FromNumber
 	*/
-	public class JsonToObject_FromNumber
+	public class JsonItemToObject_FromNumber
 	{
 		/** Convert
 		*/

@@ -4,7 +4,7 @@
  * Copyright (c) blueback
  * Released under the MIT License
  * https://github.com/bluebackblue/fee/blob/master/LICENSE.txt
- * @brief ＪＳＯＮ。ＪＳＯＮ化。
+ * @brief ＪＳＯＮ。JsonItem化。
 */
 
 
@@ -12,24 +12,24 @@
 */
 namespace Fee.JsonItem
 {
-	/** ObjectToJson_WorkPool
+	/** ObjectToJsonItem_WorkPool
 	*/
-	public class ObjectToJson_WorkPool
+	public class ObjectToJsonItem_WorkPool
 	{
 		/** list
 		*/
-		public System.Collections.Generic.List<ObjectToJson_WorkPool_Item> list;
+		public System.Collections.Generic.List<ObjectToJsonItem_WorkPool_Item> list;
 
 		/** constructor
 		*/
-		public ObjectToJson_WorkPool()
+		public ObjectToJsonItem_WorkPool()
 		{
-			this.list = new System.Collections.Generic.List<ObjectToJson_WorkPool_Item>();
+			this.list = new System.Collections.Generic.List<ObjectToJsonItem_WorkPool_Item>();
 		}
 
 		/** 追加。
 		*/
-		public void Add(ObjectToJson_WorkPool_Item a_item)
+		public void Add(ObjectToJsonItem_WorkPool_Item a_item)
 		{
 			this.list.Add(a_item);
 		}
@@ -41,7 +41,7 @@ namespace Fee.JsonItem
 			while(true){
 				int t_count = this.list.Count;
 				if(t_count > 0){
-					ObjectToJson_WorkPool_Item t_current_work = this.list[t_count - 1];
+					ObjectToJsonItem_WorkPool_Item t_current_work = this.list[t_count - 1];
 					this.list.RemoveAt(t_count - 1);
 					t_current_work.Do(this);
 

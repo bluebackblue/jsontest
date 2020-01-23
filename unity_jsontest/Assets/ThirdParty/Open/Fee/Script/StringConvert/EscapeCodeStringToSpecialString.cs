@@ -56,7 +56,7 @@ namespace Fee.StringConvert
 			case '\'':
 				{
 					//シングルクォーテーション。
-					a_out_char = '\n';
+					a_out_char = a_char;
 					return true;
 				}break;
 			case '/':
@@ -131,7 +131,7 @@ namespace Fee.StringConvert
 			case '\'':
 				{
 					//シングルクォーテーション。
-					a_stringbuilder.Append('\n');
+					a_stringbuilder.Append(a_string[a_offset]);
 					return 1;
 				}break;
 			case '/':

@@ -25,6 +25,7 @@ public class Test_02
 		public float value_float;
 		public double value_double;
 		public decimal value_decimal;
+		public decimal value_decimal_min;
 	}
 
 	/** チェック。
@@ -38,19 +39,20 @@ public class Test_02
 
 		bool t_result = true;
 
-		t_result &= Test.Check_Bool(	"value_bool",		a_from.value_bool,		a_to.value_bool);
-		t_result &= Test.Check_Sbyte(	"value_sbyte",		a_from.value_sbyte,		a_to.value_sbyte);
-		t_result &= Test.Check_Byte(	"value_byte",		a_from.value_byte,		a_to.value_byte);
-		t_result &= Test.Check_Short(	"value_short",		a_from.value_short,		a_to.value_short);
-		t_result &= Test.Check_Ushort(	"value_ushort",		a_from.value_ushort,	a_to.value_ushort);
-		t_result &= Test.Check_Int(		"value_int",		a_from.value_int,		a_to.value_int);
-		t_result &= Test.Check_Uint(	"value_uint",		a_from.value_uint,		a_to.value_uint);
-		t_result &= Test.Check_Long(	"value_long",		a_from.value_long,		a_to.value_long);
-		t_result &= Test.Check_Ulong(	"value_ulong",		a_from.value_ulong,		a_to.value_ulong);
-		t_result &= Test.Check_Char(	"value_char",		a_from.value_char,		a_to.value_char);
-		t_result &= Test.Check_Float(	"value_float",		a_from.value_float,		a_to.value_float);
-		t_result &= Test.Check_Double(	"value_double",		a_from.value_double,	a_to.value_double);
-		t_result &= Test.Check_Decimal(	"value_decimal",	a_from.value_decimal,	a_to.value_decimal);
+		t_result &= Test.Check_Bool(	"value_bool",			a_from.value_bool,			a_to.value_bool);
+		t_result &= Test.Check_Sbyte(	"value_sbyte",			a_from.value_sbyte,			a_to.value_sbyte);
+		t_result &= Test.Check_Byte(	"value_byte",			a_from.value_byte,			a_to.value_byte);
+		t_result &= Test.Check_Short(	"value_short",			a_from.value_short,			a_to.value_short);
+		t_result &= Test.Check_Ushort(	"value_ushort",			a_from.value_ushort,		a_to.value_ushort);
+		t_result &= Test.Check_Int(		"value_int",			a_from.value_int,			a_to.value_int);
+		t_result &= Test.Check_Uint(	"value_uint",			a_from.value_uint,			a_to.value_uint);
+		t_result &= Test.Check_Long(	"value_long",			a_from.value_long,			a_to.value_long);
+		t_result &= Test.Check_Ulong(	"value_ulong",			a_from.value_ulong,			a_to.value_ulong);
+		t_result &= Test.Check_Char(	"value_char",			a_from.value_char,			a_to.value_char);
+		t_result &= Test.Check_Float(	"value_float",			a_from.value_float,			a_to.value_float);
+		t_result &= Test.Check_Double(	"value_double",			a_from.value_double,		a_to.value_double);
+		t_result &= Test.Check_Decimal(	"value_decimal",		a_from.value_decimal,		a_to.value_decimal);
+		t_result &= Test.Check_Decimal(	"value_decimal_min",	a_from.value_decimal_min,	a_to.value_decimal_min);
 
 		return t_result;
 	}
@@ -77,6 +79,7 @@ public class Test_02
 				t_item_from.value_float = float.MinValue;
 				t_item_from.value_double = double.MinValue;
 				t_item_from.value_decimal = decimal.MinValue;
+				t_item_from.value_decimal_min = 0.0000000000000000000000000001m;
 			}
 
 			//オブジェクト ==> ＪＳＯＮＩＴＥＭ。

@@ -17,69 +17,10 @@
 */
 namespace Fee.JsonItem
 {
-	/** JsonToObject
+	/** JsonItemToObject
 	*/
-	public class JsonToObject
+	public class JsonItemToObject
 	{
-		/** JsonItemからコンバート先の型を決める。
-		*/
-		public static System.Type GetConvertToTypeFromJsonItem(Fee.JsonItem.JsonItem a_jsonitem)
-		{
-			System.Type t_type = null;
-
-			switch(a_jsonitem.GetValueType()){
-			case ValueType.Null:
-				{
-					//値型が不明なので値型はSystem.Objectにする。
-					t_type = typeof(System.Object);
-				}break;
-			case ValueType.AssociativeArray:
-				{
-					//値型が不明なので値型はSystem.Objectにする。
-					t_type = typeof(System.Collections.Generic.Dictionary<string,System.Object>);
-				}break;
-			case ValueType.IndexArray:
-				{
-					//値型が不明なので値型はSystem.Objectにする。
-					t_type = typeof(System.Collections.Generic.List<System.Object>);
-				}break;
-			case ValueType.StringData:
-				{
-					t_type = typeof(System.String);
-				}break;
-			case ValueType.SignedNumber:
-				{
-					t_type = JsonItem.GetSignedNumberType();
-				}break;
-			case ValueType.UnsignedNumber:
-				{
-					t_type = JsonItem.GetUnsignedNumberType();
-				}break;
-			case ValueType.FloatingNumber:
-				{
-					t_type = JsonItem.GetFloatingNumberType();
-				}break;
-			case ValueType.BoolData:
-				{
-					t_type = typeof(System.Boolean);
-				}break;
-			case ValueType.DecimalNumber:
-				{
-					t_type = typeof(System.Decimal);
-				}break;
-			case ValueType.BinaryData:
-				{
-					t_type = typeof(System.Collections.Generic.List<byte>);
-				}break;
-			default:
-				{
-					Tool.Assert(false);
-				}break;
-			}
-
-			return t_type;
-		}
-
 		/** インスタンス作成。
 		*/
 		public static void CreateInstance(out System.Object a_to_object,System.Type a_to_type,Fee.JsonItem.JsonItem a_from_jsonitem)
@@ -155,19 +96,19 @@ namespace Fee.JsonItem
 
 		/** Convert
 		*/
-		public static void Convert(ref System.Object a_to_object_ref,System.Type a_to_type,JsonItem a_from_jsonitem,JsonToObject_WorkPool a_workpool = null)
+		public static void Convert(ref System.Object a_to_object_ref,System.Type a_to_type,JsonItem a_from_jsonitem,JsonItemToObject_WorkPool a_workpool = null)
 		{
-			JsonToObject_WorkPool t_workpool = a_workpool;
+			JsonItemToObject_WorkPool t_workpool = a_workpool;
 
 			if(t_workpool == null){
-				t_workpool = new JsonToObject_WorkPool();
+				t_workpool = new JsonItemToObject_WorkPool();
 			}
 
 			try{
 				switch(a_from_jsonitem.GetValueType()){
 				case ValueType.StringData:
 					{
-						JsonToObject_FromStringData.Convert(ref a_to_object_ref,a_to_type,a_from_jsonitem);
+						JsonItemToObject_FromStringData.Convert(ref a_to_object_ref,a_to_type,a_from_jsonitem);
 					}break;
 				case ValueType.SignedNumber:
 				case ValueType.UnsignedNumber:
@@ -175,15 +116,15 @@ namespace Fee.JsonItem
 				case ValueType.DecimalNumber:
 				case ValueType.BoolData:
 					{
-						JsonToObject_FromNumber.Convert(ref a_to_object_ref,a_to_type,a_from_jsonitem);
+						JsonItemToObject_FromNumber.Convert(ref a_to_object_ref,a_to_type,a_from_jsonitem);
 					}break;
 				case ValueType.IndexArray:
 					{
-						JsonToObject_FromIndexArray.Convert(ref a_to_object_ref,a_to_type,a_from_jsonitem,t_workpool);
+						JsonItemToObject_FromIndexArray.Convert(ref a_to_object_ref,a_to_type,a_from_jsonitem,t_workpool);
 					}break;
 				case ValueType.AssociativeArray:
 					{
-						JsonToObject_FromAssociativeArray.Convert(ref a_to_object_ref,a_to_type,a_from_jsonitem,t_workpool);
+						JsonItemToObject_FromAssociativeArray.Convert(ref a_to_object_ref,a_to_type,a_from_jsonitem,t_workpool);
 					}break;
 				case ValueType.Null:
 					{

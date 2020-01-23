@@ -11,15 +11,23 @@ public class Test : MonoBehaviour
     void Start()
     {
 		Fee.ReflectionTool.Config.LOG_ENABLE = true;
-		Fee.ReflectionTool.ReflectionTool.CreateInstance();
+		Fee.JsonItem.Config.DEFAULT_CONVERTTOJSONSTRING_OPTION = Fee.JsonItem.ConvertToJsonStringOption.NoFloatingNumberSuffix | Fee.JsonItem.ConvertToJsonStringOption.NoSignedNumberSuffix | Fee.JsonItem.ConvertToJsonStringOption.NoUnsignedNumberSuffix;
 
-		Test_AB();
+		this.StartCoroutine(this.TestCoroutine());
     }
+
+	public class Item
+	{
+		public float x;
+		public long y;
+	}
+
 
 	/** TestCoroutine
 	*/
 	public System.Collections.IEnumerator TestCoroutine()
 	{
+		/*
 		Test_01.Main();
 		Test_02.Main();
 		Test_03.Main();
@@ -46,6 +54,8 @@ public class Test : MonoBehaviour
 		Test_24.Main();
 		Test_25.Main();
 		Test_26.Main();
+		*/
+		Test_27.Main();
 
 		yield break;
 	}
@@ -74,6 +84,7 @@ public class Test : MonoBehaviour
 			"F",
 		};
 		*/
+		/*
 		string[] t_list = new string[]{
 			"\n",
 			"\0",
@@ -85,13 +96,17 @@ public class Test : MonoBehaviour
 			"あ",
 			"\t",
 		};
+		*/
 
 		string t_string = "";
+
+		/*
 		for(int xx=0;xx<1000;xx++){
-		for(int ii=0;ii<t_list.Length;ii++){
-			t_string += t_list[ii];
+			for(int ii=0;ii<t_list.Length;ii++){
+				t_string += t_list[ii];
+			}
 		}
-		}
+		*/
 		return t_string;
 	}
 
@@ -99,14 +114,21 @@ public class Test : MonoBehaviour
 	{
 		string t_string = CreateString();
 
+		System.Collections.Generic.Dictionary<string,Fee.JsonItem.JsonItem> t_dic = null;
+		Fee.JsonItem.Convert_AssociativeArray_FromJsonString.Convert("" ,t_dic);
+
 		Test_A(t_string);
 		Test_S(t_string);
 	}
 
 	public static void Test_A(string a_string)
 	{
-		//byte t_byte = 0;
+		/*
+		byte t_byte = 0;
+		*/
+		/*
 		System.Text.StringBuilder t_stringbuilder = new System.Text.StringBuilder();
+		*/
 
 		{
 			float t_time_start = Time.realtimeSinceStartup;
@@ -119,20 +141,31 @@ public class Test : MonoBehaviour
 					t_byte += t_out_byte;
 					*/
 
+					/*
 					Fee.StringConvert.SpecialStringToJsonItemEscapeString.Convert_T(a_string,ii,t_stringbuilder);
+					*/
 				}
 			}
 
 			float t_time_end = Time.realtimeSinceStartup;
 
-			//UnityEngine.Debug.Log((t_time_end - t_time_start).ToString("0.0000") + " : " + t_byte.ToString());
+			/*
+			UnityEngine.Debug.Log((t_time_end - t_time_start).ToString("0.0000") + " : " + t_byte.ToString());
+			*/
+			/*
 			UnityEngine.Debug.Log((t_time_end - t_time_start).ToString("0.0000") + " : " + t_stringbuilder.ToString());}
+			*/
+		}
 	}
 
 	public static void Test_S(string a_string)
 	{
-		//byte t_byte = 0;
+		/*
+		byte t_byte = 0;
+		*/
+		/*
 		System.Text.StringBuilder t_stringbuilder = new System.Text.StringBuilder();
+		*/
 
 		{
 			float t_time_start = Time.realtimeSinceStartup;
@@ -144,20 +177,32 @@ public class Test : MonoBehaviour
 					Fee.StringConvert.HexStringToByte.Convert_NoCheck_S(a_string,ii,out t_out_byte);
 					t_byte += t_out_byte;
 					*/
+
+					/*
 					Fee.StringConvert.SpecialStringToJsonItemEscapeString.Convert(a_string,ii,t_stringbuilder);
+					*/
 				}
 			}
 
 			float t_time_end = Time.realtimeSinceStartup;
 
-			//UnityEngine.Debug.Log((t_time_end - t_time_start).ToString("0.0000") + " : " + t_byte.ToString());
+			/*
+			UnityEngine.Debug.Log((t_time_end - t_time_start).ToString("0.0000") + " : " + t_byte.ToString());
+			*/
+
+			/*
 			UnityEngine.Debug.Log((t_time_end - t_time_start).ToString("0.0000") + " : " + t_stringbuilder.ToString());
+			*/
 		}
 	}
 
 	/** CallBack_Check
 	*/
 	public delegate bool CallBack_Check<T>(string a_label,in T a_from,in T a_to);
+
+	/** CallBack_Check
+	*/
+	public delegate bool CallBack_Check<T,U>(string a_label,in T a_from,in U a_to);
 
 	/** バイト配列文字列。
 	*/
@@ -394,7 +439,7 @@ public class Test : MonoBehaviour
 
 	/** Check_Dictionary
 	*/
-	public static bool Check_Dictionary<K,T>(string a_label,System.Collections.Generic.IDictionary<K,T> a_from,System.Collections.Generic.IDictionary<K,T> a_to,CallBack_Check<T> a_callback)
+	public static bool Check_Dictionary<K,T,U>(string a_label,System.Collections.Generic.IDictionary<K,T> a_from,System.Collections.Generic.IDictionary<K,U> a_to,CallBack_Check<T,U> a_callback)
 	{
 		if((a_from == null)&&(a_to == null)){
 			return true;
@@ -414,7 +459,7 @@ public class Test : MonoBehaviour
 			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : counterror");
 		}else{
 			foreach(System.Collections.Generic.KeyValuePair<K,T> t_from_pair in a_from){
-				T t_to_value;
+				U t_to_value;
 				if(a_to.TryGetValue(t_from_pair.Key,out t_to_value) == false){
 					//存在しない。
 					t_result = false;
@@ -434,7 +479,7 @@ public class Test : MonoBehaviour
 
 	/** Check_Enumerator
 	*/
-	public static bool Check_Enumerator<T>(string a_label,System.Collections.IEnumerable a_from,System.Collections.IEnumerable a_to,CallBack_Check<T> a_callback)
+	public static bool Check_Enumerator<T,U>(string a_label,System.Collections.IEnumerable a_from,System.Collections.IEnumerable a_to,CallBack_Check<T,U> a_callback)
 	{
 		if((a_from == null)&&(a_to == null)){
 			return true;
@@ -481,7 +526,7 @@ public class Test : MonoBehaviour
 				break;
 			}else{
 				T t_from_value = (T)t_from.Current;
-				T t_to_value = (T)t_to.Current;
+				U t_to_value = (U)t_to.Current;
 				if(a_callback(a_label,in t_from_value,in t_to_value) == false){
 					t_result = false;
 					break;

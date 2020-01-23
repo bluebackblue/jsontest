@@ -33,14 +33,50 @@ public class Test_26
 
 	/** チェック。
 	*/
-	public static bool Check(Item a_item_from,Item a_item_to)
+	public static bool Check(Item a_from,Item a_to)
 	{
-		if(a_item_to == null){
+		if(a_to == null){
 			UnityEngine.Debug.LogWarning("mismatch : null");
 			return false;
 		}
 
 		bool t_result = true;
+
+		t_result &= Test.Check_Bool("value_bool",		(bool)a_from.value_bool,			(bool)a_to.value_bool);
+		t_result &= Test.Check_Ulong("value_sbyte",		(ulong)(sbyte)a_from.value_sbyte,	(ulong)a_to.value_sbyte);
+		t_result &= Test.Check_Ulong("value_byte",		(ulong)(byte)a_from.value_byte,		(ulong)a_to.value_byte);
+		t_result &= Test.Check_Ulong("value_short",		(ulong)(short)a_from.value_short,	(ulong)a_to.value_short);
+		t_result &= Test.Check_Ulong("value_ushort",	(ulong)(ushort)a_from.value_ushort,	(ulong)a_to.value_ushort);
+		t_result &= Test.Check_Ulong("value_int",		(ulong)(int)a_from.value_int,		(ulong)a_to.value_int);
+		t_result &= Test.Check_Ulong("value_uint",		(ulong)(uint)a_from.value_uint,		(ulong)a_to.value_uint);
+		t_result &= Test.Check_Ulong("value_long",		(ulong)(long)a_from.value_long,		(ulong)a_to.value_long);
+		t_result &= Test.Check_Ulong("value_ulong",		(ulong)a_from.value_ulong,			(ulong)a_to.value_ulong);
+		t_result &= Test.Check_Ulong("value_char",		(ulong)(char)a_from.value_char,		(ulong)a_to.value_char);
+		t_result &= Test.Check_Double("value_float",	(double)(float)a_from.value_float,	(double)a_to.value_float);
+		t_result &= Test.Check_Double("value_double",	(double)a_from.value_double,		(double)a_to.value_double);
+		t_result &= Test.Check_Decimal("value_decimal",	(decimal)a_from.value_decimal,		(decimal)a_to.value_decimal);
+
+		//value_list
+		t_result &= Test.Check_Enumerator("value_list",(System.Collections.Generic.List<int>)a_from.value_list,(System.Collections.Generic.List<System.Object>)a_to.value_list,(string a_a_label,in int a_a_from,in System.Object a_a_to)=>{
+			bool t_t_result = true;
+			t_t_result &= Test.Check_Int(a_a_label,a_a_from,(int)(ulong)a_a_to);
+			return t_t_result;
+		});
+
+		//value_dictionary
+		t_result &= Test.Check_Dictionary("value_dictionary",(System.Collections.Generic.Dictionary<string,int>)a_from.value_dictionary,(System.Collections.Generic.Dictionary<string,System.Object>)a_to.value_dictionary,(string a_a_label,in int a_a_from,in System.Object a_a_to)=>{
+			bool t_t_result = true;
+			t_t_result &= Test.Check_Int(a_a_label,a_a_from,(int)(ulong)a_a_to);
+			return t_t_result;
+		});
+
+		//value_array
+		t_result &= Test.Check_Enumerator("value_array",(int[])a_from.value_array,(System.Collections.Generic.List<System.Object>)a_to.value_array,(string a_a_label,in int a_a_from,in System.Object a_a_to)=>{
+			bool t_t_result = true;
+			t_t_result &= Test.Check_Int(a_a_label,a_a_from,(int)(ulong)a_a_to);
+			return t_t_result;
+		});
+
 		return t_result;
 	}
 
@@ -68,10 +104,9 @@ public class Test_26
 				t_value_array[1] = 8;
 				t_value_array[2] = 9;
 
-
 				t_item_from.value_bool			= true;
 				t_item_from.value_sbyte			= sbyte.MaxValue;
-				t_item_from.value_byte			= sbyte.MaxValue;
+				t_item_from.value_byte			= byte.MaxValue;
 				t_item_from.value_short			= short.MaxValue;
 				t_item_from.value_ushort		= ushort.MaxValue;
 				t_item_from.value_int			= int.MaxValue;

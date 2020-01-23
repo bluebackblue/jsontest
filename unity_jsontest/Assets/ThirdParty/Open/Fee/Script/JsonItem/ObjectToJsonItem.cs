@@ -4,7 +4,7 @@
  * Copyright (c) blueback
  * Released under the MIT License
  * https://github.com/bluebackblue/fee/blob/master/LICENSE.txt
- * @brief ＪＳＯＮ。ＪＳＯＮ化。
+ * @brief ＪＳＯＮ。JsonItem化。
 */
 
 
@@ -17,18 +17,18 @@
 */
 namespace Fee.JsonItem
 {
-	/** ObjectToJson
+	/** ObjectToJsonItem
 	*/
-	public class ObjectToJson
+	public class ObjectToJsonItem
 	{
 		/** Convert
 		*/
-		public static JsonItem Convert(System.Object a_from_object,System.Type a_from_type,ObjectToJson_WorkPool_Item.ObjectOption a_from_objectoption,int a_nest,ObjectToJson_WorkPool a_workpool = null)
+		public static JsonItem Convert(System.Object a_from_object,System.Type a_from_type,ObjectToJsonItem_WorkPool_Item.ObjectOption a_from_objectoption,int a_nest,ObjectToJsonItem_WorkPool a_workpool = null)
 		{
-			ObjectToJson_WorkPool t_workpool = a_workpool;
+			ObjectToJsonItem_WorkPool t_workpool = a_workpool;
 
 			if(t_workpool == null){
-				t_workpool = new ObjectToJson_WorkPool();				
+				t_workpool = new ObjectToJsonItem_WorkPool();				
 			}
 
 			JsonItem t_to_jsonitem = null;
@@ -103,13 +103,13 @@ namespace Fee.JsonItem
 						{
 							if(a_from_type.IsArray == true){
 								//[]
-								t_to_jsonitem = ObjectToJson_FromArray.Convert(a_from_object,a_from_type,a_from_objectoption,a_nest,t_workpool);
+								t_to_jsonitem = ObjectToJsonItem_FromArray.Convert(a_from_object,a_from_type,a_from_objectoption,a_nest,t_workpool);
 							}else if(a_from_type.IsEnum == true){
 								//Enum
-								t_to_jsonitem = ObjectToJson_FromEnum.Convert(a_from_object,a_from_objectoption);
+								t_to_jsonitem = ObjectToJsonItem_FromEnum.Convert(a_from_object,a_from_objectoption);
 							}else{
 								//class struct generic
-								t_to_jsonitem = ObjectToJson_FromClass.Convert(a_from_object,a_from_type,a_from_objectoption,a_nest,t_workpool);
+								t_to_jsonitem = ObjectToJsonItem_FromClass.Convert(a_from_object,a_from_type,a_from_objectoption,a_nest,t_workpool);
 							}
 						}break;
 					}

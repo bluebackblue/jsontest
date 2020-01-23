@@ -57,25 +57,29 @@ public class Test_27
 		{
 			Item t_item_from = new Item();
 			{
-				/*
-				System.Collections.Generic.HashSet<Item_Value> t_hashset = new System.Collections.Generic.HashSet<Item_Value>();
-				t_hashset.Add(new Item_Value("hash_1",false));
-				t_hashset.Add(new Item_Value("hash_2",false));
-				t_hashset.Add(new Item_Value("hash_3",false));
-				*/
-				t_item_from.arraylist = new System.Collections.ArrayList();
-
-				t_item_from.arraylist.Add(new Item_Value("value_4",true));
-
-				/*
-				t_item_from.arraylist.Add(t_hashset);
-				*/
-				/*
+				System.Collections.Generic.List<int> t_value_list = new System.Collections.Generic.List<int>();
+				t_value_list.Add(1);
+				t_value_list.Add(2);
+				t_value_list.Add(3);
 				
+				System.Collections.Generic.Dictionary<string,int> t_value_dictionary = new System.Collections.Generic.Dictionary<string,int>();
+				t_value_dictionary.Add("value_4",4);
+				t_value_dictionary.Add("value_5",5);
+				t_value_dictionary.Add("value_6",6);
+
+				int[] t_value_array = new int[3]; 
+				t_value_array[0] = 7;
+				t_value_array[1] = 8;
+				t_value_array[2] = 9;
+
+				t_item_from.arraylist = new System.Collections.ArrayList();
+				t_item_from.arraylist.Add(new Item_Value("value_4",true));
 				t_item_from.arraylist.Add(100);
 				t_item_from.arraylist.Add("value_2");
 				t_item_from.arraylist.Add(Type.TypeA);
-				*/
+				t_item_from.arraylist.Add(t_value_list);
+				t_item_from.arraylist.Add(t_value_dictionary);
+				t_item_from.arraylist.Add(t_value_array);
 			}
 
 			//オブジェクト ==> ＪＳＯＮＩＴＥＭ。

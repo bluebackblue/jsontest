@@ -4,7 +4,7 @@
  * Copyright (c) blueback
  * Released under the MIT License
  * https://github.com/bluebackblue/fee/blob/master/LICENSE.txt
- * @brief ＪＳＯＮ。ＪＳＯＮ化。
+ * @brief ＪＳＯＮ。JsonItem化。
 */
 
 
@@ -17,13 +17,13 @@
 */
 namespace Fee.JsonItem
 {
-	/** ObjectToJson_FromEnum
+	/** ObjectToJsonItem_FromEnum
 	*/
-	public class ObjectToJson_FromEnum
+	public class ObjectToJsonItem_FromEnum
 	{
 		/** Convert
 		*/
-		public static JsonItem Convert(System.Object a_from_object,ObjectToJson_WorkPool_Item.ObjectOption a_from_objectoption)
+		public static JsonItem Convert(System.Object a_from_object,ObjectToJsonItem_WorkPool_Item.ObjectOption a_from_objectoption)
 		{
 			bool t_string_mode = false;
 			{
