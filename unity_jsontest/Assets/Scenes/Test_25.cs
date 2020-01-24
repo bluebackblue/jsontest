@@ -102,28 +102,28 @@ public class Test_25
 		t_result &= Test.Check_Enum("value_type_string",	a_from.value_type_string,	a_to.value_type_string);
 
 		//list_type
-		t_result &= Test.Check_Enumerator("list_type",a_from.list_type,a_to.list_type,(string a_a_label,in Type a_a_from,in Type a_a_to) => {
+		t_result &= Test.Check_Enumerator("list_type",a_from.list_type,a_to.list_type,(string a_a_label,int a_a_index,in Type a_a_from,in Type a_a_to) => {
 			bool t_t_result = true;	
 			t_t_result &= Test.Check_Enum(a_a_label,a_a_from,a_a_to);
 			return t_t_result;
 		});
 
 		//dictionary_type
-		t_result &= Test.Check_Dictionary("dictionary_type",a_from.dictionary_type,a_to.dictionary_type,(string a_a_llabel,in Type a_a_from,in Type a_a_to) => {
+		t_result &= Test.Check_Dictionary("dictionary_type",a_from.dictionary_type,a_to.dictionary_type,(string a_a_llabel,int a_a_index,in Type a_a_from,in Type a_a_to) => {
 			bool t_t_result = true;	
 			t_t_result &= Test.Check_Enum(a_a_llabel,a_a_from,a_a_to);
 			return t_t_result;
 		});
 
 		//list_item
-		t_result &= Test.Check_Enumerator("list_item",a_from.list_item,a_to.list_item,(string a_a_label,in Item_Type a_a_from,in Item_Type a_a_to) => {
+		t_result &= Test.Check_Enumerator("list_item",a_from.list_item,a_to.list_item,(string a_a_label,int a_a_index,in Item_Type a_a_from,in Item_Type a_a_to) => {
 			bool t_t_result = true;	
 			t_t_result &= Test.Check_Enum(a_a_label,a_a_from.value_type,a_a_to.value_type);
 			return t_t_result;
 		});
 
 		//dictionary_item
-		t_result &= Test.Check_Dictionary("dictionary_item",a_from.dictionary_item,a_to.dictionary_item,(string a_a_llabel,in Item_Type a_a_from,in Item_Type a_a_to) => {
+		t_result &= Test.Check_Dictionary("dictionary_item",a_from.dictionary_item,a_to.dictionary_item,(string a_a_llabel,int a_a_index,in Item_Type a_a_from,in Item_Type a_a_to) => {
 			bool t_t_result = true;	
 			t_t_result &= Test.Check_Enum(a_a_llabel,a_a_from.value_type,a_a_to.value_type);
 			return t_t_result;

@@ -57,21 +57,21 @@ public class Test_26
 		t_result &= Test.Check_Decimal("value_decimal",	(decimal)a_from.value_decimal,		(decimal)a_to.value_decimal);
 
 		//value_list
-		t_result &= Test.Check_Enumerator("value_list",(System.Collections.Generic.List<int>)a_from.value_list,(System.Collections.Generic.List<System.Object>)a_to.value_list,(string a_a_label,in int a_a_from,in System.Object a_a_to)=>{
+		t_result &= Test.Check_Enumerator("value_list",(System.Collections.Generic.List<int>)a_from.value_list,(System.Collections.Generic.List<System.Object>)a_to.value_list,(string a_a_label,int a_a_index,in int a_a_from,in System.Object a_a_to)=>{
 			bool t_t_result = true;
 			t_t_result &= Test.Check_Int(a_a_label,a_a_from,(int)(ulong)a_a_to);
 			return t_t_result;
 		});
 
 		//value_dictionary
-		t_result &= Test.Check_Dictionary("value_dictionary",(System.Collections.Generic.Dictionary<string,int>)a_from.value_dictionary,(System.Collections.Generic.Dictionary<string,System.Object>)a_to.value_dictionary,(string a_a_label,in int a_a_from,in System.Object a_a_to)=>{
+		t_result &= Test.Check_Dictionary("value_dictionary",(System.Collections.Generic.Dictionary<string,int>)a_from.value_dictionary,(System.Collections.Generic.Dictionary<string,System.Object>)a_to.value_dictionary,(string a_a_label,int a_a_index,in int a_a_from,in System.Object a_a_to)=>{
 			bool t_t_result = true;
 			t_t_result &= Test.Check_Int(a_a_label,a_a_from,(int)(ulong)a_a_to);
 			return t_t_result;
 		});
 
 		//value_array
-		t_result &= Test.Check_Enumerator("value_array",(int[])a_from.value_array,(System.Collections.Generic.List<System.Object>)a_to.value_array,(string a_a_label,in int a_a_from,in System.Object a_a_to)=>{
+		t_result &= Test.Check_Enumerator("value_array",(int[])a_from.value_array,(System.Collections.Generic.List<System.Object>)a_to.value_array,(string a_a_label,int a_a_index,in int a_a_from,in System.Object a_a_to)=>{
 			bool t_t_result = true;
 			t_t_result &= Test.Check_Int(a_a_label,a_a_from,(int)(ulong)a_a_to);
 			return t_t_result;

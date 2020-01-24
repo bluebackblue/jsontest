@@ -33,14 +33,14 @@ public class Test_19
 		bool t_result = true;
 
 		//sorted_dictionary
-		t_result &= Test.Check_Dictionary("sorted_dictionary",a_from.sorted_dictionary,a_to.sorted_dictionary,(string a_a_llabel,in int a_a_from,in int a_a_to)=>{
+		t_result &= Test.Check_Dictionary("sorted_dictionary",a_from.sorted_dictionary,a_to.sorted_dictionary,(string a_a_llabel,int a_a_index,in int a_a_from,in int a_a_to)=>{
 			bool t_t_result = true;	
 			t_t_result &= Test.Check_Int(a_a_llabel,a_a_from,a_a_to);
 			return t_t_result;
 		});
 
 		//sorted_list
-		t_result &= Test.Check_Dictionary("sorted_list",a_from.sorted_list,a_to.sorted_list,(string a_a_llabel,in int a_a_from,in int a_a_to)=>{
+		t_result &= Test.Check_Dictionary("sorted_list",a_from.sorted_list,a_to.sorted_list,(string a_a_llabel,int a_a_index,in int a_a_from,in int a_a_to)=>{
 			bool t_t_result = true;	
 			t_t_result &= Test.Check_Int(a_a_llabel,a_a_from,a_a_to);
 			return t_t_result;

@@ -19,7 +19,7 @@ public class Test_21
 
 		bool t_result = true;
 
-		t_result &= Test.Check_Enumerator("",a_from,a_to,(string a_a_label,in int a_a_from,in int a_a_to) =>{
+		t_result &= Test.Check_Enumerator("",a_from,a_to,(string a_a_label,int a_a_index,in int a_a_from,in int a_a_to) =>{
 			bool t_t_result = true;	
 			t_t_result &= Test.Check_Int(a_a_label,a_a_from,a_a_to);
 			return t_t_result;

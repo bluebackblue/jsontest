@@ -37,21 +37,21 @@ public class Test_17
 		bool t_result = true;
 
 		//value_list
-		t_result &= Test.Check_Enumerator("value_list",a_from.value_list,a_to.value_list,(string a_a_label,in Item a_a_from,in Item a_a_to)=>{
+		t_result &= Test.Check_Enumerator("value_list",a_from.value_list,a_to.value_list,(string a_a_label,int a_a_index,in Item a_a_from,in Item a_a_to)=>{
 			bool t_t_result = true;
 			t_t_result &= Test.Check_NullObject(a_a_label,a_a_from,a_a_to);
 			return t_t_result;
 		});
 
 		//value_dictionary
-		t_result &= Test.Check_Dictionary("value_dictionary",a_from.value_dictionary,a_to.value_dictionary,(string a_a_label,in Item a_a_from,in Item a_a_to)=>{
+		t_result &= Test.Check_Dictionary("value_dictionary",a_from.value_dictionary,a_to.value_dictionary,(string a_a_label,int a_a_index,in Item a_a_from,in Item a_a_to)=>{
 			bool t_t_result = true;
 			t_t_result &= Test.Check_NullObject(a_a_label,a_a_from,a_a_to);
 			return t_t_result;
 		});
 
 		//value_array
-		t_result &= Test.Check_Enumerator("value_array",a_from.value_array,a_to.value_array,(string a_a_label,in Item a_a_from,in Item a_a_to)=>{
+		t_result &= Test.Check_Enumerator("value_array",a_from.value_array,a_to.value_array,(string a_a_label,int a_a_index,in Item a_a_from,in Item a_a_to)=>{
 			bool t_t_result = true;
 			t_t_result &= Test.Check_NullObject(a_a_label,a_a_from,a_a_to);
 			return t_t_result;

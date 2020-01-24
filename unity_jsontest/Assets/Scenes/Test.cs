@@ -19,6 +19,7 @@ public class Test : MonoBehaviour
 	*/
 	public System.Collections.IEnumerator TestCoroutine()
 	{
+		/*
 		Test_01.Main();
 		Test_02.Main();
 		Test_03.Main();
@@ -46,13 +47,16 @@ public class Test : MonoBehaviour
 		Test_25.Main();
 		Test_26.Main();
 		Test_27.Main();
+		*/
+
+		Test_99.Main();
 
 		yield break;
 	}
 
 	/** CallBack_Check
 	*/
-	public delegate bool CallBack_Check<T,U>(string a_label,in T a_from,in U a_to);
+	public delegate bool CallBack_Check<T,U>(string a_label,int a_index,in T a_from,in U a_to);
 
 	/** Check_Bool
 	*/
@@ -290,7 +294,7 @@ public class Test : MonoBehaviour
 					break;
 				}else{
 					T t_from_value = t_from_pair.Value;
-					if(a_callback(a_label,in t_from_value,in t_to_value) == false){
+					if(a_callback(a_label,-1,in t_from_value,in t_to_value) == false){
 						t_result = false;
 					}
 				}
@@ -350,7 +354,7 @@ public class Test : MonoBehaviour
 			}else{
 				T t_from_value = (T)t_from.Current;
 				U t_to_value = (U)t_to.Current;
-				if(a_callback(a_label,in t_from_value,in t_to_value) == false){
+				if(a_callback(a_label,t_index,in t_from_value,in t_to_value) == false){
 					t_result = false;
 					break;
 				}
