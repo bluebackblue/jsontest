@@ -12,7 +12,7 @@ public class Test_99
 	*/
 	public class Item
 	{
-		public System.Collections.Generic.Dictionary<int,int> dictionary;
+		public System.Collections.Generic.Dictionary<System.Object,System.Object> dictionary;
 	};
 
 	/** チェック。
@@ -37,7 +37,7 @@ public class Test_99
 		{
 			Item t_item_from = new Item();
 			{
-				t_item_from.dictionary = new System.Collections.Generic.Dictionary<int,int>();
+				t_item_from.dictionary = new System.Collections.Generic.Dictionary<System.Object,System.Object>();
 				t_item_from.dictionary.Add(1,10);
 				t_item_from.dictionary.Add(2,20);
 				t_item_from.dictionary.Add(3,30);
