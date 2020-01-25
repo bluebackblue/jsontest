@@ -81,11 +81,11 @@ public class Test_15
 
 	/** 更新。
 	*/
-	public static void Main()
+	public static void Main(string a_label = nameof(Test_15))
 	{
-		UnityEngine.Debug.Log("----- Test_15 -----");
+		UnityEngine.Debug.Log("----- " + a_label + " -----");
 
-		{
+		try{
 			#if(NEST_12)
 			int[][][][][][][][][][][][] t_item_from = null;
 			{
@@ -192,12 +192,14 @@ public class Test_15
 			#endif
 
 			//ログ。
-			UnityEngine.Debug.Log("Test_15 : " + t_jsonstring);
+			UnityEngine.Debug.Log(a_label + " : " + t_jsonstring);
 
 			//チェック。
 			if(Check(t_item_from,t_item_to) == false){
 				UnityEngine.Debug.LogError("mismatch");
 			}
+		}catch(System.Exception t_exception){
+			UnityEngine.Debug.LogError(a_label + " : exception : " + t_exception.Message);
 		}
 	}
 }

@@ -57,11 +57,11 @@ public class Test_01
 
 	/** 更新。
 	*/
-	public static void Main()
+	public static void Main(string a_label = nameof(Test_01))
 	{
-		UnityEngine.Debug.Log("----- Test_01 -----");
+		UnityEngine.Debug.Log("----- " + a_label + " -----");
 
-		{
+		try{
 			Item t_item_from = new Item();
 			{
 				t_item_from.value_bool = true;
@@ -99,12 +99,14 @@ public class Test_01
 			#endif
 
 			//ログ。
-			UnityEngine.Debug.Log("Test_01 : " + t_jsonstring);
+			UnityEngine.Debug.Log(a_label + " : " + t_jsonstring);
 
 			//チェック。
 			if(Check(t_item_from,t_item_to) == false){
 				UnityEngine.Debug.LogError("mismatch");
 			}
+		}catch(System.Exception t_exception){
+			UnityEngine.Debug.LogError(a_label + " : exception : " + t_exception.Message);
 		}
 	}
 }

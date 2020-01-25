@@ -12,7 +12,13 @@ public class Test_99
 	*/
 	public class Item
 	{
-		public System.Collections.Generic.Dictionary<System.Object,System.Object> dictionary;
+		//[Fee.JsonItem.Ignore]
+		public UnityEngine.Material material;
+
+		//[Fee.JsonItem.Ignore]
+		public UnityEngine.MonoBehaviour monobehaviour;
+
+
 	};
 
 	/** チェック。
@@ -30,17 +36,19 @@ public class Test_99
 
 	/** 更新。
 	*/
-	public static void Main()
+	public static void Main(string a_label = nameof(Test_99))
 	{
-		UnityEngine.Debug.Log("----- Test_99 -----");
+		UnityEngine.Debug.Log("----- " + a_label + " -----");
 
-		{
+		try{
 			Item t_item_from = new Item();
 			{
-				t_item_from.dictionary = new System.Collections.Generic.Dictionary<System.Object,System.Object>();
-				t_item_from.dictionary.Add(1,10);
-				t_item_from.dictionary.Add(2,20);
-				t_item_from.dictionary.Add(3,30);
+				//material
+				t_item_from.material = new UnityEngine.Material(UnityEngine.Shader.Find("Fee/Render2D/Add"));
+
+				//monobehaviour
+				UnityEngine.GameObject t_gameobject = new UnityEngine.GameObject("gameobject");
+				t_item_from.monobehaviour = t_gameobject.AddComponent<Test_99_MonoBehaviour>();
 			}
 
 			//オブジェクト ==> ＪＳＯＮＩＴＥＭ。
@@ -63,13 +71,42 @@ public class Test_99
 			#endif
 
 			//ログ。
-			UnityEngine.Debug.Log("Test_99 : " + t_jsonstring);
+			UnityEngine.Debug.Log(a_label + " : " + t_jsonstring);
 
 			//チェック。
 			if(Check(t_item_from,t_item_to) == false){
 				UnityEngine.Debug.LogError("mismatch");
 			}
+		}catch(System.Exception t_exception){
+			UnityEngine.Debug.LogError(a_label + " : exception : " + t_exception.Message);
 		}
+	}
+}
+
+/** Test_99_MonoBehaviour
+*/
+public class Test_99_MonoBehaviour : UnityEngine.MonoBehaviour
+{
+	public bool flag;
+
+	/** constructor
+	*/
+	public Test_99_MonoBehaviour()
+	{
+		UnityEngine.Debug.Log("new");
+	}
+
+	/** Start
+	*/
+	public void Start()
+	{
+		this.flag = true;
+	}
+
+	/** Update
+	*/
+	public void Update()
+	{
 	}
 }
 

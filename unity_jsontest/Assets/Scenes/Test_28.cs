@@ -73,30 +73,46 @@ public class Test_28
 
 		bool t_result = true;
 
-		//TODO:
+		t_result &= Test.Check_Dictionary("list_type",a_from.list_type,a_to.list_type,(string a_a_label,int a_a_index,in int a_a_from,in int a_a_to) => {
+			bool t_t_result = true;
+			t_t_result &= Test.Check_Int(a_a_label,a_a_from,a_a_to);
+			return t_t_result;
+		});
+
+		t_result &= Test.Check_Dictionary("list_int",a_from.list_int,a_to.list_int,(string a_a_label,int a_a_index,in int a_a_from,in int a_a_to) => {
+			bool t_t_result = true;
+			t_t_result &= Test.Check_Int(a_a_label,a_a_from,a_a_to);
+			return t_t_result;
+		});
+
+		t_result &= Test.Check_Dictionary("list_class",a_from.list_class,a_to.list_class,(string a_a_label,int a_a_index,in int a_a_from,in int a_a_to) => {
+			bool t_t_result = true;
+			t_t_result &= Test.Check_Int(a_a_label,a_a_from,a_a_to);
+			return t_t_result;
+		});
 
 		return t_result;
 	}
 
 	/** 更新。
 	*/
-	public static void Main()
+	public static void Main(string a_label = nameof(Test_28))
 	{
-		UnityEngine.Debug.Log("----- Test_28 -----");
+		UnityEngine.Debug.Log("----- " + a_label + " -----");
 
-		{
+		try{
 			Item t_item_from = new Item();
 			{
+				System.Collections.Generic.Dictionary<Type_Key,int> t_list_type = new System.Collections.Generic.Dictionary<Type_Key,int>();
+				t_list_type.Add(Type_Key.Key_A,100);
+				t_list_type.Add(Type_Key.Key_B,200);
+				t_list_type.Add(Type_Key.Key_C,300);
+
 				System.Collections.Generic.Dictionary<int,int> t_list_int = new System.Collections.Generic.Dictionary<int,int>();
 				t_list_int.Add(1,100);
 				t_list_int.Add(2,200);
 				t_list_int.Add(3,300);
 
-				System.Collections.Generic.Dictionary<Type_Key,int> t_list_type = new System.Collections.Generic.Dictionary<Type_Key,int>();
-				t_list_type.Add(Type_Key.Key_A,100);
-				t_list_type.Add(Type_Key.Key_B,200);
-				t_list_type.Add(Type_Key.Key_C,300);
-				
 				System.Collections.Generic.Dictionary<Item_Key,int> t_list_class = new System.Collections.Generic.Dictionary<Item_Key,int>();
 				t_list_class.Add(new Item_Key(1),100);
 				t_list_class.Add(new Item_Key(2),200);
@@ -127,12 +143,14 @@ public class Test_28
 			#endif
 		
 			//ログ。
-			UnityEngine.Debug.Log("Test_28 : " + t_jsonstring);
+			UnityEngine.Debug.Log(a_label + " : " + t_jsonstring);
 
 			//チェック。
 			if(Check(t_item_from,t_item_to) == false){
 				UnityEngine.Debug.LogError("mismatch");
 			}
+		}catch(System.Exception t_exception){
+			UnityEngine.Debug.LogError(a_label + " : exception : " + t_exception.Message);
 		}
 	}
 }

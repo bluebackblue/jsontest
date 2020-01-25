@@ -22,70 +22,36 @@ public class Test : MonoBehaviour
 	*/
 	public System.Collections.IEnumerator TestCoroutine()
 	{
-		try{
-			Test_01.Main();
-			Test_02.Main();
-			Test_03.Main();
-			Test_04.Main();
-			Test_05.Main();
-			Test_06.Main();
-			Test_07.Main();
-			Test_08.Main();
-			Test_09.Main();
-			Test_10.Main();
-		}catch(System.Exception t_exception){
-			UnityEngine.Debug.LogError("01 -- 10 : exception : " + t_exception.Message);
-		}
+		Test_01.Main();
+		Test_02.Main();
+		Test_03.Main();
+		Test_04.Main();
+		Test_05.Main();
+		Test_06.Main();
+		Test_07.Main();
+		Test_08.Main();
+		Test_09.Main();
+		Test_10.Main();
+		Test_11.Main();
+		Test_12.Main();
+		Test_13.Main();
+		Test_14.Main();
+		Test_15.Main();
+		Test_16.Main();
+		Test_17.Main();
+		Test_18.Main();
+		Test_19.Main();
+		Test_20.Main();
+		Test_21.Main();
+		Test_22.Main();
+		Test_23.Main();
+		Test_24.Main();
+		Test_25.Main();
+		Test_26.Main();
+		Test_27.Main();
+		Test_28.Main();
 
-		try{
-			Test_11.Main();
-		}catch(System.Exception t_exception){
-			UnityEngine.Debug.LogError("11 : exception : " + t_exception.Message);
-		}
-
-		try{
-			Test_12.Main();
-		}catch(System.Exception t_exception){
-			UnityEngine.Debug.LogError("12 : exception : " + t_exception.Message);
-		}
-
-		try{
-			Test_13.Main();
-		}catch(System.Exception t_exception){
-			UnityEngine.Debug.LogError("13 : exception : " + t_exception.Message);
-		}
-
-		try{
-			Test_14.Main();
-		}catch(System.Exception t_exception){
-			UnityEngine.Debug.LogError("14 : exception : " + t_exception.Message);
-		}
-
-		try{
-			Test_15.Main();
-		}catch(System.Exception t_exception){
-			UnityEngine.Debug.LogError("15 : exception : " + t_exception.Message);
-		}
-
-		try{
-			Test_16.Main();
-			Test_17.Main();
-			Test_18.Main();
-			Test_19.Main();
-			Test_20.Main();
-			Test_21.Main();
-			Test_22.Main();
-			Test_23.Main();
-			Test_24.Main();
-			Test_25.Main();
-			Test_26.Main();
-			Test_27.Main();
-			Test_28.Main();
-
-			//Test_99.Main();
-		}catch(System.Exception t_exception){
-			UnityEngine.Debug.LogError("16 -- 28 : exception : " + t_exception.Message);
-		}
+		Test_99.Main();
 
 		yield break;
 	}
@@ -302,7 +268,7 @@ public class Test : MonoBehaviour
 
 	/** Check_Dictionary
 	*/
-	public static bool Check_Dictionary<K,T,U>(string a_label,System.Collections.Generic.IDictionary<K,T> a_from,System.Collections.Generic.IDictionary<K,U> a_to,CallBack_Check<T,U> a_callback)
+	public static bool Check_Dictionary<K,VA,VB>(string a_label,System.Collections.Generic.IDictionary<K,VA> a_from,System.Collections.Generic.IDictionary<K,VB> a_to,CallBack_Check<VA,VB> a_callback)
 	{
 		if((a_from == null)&&(a_to == null)){
 			return true;
@@ -321,15 +287,15 @@ public class Test : MonoBehaviour
 			t_result = false;
 			UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : counterror");
 		}else{
-			foreach(System.Collections.Generic.KeyValuePair<K,T> t_from_pair in a_from){
-				U t_to_value;
+			foreach(System.Collections.Generic.KeyValuePair<K,VA> t_from_pair in a_from){
+				VB t_to_value;
 				if(a_to.TryGetValue(t_from_pair.Key,out t_to_value) == false){
 					//存在しない。
 					t_result = false;
 					UnityEngine.Debug.LogWarning("mismatch : " + a_label + " : notexist");
 					break;
 				}else{
-					T t_from_value = t_from_pair.Value;
+					VA t_from_value = t_from_pair.Value;
 					if(a_callback(a_label,-1,in t_from_value,in t_to_value) == false){
 						t_result = false;
 					}
