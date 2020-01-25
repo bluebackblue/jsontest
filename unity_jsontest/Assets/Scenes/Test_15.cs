@@ -6,7 +6,11 @@
 
 /** NEST
 */
-#define NEST_7
+#if(UNITY_WEBGL)
+#define NEST_6
+#else
+#define NEST_12
+#endif
 
 
 /** System.Arrayネスト。

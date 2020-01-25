@@ -73,57 +73,7 @@ public class Test_28
 
 		bool t_result = true;
 
-		/*
-		Test.Check_Enumerator("arraylist",a_from.arraylist,a_to.arraylist,(string a_a_label,int a_a_index,in System.Object a_a_from,in System.Object a_a_to) => {
-			bool t_t_result = true;
-
-			switch(a_a_index){
-			case 0:
-				{
-					t_t_result &= Test.Check_String("0:value_string",((Item_Value)a_a_from).value_string,(string)(((System.Collections.Generic.Dictionary<string,System.Object>)a_a_to)["value_string"]));
-					t_t_result &= Test.Check_Bool("1:value_bool",((Item_Value)a_a_from).value_bool,(bool)(((System.Collections.Generic.Dictionary<string,System.Object>)a_a_to)["value_bool"]));
-				}break;
-			case 1:
-				{
-					t_t_result &= Test.Check_Int("1",(int)a_a_from,(int)(ulong)a_a_to);
-				}break;
-			case 2:
-				{
-					t_t_result &= Test.Check_String("2",(string)a_a_from,(string)a_a_to);
-				}break;
-			case 3:
-				{
-					t_t_result &= Test.Check_Byte("3",(byte)a_a_from,(byte)(ulong)a_a_to);
-				}break;
-			case 4:
-				{
-					t_t_result &= Test.Check_Enumerator("4",(System.Collections.Generic.List<int>)a_a_from,(System.Collections.Generic.List<System.Object>)a_a_to,(string a_a_a_label,int a_a_a_index,in int a_a_a_from,in System.Object a_a_a_to) => {
-						bool t_t_t_result = true;
-						t_t_t_result &= Test.Check_Int(a_a_a_label,(int)a_a_a_from,(int)(ulong)a_a_a_to);
-						return t_t_t_result;
-					});
-				}break;
-			case 5:
-				{
-					t_t_result &= Test.Check_Dictionary("5",(System.Collections.Generic.Dictionary<string,int>)a_a_from,(System.Collections.Generic.Dictionary<string,System.Object>)a_a_to,(string a_a_a_label,int a_a_a_index,in int a_a_a_from,in System.Object a_a_a_to) => {
-						bool t_t_t_result = true;
-						t_t_t_result &= Test.Check_Int(a_a_a_label,(int)a_a_a_from,(int)(ulong)a_a_a_to);
-						return t_t_t_result;
-					});
-				}break;
-			case 6:
-				{
-					t_t_result &= Test.Check_Enumerator("6",(int[])a_a_from,(System.Collections.Generic.List<System.Object>)a_a_to,(string a_a_a_label,int a_a_a_index,in int a_a_a_from,in System.Object a_a_a_to) => {
-						bool t_t_t_result = true;
-						t_t_t_result &= Test.Check_Int(a_a_a_label,(int)a_a_a_from,(int)(ulong)a_a_a_to);
-						return t_t_t_result;
-					});
-				}break;
-			}
-
-			return t_t_result;
-		});
-		*/
+		//TODO:
 
 		return t_result;
 	}
