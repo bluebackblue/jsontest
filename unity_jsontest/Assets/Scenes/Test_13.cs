@@ -4,12 +4,21 @@
 #define FEE_JSON
 
 
+/** NEST
+*/
+#define NEST_7
+
+
 /** ITEM_TYPE
 */
-#if(!UNITY_WEBGL)
+#if(NEST_12)
 using ITEM_TYPE = System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<int>>>>>>>>>>>>;
-#else
-using ITEM_TYPE = System.Collections.Generic.List<System.Collections.Generic.List<int>>;
+#elif(NEST_7)
+using ITEM_TYPE = System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<int>>>>>>>;
+#elif(NEST_6)
+using ITEM_TYPE = System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<int>>>>>>;
+#elif(NEST_5)
+using ITEM_TYPE = System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<int>>>>>;
 #endif
 
 /** Generic.Listネスト。
@@ -27,10 +36,10 @@ public class Test_13
 
 		bool t_result = true;
 
+
+		#if(NEST_12)
 		t_result &= Test.Check_Int("0.count",	a_from.Count,									a_to.Count);
 		t_result &= Test.Check_Int("1.count",	a_from[0].Count,								a_to[0].Count);
-
-		#if(!UNITY_WEBGL)
 		t_result &= Test.Check_Int("2.count",	a_from[0][0].Count,								a_to[0][0].Count);
 		t_result &= Test.Check_Int("3.count",	a_from[0][0][0].Count,							a_to[0][0][0].Count);
 		t_result &= Test.Check_Int("4.count",	a_from[0][0][0][0].Count,						a_to[0][0][0][0].Count);
@@ -42,8 +51,30 @@ public class Test_13
 		t_result &= Test.Check_Int("10.count",	a_from[0][0][0][0][0][0][0][0][0][0].Count,		a_to[0][0][0][0][0][0][0][0][0][0].Count);
 		t_result &= Test.Check_Int("11.count",	a_from[0][0][0][0][0][0][0][0][0][0][0].Count,	a_to[0][0][0][0][0][0][0][0][0][0][0].Count);
 		t_result &= Test.Check_Int("11.value",	a_from[0][0][0][0][0][0][0][0][0][0][0][0],		a_to[0][0][0][0][0][0][0][0][0][0][0][0]);
-		#else
-		t_result &= Test.Check_Int("11.value",	a_from[0][0],									a_to[0][0]);
+		#elif(NEST_7)
+		t_result &= Test.Check_Int("0.count",	a_from.Count,									a_to.Count);
+		t_result &= Test.Check_Int("1.count",	a_from[0].Count,								a_to[0].Count);
+		t_result &= Test.Check_Int("2.count",	a_from[0][0].Count,								a_to[0][0].Count);
+		t_result &= Test.Check_Int("3.count",	a_from[0][0][0].Count,							a_to[0][0][0].Count);
+		t_result &= Test.Check_Int("4.count",	a_from[0][0][0][0].Count,						a_to[0][0][0][0].Count);
+		t_result &= Test.Check_Int("5.count",	a_from[0][0][0][0][0].Count,					a_to[0][0][0][0][0].Count);
+		t_result &= Test.Check_Int("6.count",	a_from[0][0][0][0][0][0].Count,					a_to[0][0][0][0][0][0].Count);
+		t_result &= Test.Check_Int("6.value",	a_from[0][0][0][0][0][0][0],					a_to[0][0][0][0][0][0][0]);
+		#elif(NEST_6)
+		t_result &= Test.Check_Int("0.count",	a_from.Count,									a_to.Count);
+		t_result &= Test.Check_Int("1.count",	a_from[0].Count,								a_to[0].Count);
+		t_result &= Test.Check_Int("2.count",	a_from[0][0].Count,								a_to[0][0].Count);
+		t_result &= Test.Check_Int("3.count",	a_from[0][0][0].Count,							a_to[0][0][0].Count);
+		t_result &= Test.Check_Int("4.count",	a_from[0][0][0][0].Count,						a_to[0][0][0][0].Count);
+		t_result &= Test.Check_Int("5.count",	a_from[0][0][0][0][0].Count,					a_to[0][0][0][0][0].Count);
+		t_result &= Test.Check_Int("5.value",	a_from[0][0][0][0][0][0],						a_to[0][0][0][0][0][0]);
+		#elif(NEST_5)
+		t_result &= Test.Check_Int("0.count",	a_from.Count,									a_to.Count);
+		t_result &= Test.Check_Int("1.count",	a_from[0].Count,								a_to[0].Count);
+		t_result &= Test.Check_Int("2.count",	a_from[0][0].Count,								a_to[0][0].Count);
+		t_result &= Test.Check_Int("3.count",	a_from[0][0][0].Count,							a_to[0][0][0].Count);
+		t_result &= Test.Check_Int("4.count",	a_from[0][0][0][0].Count,						a_to[0][0][0][0].Count);
+		t_result &= Test.Check_Int("4.value",	a_from[0][0][0][0][0],							a_to[0][0][0][0][0]);
 		#endif
 
 		return t_result;
@@ -58,7 +89,7 @@ public class Test_13
 		{
 			ITEM_TYPE t_item_from = new ITEM_TYPE();
 			{
-				#if(!UNITY_WEBGL)
+				#if(NEST_12)
 				t_item_from.Add(new System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<int>>>>>>>>>>>());
 				t_item_from[0].Add(new System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<int>>>>>>>>>>());
 				t_item_from[0][0].Add(new System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<int>>>>>>>>>());
@@ -72,10 +103,30 @@ public class Test_13
 				t_item_from[0][0][0][0][0][0][0][0][0][0].Add(new System.Collections.Generic.List<int>());
 				t_item_from[0][0][0][0][0][0][0][0][0][0][0].Add(new int());
 				t_item_from[0][0][0][0][0][0][0][0][0][0][0][0] = -1;
-				#else
-				t_item_from.Add(new System.Collections.Generic.List<int>());
-				t_item_from[0].Add(new int());
-				t_item_from[0][0] = -1;
+				#elif(NEST_7)
+				t_item_from.Add(new System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<int>>>>>>());
+				t_item_from[0].Add(new System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<int>>>>>());
+				t_item_from[0][0].Add(new System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<int>>>>());
+				t_item_from[0][0][0].Add(new System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<int>>>());
+				t_item_from[0][0][0][0].Add(new System.Collections.Generic.List<System.Collections.Generic.List<int>>());
+				t_item_from[0][0][0][0][0].Add(new System.Collections.Generic.List<int>());
+				t_item_from[0][0][0][0][0][0].Add(new int());
+				t_item_from[0][0][0][0][0][0][0] = -1;
+				#elif(NEST_6)
+				t_item_from.Add(new System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<int>>>>>());
+				t_item_from[0].Add(new System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<int>>>>());
+				t_item_from[0][0].Add(new System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<int>>>());
+				t_item_from[0][0][0].Add(new System.Collections.Generic.List<System.Collections.Generic.List<int>>());
+				t_item_from[0][0][0][0].Add(new System.Collections.Generic.List<int>());
+				t_item_from[0][0][0][0][0].Add(new int());
+				t_item_from[0][0][0][0][0][0] = -1;
+				#elif(NEST_5)
+				t_item_from.Add(new System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<int>>>>());
+				t_item_from[0].Add(new System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<int>>>());
+				t_item_from[0][0].Add(new System.Collections.Generic.List<System.Collections.Generic.List<int>>());
+				t_item_from[0][0][0].Add(new System.Collections.Generic.List<int>());
+				t_item_from[0][0][0][0].Add(new int());
+				t_item_from[0][0][0][0][0] = -1;
 				#endif
 			}
 

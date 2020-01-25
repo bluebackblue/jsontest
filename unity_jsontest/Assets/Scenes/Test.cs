@@ -34,43 +34,37 @@ public class Test : MonoBehaviour
 			Test_09.Main();
 			Test_10.Main();
 		}catch(System.Exception t_exception){
-			UnityEngine.Debug.LogError("exception : " + t_exception.Source);
-			UnityEngine.Debug.LogError("exception : " + t_exception.Message);
+			UnityEngine.Debug.LogError("01 -- 10 : exception : " + t_exception.Message);
 		}
 
 		try{
 			Test_11.Main();
 		}catch(System.Exception t_exception){
-			UnityEngine.Debug.LogError("exception : " + t_exception.Source);
-			UnityEngine.Debug.LogError("exception : " + t_exception.Message);
+			UnityEngine.Debug.LogError("11 : exception : " + t_exception.Message);
 		}
 
 		try{
 			Test_12.Main();
 		}catch(System.Exception t_exception){
-			UnityEngine.Debug.LogError("exception : " + t_exception.Source);
-			UnityEngine.Debug.LogError("exception : " + t_exception.Message);
+			UnityEngine.Debug.LogError("12 : exception : " + t_exception.Message);
 		}
 
 		try{
 			Test_13.Main();
 		}catch(System.Exception t_exception){
-			UnityEngine.Debug.LogError("exception : " + t_exception.Source);
-			UnityEngine.Debug.LogError("exception : " + t_exception.Message);
+			UnityEngine.Debug.LogError("13 : exception : " + t_exception.Message);
 		}
 
 		try{
 			Test_14.Main();
 		}catch(System.Exception t_exception){
-			UnityEngine.Debug.LogError("exception : " + t_exception.Source);
-			UnityEngine.Debug.LogError("exception : " + t_exception.Message);
+			UnityEngine.Debug.LogError("14 : exception : " + t_exception.Message);
 		}
 
 		try{
 			Test_15.Main();
 		}catch(System.Exception t_exception){
-			UnityEngine.Debug.LogError("exception : " + t_exception.Source);
-			UnityEngine.Debug.LogError("exception : " + t_exception.Message);
+			UnityEngine.Debug.LogError("15 : exception : " + t_exception.Message);
 		}
 
 		try{
@@ -90,8 +84,7 @@ public class Test : MonoBehaviour
 
 			//Test_99.Main();
 		}catch(System.Exception t_exception){
-			UnityEngine.Debug.LogError("exception : " + t_exception.Source);
-			UnityEngine.Debug.LogError("exception : " + t_exception.Message);
+			UnityEngine.Debug.LogError("16 -- 28 : exception : " + t_exception.Message);
 		}
 
 		yield break;
