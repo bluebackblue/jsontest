@@ -8,17 +8,27 @@
 */
 public class Test_99
 {
+	/** Test_MonoBehaviour
+	*/
+	public class Test_MonoBehaviour : UnityEngine.MonoBehaviour
+	{
+		public bool flag;
+		private Test_MonoBehaviour(){}
+		public void Awake()
+		{
+			this.flag = true;
+		}
+	}
+
 	/** Item
 	*/
 	public class Item
 	{
-		//[Fee.JsonItem.Ignore]
+		[Fee.JsonItem.Ignore]
 		public UnityEngine.Material material;
 
-		//[Fee.JsonItem.Ignore]
+		[Fee.JsonItem.Ignore]
 		public UnityEngine.MonoBehaviour monobehaviour;
-
-
 	};
 
 	/** チェック。
@@ -48,7 +58,7 @@ public class Test_99
 
 				//monobehaviour
 				UnityEngine.GameObject t_gameobject = new UnityEngine.GameObject("gameobject");
-				t_item_from.monobehaviour = t_gameobject.AddComponent<Test_99_MonoBehaviour>();
+				t_item_from.monobehaviour = t_gameobject.AddComponent<Test_MonoBehaviour>();
 			}
 
 			//オブジェクト ==> ＪＳＯＮＩＴＥＭ。
@@ -80,33 +90,6 @@ public class Test_99
 		}catch(System.Exception t_exception){
 			UnityEngine.Debug.LogError(a_label + " : exception : " + t_exception.Message);
 		}
-	}
-}
-
-/** Test_99_MonoBehaviour
-*/
-public class Test_99_MonoBehaviour : UnityEngine.MonoBehaviour
-{
-	public bool flag;
-
-	/** constructor
-	*/
-	public Test_99_MonoBehaviour()
-	{
-		UnityEngine.Debug.Log("new");
-	}
-
-	/** Start
-	*/
-	public void Start()
-	{
-		this.flag = true;
-	}
-
-	/** Update
-	*/
-	public void Update()
-	{
 	}
 }
 
