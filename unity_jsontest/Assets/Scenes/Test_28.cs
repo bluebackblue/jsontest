@@ -4,15 +4,39 @@
 #define FEE_JSON
 
 
-/** Collections.ArrayList。
+/** Generic.Dictionary(key != string)
 */
-public class Test_27
+public class Test_28
 {
-	/** Type
+	/** Type_Key
 	*/
-	public enum Type : byte
+	public enum Type_Key
 	{
-		TypeA = 100,
+		Key_A,
+		Key_B,
+		Key_C
+	}
+
+	/** Item_Key
+	*/
+	public class Item_Key
+	{
+		public int key;
+		public override int GetHashCode()
+		{
+			return this.key.GetHashCode();
+		}
+		public override bool Equals(object a_object)
+		{
+			return this.key == ((Item_Key)a_object).key;
+		}
+		public Item_Key()
+		{
+		}
+		public Item_Key(int a_key)
+		{
+			this.key = a_key;
+		}
 	}
 
 	/** Item_Value
@@ -32,7 +56,10 @@ public class Test_27
 	*/
 	public class Item
 	{
-		public System.Collections.ArrayList arraylist;
+		[Fee.JsonItem.EnumString]
+		public System.Collections.Generic.Dictionary<Type_Key,int> list_type;
+		public System.Collections.Generic.Dictionary<int,int> list_int;
+		public System.Collections.Generic.Dictionary<Item_Key,int> list_class;
 	}
 
 	/** チェック。
@@ -46,6 +73,7 @@ public class Test_27
 
 		bool t_result = true;
 
+		/*
 		Test.Check_Enumerator("arraylist",a_from.arraylist,a_to.arraylist,(string a_a_label,int a_a_index,in System.Object a_a_from,in System.Object a_a_to) => {
 			bool t_t_result = true;
 
@@ -95,6 +123,7 @@ public class Test_27
 
 			return t_t_result;
 		});
+		*/
 
 		return t_result;
 	}
@@ -103,34 +132,29 @@ public class Test_27
 	*/
 	public static void Main()
 	{
-		UnityEngine.Debug.Log("----- Test_27 -----");
+		UnityEngine.Debug.Log("----- Test_28 -----");
 
 		{
 			Item t_item_from = new Item();
 			{
-				System.Collections.Generic.List<int> t_value_list = new System.Collections.Generic.List<int>();
-				t_value_list.Add(1);
-				t_value_list.Add(2);
-				t_value_list.Add(3);
+				System.Collections.Generic.Dictionary<int,int> t_list_int = new System.Collections.Generic.Dictionary<int,int>();
+				t_list_int.Add(1,100);
+				t_list_int.Add(2,200);
+				t_list_int.Add(3,300);
+
+				System.Collections.Generic.Dictionary<Type_Key,int> t_list_type = new System.Collections.Generic.Dictionary<Type_Key,int>();
+				t_list_type.Add(Type_Key.Key_A,100);
+				t_list_type.Add(Type_Key.Key_B,200);
+				t_list_type.Add(Type_Key.Key_C,300);
 				
-				System.Collections.Generic.Dictionary<string,int> t_value_dictionary = new System.Collections.Generic.Dictionary<string,int>();
-				t_value_dictionary.Add("value_4",4);
-				t_value_dictionary.Add("value_5",5);
-				t_value_dictionary.Add("value_6",6);
+				System.Collections.Generic.Dictionary<Item_Key,int> t_list_class = new System.Collections.Generic.Dictionary<Item_Key,int>();
+				t_list_class.Add(new Item_Key(1),100);
+				t_list_class.Add(new Item_Key(2),200);
+				t_list_class.Add(new Item_Key(3),300);
 
-				int[] t_value_array = new int[3]; 
-				t_value_array[0] = 7;
-				t_value_array[1] = 8;
-				t_value_array[2] = 9;
-
-				t_item_from.arraylist = new System.Collections.ArrayList();
-				t_item_from.arraylist.Add(new Item_Value("value_4",true));
-				t_item_from.arraylist.Add(100);
-				t_item_from.arraylist.Add("value_2");
-				t_item_from.arraylist.Add(Type.TypeA);
-				t_item_from.arraylist.Add(t_value_list);
-				t_item_from.arraylist.Add(t_value_dictionary);
-				t_item_from.arraylist.Add(t_value_array);
+				t_item_from.list_int = t_list_int;
+				t_item_from.list_type = t_list_type;
+				t_item_from.list_class = t_list_class;
 			}
 
 			//オブジェクト ==> ＪＳＯＮＩＴＥＭ。
@@ -153,7 +177,7 @@ public class Test_27
 			#endif
 		
 			//ログ。
-			UnityEngine.Debug.Log("Test_27 : " + t_jsonstring);
+			UnityEngine.Debug.Log("Test_28 : " + t_jsonstring);
 
 			//チェック。
 			if(Check(t_item_from,t_item_to) == false){

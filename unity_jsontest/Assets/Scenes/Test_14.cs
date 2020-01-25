@@ -6,8 +6,11 @@
 
 /** ITEM_TYPE
 */
+#if(!UNITY_WEBGL)
 using ITEM_TYPE = System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,int>>>>>>>>>>>>;
-
+#else
+using ITEM_TYPE = System.Collections.Generic.Dictionary<string,int>;
+#endif
 
 /** Generic.Dictionary(key = string)ネスト。
 */
@@ -25,6 +28,8 @@ public class Test_14
 		bool t_result = true;
 
 		t_result &= Test.Check_Int("0.count",	a_from.Count,																														a_to.Count);
+
+		#if(!UNITY_WEBGL)
 		t_result &= Test.Check_Int("1.count",	a_from["list_0"].Count,																												a_to["list_0"].Count);
 		t_result &= Test.Check_Int("2.count",	a_from["list_0"]["list_1"].Count,																									a_to["list_0"]["list_1"].Count);
 		t_result &= Test.Check_Int("3.count",	a_from["list_0"]["list_1"]["list_2"].Count,																							a_to["list_0"]["list_1"]["list_2"].Count);
@@ -36,8 +41,10 @@ public class Test_14
 		t_result &= Test.Check_Int("9.count",	a_from["list_0"]["list_1"]["list_2"]["list_3"]["list_4"]["list_5"]["list_6"]["list_7"]["list_8"].Count,								a_to["list_0"]["list_1"]["list_2"]["list_3"]["list_4"]["list_5"]["list_6"]["list_7"]["list_8"].Count);
 		t_result &= Test.Check_Int("10.count",	a_from["list_0"]["list_1"]["list_2"]["list_3"]["list_4"]["list_5"]["list_6"]["list_7"]["list_8"]["list_9"].Count,					a_to["list_0"]["list_1"]["list_2"]["list_3"]["list_4"]["list_5"]["list_6"]["list_7"]["list_8"]["list_9"].Count);
 		t_result &= Test.Check_Int("11.count",	a_from["list_0"]["list_1"]["list_2"]["list_3"]["list_4"]["list_5"]["list_6"]["list_7"]["list_8"]["list_9"]["list_10"].Count,		a_to["list_0"]["list_1"]["list_2"]["list_3"]["list_4"]["list_5"]["list_6"]["list_7"]["list_8"]["list_9"]["list_10"].Count);
-
 		t_result &= Test.Check_Int("11.value",	a_from["list_0"]["list_1"]["list_2"]["list_3"]["list_4"]["list_5"]["list_6"]["list_7"]["list_8"]["list_9"]["list_10"]["value"],		a_to["list_0"]["list_1"]["list_2"]["list_3"]["list_4"]["list_5"]["list_6"]["list_7"]["list_8"]["list_9"]["list_10"]["value"]);
+		#else
+		t_result &= Test.Check_Int("11.value",	a_from["value"],																													a_to["value"]);
+		#endif
 
 		return t_result;
 	}
@@ -51,6 +58,7 @@ public class Test_14
 		{
 			ITEM_TYPE t_item_from = new ITEM_TYPE();
 			{
+				#if(!UNITY_WEBGL)
 				t_item_from.Add("list_0",new System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,int>>>>>>>>>>>());
 				t_item_from["list_0"].Add("list_1",new System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,int>>>>>>>>>>());
 				t_item_from["list_0"]["list_1"].Add("list_2",new System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,int>>>>>>>>>());
@@ -63,6 +71,9 @@ public class Test_14
 				t_item_from["list_0"]["list_1"]["list_2"]["list_3"]["list_4"]["list_5"]["list_6"]["list_7"]["list_8"].Add("list_9",new System.Collections.Generic.Dictionary<string,System.Collections.Generic.Dictionary<string,int>>());
 				t_item_from["list_0"]["list_1"]["list_2"]["list_3"]["list_4"]["list_5"]["list_6"]["list_7"]["list_8"]["list_9"].Add("list_10",new System.Collections.Generic.Dictionary<string,int>());
 				t_item_from["list_0"]["list_1"]["list_2"]["list_3"]["list_4"]["list_5"]["list_6"]["list_7"]["list_8"]["list_9"]["list_10"].Add("value",-1);
+				#else
+				t_item_from.Add("value",-1);
+				#endif
 			}
 
 			//オブジェクト ==> ＪＳＯＮＩＴＥＭ。

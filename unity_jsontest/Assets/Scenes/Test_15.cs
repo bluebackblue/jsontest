@@ -3,14 +3,17 @@
 */
 #define FEE_JSON
 
-
 /** System.Arrayネスト。
 */
 public class Test_15
 {
 	/** チェック。
 	*/
+	#if(!UNITY_WEBGL)
 	public static bool Check(int[][][][][][][][][][][][] a_from,int[][][][][][][][][][][][] a_to)
+	#else
+	public static bool Check(int[][][][][][] a_from,int[][][][][][] a_to)
+	#endif
 	{
 		if(a_to == null){
 			UnityEngine.Debug.LogWarning("mismatch : null");
@@ -25,14 +28,19 @@ public class Test_15
 		t_result &= Test.Check_Int("3.length",	a_from[0][0][0].Length,								a_to[0][0][0].Length);
 		t_result &= Test.Check_Int("4.length",	a_from[0][0][0][0].Length,							a_to[0][0][0][0].Length);
 		t_result &= Test.Check_Int("5.length",	a_from[0][0][0][0][0].Length,						a_to[0][0][0][0][0].Length);
+
+		#if(!UNITY_WEBGL)
 		t_result &= Test.Check_Int("6.length",	a_from[0][0][0][0][0][0].Length,					a_to[0][0][0][0][0][0].Length);
 		t_result &= Test.Check_Int("7.length",	a_from[0][0][0][0][0][0][0].Length,					a_to[0][0][0][0][0][0][0].Length);
 		t_result &= Test.Check_Int("8.length",	a_from[0][0][0][0][0][0][0][0].Length,				a_to[0][0][0][0][0][0][0][0].Length);
 		t_result &= Test.Check_Int("9.length",	a_from[0][0][0][0][0][0][0][0][0].Length,			a_to[0][0][0][0][0][0][0][0][0].Length);
 		t_result &= Test.Check_Int("10.length",	a_from[0][0][0][0][0][0][0][0][0][0].Length,		a_to[0][0][0][0][0][0][0][0][0][0].Length);
-		t_result &= Test.Check_Int("11.length",	a_from[0][0][0][0][0][0][0][0][0][0][0].Length,		a_to[0][0][0][0][0][0][0][0][0][0][0].Length);
 
+		t_result &= Test.Check_Int("11.length",	a_from[0][0][0][0][0][0][0][0][0][0][0].Length,		a_to[0][0][0][0][0][0][0][0][0][0][0].Length);
 		t_result &= Test.Check_Int("11.value",	a_from[0][0][0][0][0][0][0][0][0][0][0][0],			a_to[0][0][0][0][0][0][0][0][0][0][0][0]);
+		#else
+		t_result &= Test.Check_Int("3.value",	a_from[0][0][0][0][0][0],							a_to[0][0][0][0][0][0]);
+		#endif
 
 		return t_result;
 	}
@@ -44,6 +52,7 @@ public class Test_15
 		UnityEngine.Debug.Log("----- Test_15 -----");
 
 		{
+			#if(!UNITY_WEBGL)
 			int[][][][][][][][][][][][] t_item_from = null;
 			{
 				t_item_from = new int[1][][][][][][][][][][][];
@@ -60,10 +69,28 @@ public class Test_15
 				t_item_from[0][0][0][0][0][0][0][0][0][0][0] = new int [1];
 				t_item_from[0][0][0][0][0][0][0][0][0][0][0][0] = -1;
 			}
+			#else
+			int[][][][][][] t_item_from = null;
+			{
+				t_item_from = new int[1][][][][][];
+				t_item_from[0] = new int [1][][][][];
+				t_item_from[0][0] = new int [1][][][];
+				t_item_from[0][0][0] = new int [1][][];
+				t_item_from[0][0][0][0] = new int [1][];
+				t_item_from[0][0][0][0][0]= new int [1];
+				t_item_from[0][0][0][0][0][0] = -1;
+			}
+			#endif
 
 			//オブジェクト ==> ＪＳＯＮＩＴＥＭ。
-			#if(FEE_JSON)
-			Fee.JsonItem.JsonItem t_jsonitem = Fee.JsonItem.Convert.ObjectToJsonItem<int[][][][][][][][][][][][]>(t_item_from);
+			#if(!UNITY_WEBGL)
+				#if(FEE_JSON)
+				Fee.JsonItem.JsonItem t_jsonitem = Fee.JsonItem.Convert.ObjectToJsonItem<int[][][][][][][][][][][][]>(t_item_from);
+				#endif
+			#else
+				#if(FEE_JSON)
+				Fee.JsonItem.JsonItem t_jsonitem = Fee.JsonItem.Convert.ObjectToJsonItem<int[][][][][][]>(t_item_from);
+				#endif
 			#endif
 
 			//ＪＳＯＮＩＴＥＭ ==> ＪＳＯＮ文字列。
@@ -74,10 +101,18 @@ public class Test_15
 			#endif
 
 			//ＪＳＯＮ文字列 ==> オブジェクト。
-			#if(FEE_JSON)
-			int[][][][][][][][][][][][] t_item_to = Fee.JsonItem.Convert.JsonStringToObject<int[][][][][][][][][][][][]>(t_jsonstring);
+			#if(!UNITY_WEBGL)
+				#if(FEE_JSON)
+				int[][][][][][][][][][][][] t_item_to = Fee.JsonItem.Convert.JsonStringToObject<int[][][][][][][][][][][][]>(t_jsonstring);
+				#else
+				int[][][][][][][][][][][][] t_item_to = UnityEngine.JsonUtility.FromJson<int[][][][][][][][][][][][]>(t_jsonstring);
+				#endif
 			#else
-			int[][][][][][][][][][][][] t_item_to = UnityEngine.JsonUtility.FromJson<int[][][][][][][][][][][][]>(t_jsonstring);
+				#if(FEE_JSON)
+				int[][][][][][] t_item_to = Fee.JsonItem.Convert.JsonStringToObject<int[][][][][][]>(t_jsonstring);
+				#else
+				int[][][][][][] t_item_to = UnityEngine.JsonUtility.FromJson<int[][][][][][]>(t_jsonstring);
+				#endif
 			#endif
 
 			//ログ。

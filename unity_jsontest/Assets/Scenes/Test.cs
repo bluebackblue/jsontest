@@ -11,7 +11,10 @@ public class Test : MonoBehaviour
     void Start()
     {
 		Fee.ReflectionTool.Config.LOG_ENABLE = true;
+		
+		Fee.JsonItem.Config.LOG_ENABLE = true;
 		Fee.JsonItem.Config.DEFAULT_CONVERTTOJSONSTRING_OPTION = Fee.JsonItem.ConvertToJsonStringOption.NoFloatingNumberSuffix | Fee.JsonItem.ConvertToJsonStringOption.NoSignedNumberSuffix | Fee.JsonItem.ConvertToJsonStringOption.NoUnsignedNumberSuffix;
+
 		this.StartCoroutine(this.TestCoroutine());
     }
 
@@ -19,37 +22,77 @@ public class Test : MonoBehaviour
 	*/
 	public System.Collections.IEnumerator TestCoroutine()
 	{
-		/*
-		Test_01.Main();
-		Test_02.Main();
-		Test_03.Main();
-		Test_04.Main();
-		Test_05.Main();
-		Test_06.Main();
-		Test_07.Main();
-		Test_08.Main();
-		Test_09.Main();
-		Test_10.Main();
-		Test_11.Main();
-		Test_12.Main();
-		Test_13.Main();
-		Test_14.Main();
-		Test_15.Main();
-		Test_16.Main();
-		Test_17.Main();
-		Test_18.Main();
-		Test_19.Main();
-		Test_20.Main();
-		Test_21.Main();
-		Test_22.Main();
-		Test_23.Main();
-		Test_24.Main();
-		Test_25.Main();
-		Test_26.Main();
-		Test_27.Main();
-		*/
+		try{
+			Test_01.Main();
+			Test_02.Main();
+			Test_03.Main();
+			Test_04.Main();
+			Test_05.Main();
+			Test_06.Main();
+			Test_07.Main();
+			Test_08.Main();
+			Test_09.Main();
+			Test_10.Main();
+		}catch(System.Exception t_exception){
+			UnityEngine.Debug.LogError("exception : " + t_exception.Source);
+			UnityEngine.Debug.LogError("exception : " + t_exception.Message);
+		}
 
-		Test_99.Main();
+		try{
+			Test_11.Main();
+		}catch(System.Exception t_exception){
+			UnityEngine.Debug.LogError("exception : " + t_exception.Source);
+			UnityEngine.Debug.LogError("exception : " + t_exception.Message);
+		}
+
+		try{
+			Test_12.Main();
+		}catch(System.Exception t_exception){
+			UnityEngine.Debug.LogError("exception : " + t_exception.Source);
+			UnityEngine.Debug.LogError("exception : " + t_exception.Message);
+		}
+
+		try{
+			Test_13.Main();
+		}catch(System.Exception t_exception){
+			UnityEngine.Debug.LogError("exception : " + t_exception.Source);
+			UnityEngine.Debug.LogError("exception : " + t_exception.Message);
+		}
+
+		try{
+			Test_14.Main();
+		}catch(System.Exception t_exception){
+			UnityEngine.Debug.LogError("exception : " + t_exception.Source);
+			UnityEngine.Debug.LogError("exception : " + t_exception.Message);
+		}
+
+		try{
+			Test_15.Main();
+		}catch(System.Exception t_exception){
+			UnityEngine.Debug.LogError("exception : " + t_exception.Source);
+			UnityEngine.Debug.LogError("exception : " + t_exception.Message);
+		}
+
+		try{
+			Test_16.Main();
+			Test_17.Main();
+			Test_18.Main();
+			Test_19.Main();
+			Test_20.Main();
+			Test_21.Main();
+			Test_22.Main();
+			Test_23.Main();
+			Test_24.Main();
+			Test_25.Main();
+			Test_26.Main();
+			Test_27.Main();
+			Test_28.Main();
+
+			//Test_99.Main();
+		}catch(System.Exception t_exception){
+			UnityEngine.Debug.LogError("exception : " + t_exception.Source);
+			UnityEngine.Debug.LogError("exception : " + t_exception.Message);
+		}
 
 		yield break;
 	}
