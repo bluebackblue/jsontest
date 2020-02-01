@@ -40,15 +40,15 @@ namespace Fee.EventPlate
 
 	/** OnEventPlateOver_CallBackParam_Generic
 	*/
-	public class OnEventPlateOver_CallBackParam_Generic<T> : OnEventPlateOver_CallBackParam
+	public readonly struct OnEventPlateOver_CallBackParam_Generic<T> : OnEventPlateOver_CallBackParam
 	{
 		/** callback_interface
 		*/
-		public OnEventPlateOver_CallBackInterface<T> callback_interface;
+		public readonly OnEventPlateOver_CallBackInterface<T> callback_interface;
 
 		/** id
 		*/
-		public T id;
+		public readonly T id;
 
 		/** constructor
 		*/
@@ -72,7 +72,11 @@ namespace Fee.EventPlate
 		public void CallLeave()
 		{
 			if(this.callback_interface != null){
-				this.callback_interface.OnEventPlateLeave(this.id);
+				try{
+					this.callback_interface.OnEventPlateLeave(this.id);
+				}catch(System.Exception t_exception){
+					Tool.DebugReThrow(t_exception);
+				}
 			}
 		}
 	}

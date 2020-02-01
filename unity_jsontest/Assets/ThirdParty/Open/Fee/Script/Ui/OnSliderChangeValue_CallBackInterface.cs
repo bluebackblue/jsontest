@@ -25,20 +25,22 @@ namespace Fee.Ui
 	*/
 	public interface OnSliderChangeValue_CallBackParam
 	{
+		/** call
+		*/
 		void Call(float a_value);
 	}
 
 	/** OnSliderChangeValue_CallBackParam_Generic
 	*/
-	public class OnSliderChangeValue_CallBackParam_Generic<T> : OnSliderChangeValue_CallBackParam
+	public readonly struct OnSliderChangeValue_CallBackParam_Generic<T> : OnSliderChangeValue_CallBackParam
 	{
 		/** callback_interface
 		*/
-		public OnSliderChangeValue_CallBackInterface<T> callback_interface;
+		public readonly OnSliderChangeValue_CallBackInterface<T> callback_interface;
 
 		/** id
 		*/
-		public T id;
+		public readonly T id;
 
 		/** constructor
 		*/
@@ -53,7 +55,11 @@ namespace Fee.Ui
 		public void Call(float a_value)
 		{
 			if(this.callback_interface != null){
-				this.callback_interface.OnSliderChangeValue(this.id,a_value);
+				try{
+					this.callback_interface.OnSliderChangeValue(this.id,a_value);
+				}catch(System.Exception t_exception){
+					Tool.DebugReThrow(t_exception);
+				}
 			}
 		}
 	}

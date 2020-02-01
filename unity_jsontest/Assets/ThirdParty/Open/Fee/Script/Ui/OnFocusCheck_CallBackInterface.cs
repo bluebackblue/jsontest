@@ -1,4 +1,4 @@
-
+﻿
 
 /**
  * Copyright (c) blueback
@@ -12,31 +12,31 @@
 */
 namespace Fee.Ui
 {
-	/** OnButtonClick_CallBackInterface
+	/** OnFocusCheck_CallBackInterface
 	*/
-	public interface OnButtonClick_CallBackInterface<T>
+	public interface OnFocusCheck_CallBackInterface<T>
 	{
-		/** [Fee.Ui.OnButtonClick_CallBackInterface]クリック。
+		/** [Fee.Ui.OnFocusCheck_CallBackInterface]フォーカスチェック。
 		*/
-		void OnButtonClick(T a_id);
+		void OnFocusCheck(T a_id);
 	}
 
-	/** OnButtonClick_CallBackParam
+	/** OnFocusCheck_CallBackParam
 	*/
-	public interface OnButtonClick_CallBackParam
+	public interface OnFocusCheck_CallBackParam
 	{
 		/** Call
 		*/
 		void Call();
 	}
 
-	/** OnButtonClick_CallBackParam_Generic
+	/** OnFocusCheck_CallBackParam_Generic
 	*/
-	public readonly struct OnButtonClick_CallBackParam_Generic<T> : OnButtonClick_CallBackParam
+	public readonly struct OnFocusCheck_CallBackParam_Generic<T> : OnFocusCheck_CallBackParam
 	{
 		/** callback_interface
 		*/
-		public readonly OnButtonClick_CallBackInterface<T> callback_interface;
+		public readonly OnFocusCheck_CallBackInterface<T> callback_interface;
 
 		/** id
 		*/
@@ -44,7 +44,7 @@ namespace Fee.Ui
 
 		/** constructor
 		*/
-		public OnButtonClick_CallBackParam_Generic(OnButtonClick_CallBackInterface<T> a_callback_interface,T a_id)
+		public OnFocusCheck_CallBackParam_Generic(OnFocusCheck_CallBackInterface<T> a_callback_interface,T a_id)
 		{
 			this.callback_interface = a_callback_interface;
 			this.id = a_id;
@@ -56,7 +56,7 @@ namespace Fee.Ui
 		{
 			if(this.callback_interface != null){
 				try{
-					this.callback_interface.OnButtonClick(this.id);
+					this.callback_interface.OnFocusCheck(this.id);
 				}catch(System.Exception t_exception){
 					Tool.DebugReThrow(t_exception);
 				}

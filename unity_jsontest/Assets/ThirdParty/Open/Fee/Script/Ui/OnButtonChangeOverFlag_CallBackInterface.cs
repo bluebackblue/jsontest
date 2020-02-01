@@ -25,20 +25,22 @@ namespace Fee.Ui
 	*/
 	public interface OnButtonChangeOverFlag_CallBackParam
 	{
+		/** Call
+		*/
 		void Call(bool a_is_onover);
 	}
 
 	/** OnButtonChangeOverFlag_CallBackParam_Generic
 	*/
-	public class OnButtonChangeOverFlag_CallBackParam_Generic<T> : OnButtonChangeOverFlag_CallBackParam
+	public readonly struct OnButtonChangeOverFlag_CallBackParam_Generic<T> : OnButtonChangeOverFlag_CallBackParam
 	{
 		/** callback_interface
 		*/
-		public OnButtonChangeOverFlag_CallBackInterface<T> callback_interface;
+		public readonly OnButtonChangeOverFlag_CallBackInterface<T> callback_interface;
 
 		/** id
 		*/
-		public T id;
+		public readonly T id;
 
 		/** constructor
 		*/
@@ -53,7 +55,11 @@ namespace Fee.Ui
 		public void Call(bool a_is_onover)
 		{
 			if(this.callback_interface != null){
-				this.callback_interface.OnButtonChangeOverFlag(this.id,a_is_onover);
+				try{
+					this.callback_interface.OnButtonChangeOverFlag(this.id,a_is_onover);
+				}catch(System.Exception t_exception){
+					Tool.DebugReThrow(t_exception);
+				}
 			}
 		}
 	}
